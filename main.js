@@ -50,7 +50,6 @@ async function create_html(channel) {
 
 			html += `
 				<div class="block" onclick="(() => {console.log('this website no have js')})()">
-
 					<p class="date">${date}</p>
 					${content}
 				</div>
@@ -69,6 +68,9 @@ function write_html(html) {
 				<link rel="stylesheet" href="./style.css">
 			</head> 
 		<body>
+			<div class="block">
+				<a href="https://github.com/caizoryan/feed.a-p">about</a>
+			</div>
 			${html}
 		</body>
 		</html>`

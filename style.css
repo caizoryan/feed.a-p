@@ -18,6 +18,12 @@ a {
 img,
 video {
 	width: 95%;
+	transition: all 3.5s ease-in-out;
+}
+
+img:hover,
+video:hover {
+	transform: scale(3);
 }
 
 .date {
