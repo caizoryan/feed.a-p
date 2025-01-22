@@ -1,0 +1,10 @@
+.block {
+	margin: 20px auto;
+	border: 1px solid;
+	padding: 10px;
+	max-width: 600px;
+}
+
+video {
+	width: 90%;
+}
