@@ -1,6 +1,6 @@
 # Welcome to feed.a-p.space backrooms
 
-Welcome to anyone browsing this. This is a space for me to play around with static site generation while also making something to host a log of me making things. I often make things and when I want to talk about it, I have to set up all of it, find it and figure out how to recreate the environment, etc, etc. So I wanted a space where I can document things I'm making, sketches, prototypes, ideas, seed of future projects.
+Welcome to anyone browsing this. This is a space for me to play around with static site generation while also making something to host a log of me making things. I wanted a space where I can document things I'm making, sketches, prototypes, ideas, seed of future projects.
 
 I would also like to point to you to [Grant Custer's space](https://feed.grantcuster.com/) that I was very much inspired by. This is an aim to create a similar kind of space.
 
