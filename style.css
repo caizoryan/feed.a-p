@@ -1,10 +1,26 @@
+body {
+	background: #D1F6DB;
+	font-family: monospace;
+	color: #9B70D8;
+}
+
+a {
+	color: #F9C23F
+}
+
 .block {
 	margin: 20px auto;
-	border: 1px solid;
-	padding: 10px;
+	border: 1px solid #00000011;
+	padding: 2.5%;
 	max-width: 600px;
 }
 
 video {
-	width: 90%;
+	width: 95%;
+}
+
+.date {
+	color: #F9C23F;
+	background-color: #9B70D8;
+	width: 15em;
 }
