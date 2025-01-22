@@ -27,6 +27,7 @@ const get_block = (id) => fetch_json(host + "/blocks/" + id, options)
 // ********************************
 //
 const video = (block) => `<video src=${block.attachment.url} autoplay controls loop></video> `
+const image = (block) => `<img src=${block.image.display.url} />`
 
 async function run() {
 	let channel = await get_channel("blog-feed?force=true")
@@ -118,6 +119,14 @@ async function eat(tree) {
 					block.attachment.extension == "mp4"
 				) {
 					ret.push(video(block))
+					let word = await eat(tree)
+					ignore = true
+				}
+
+				if (
+					block.class == "Image"
+				) {
+					ret.push(image(block))
 					let word = await eat(tree)
 					ignore = true
 				}
