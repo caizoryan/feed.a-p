@@ -56,7 +56,7 @@ async function create_html(channel) {
 
 			content = content.flat().join('\n')
 			html += `
-				<div class="block" onclick="(() => {console.log('this website no have js')})()">
+				<div class="block">
 					<p class="date">${date}</p>
 					${content}
 				</div>

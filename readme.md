@@ -8,6 +8,11 @@ I would also like to point to you to [Grant Custer's space](https://feed.grantcu
 ## How this repo works
 
 Here is a quick run through of current workflow of working in this repository:
+1. All editing happens on Are.na
+2. Any html assembling and css styling happens in node.js
+3. main.js compiles an index.html that is hosted on github pages
+
+## Outline
 
 #### State / Data
 This website runs on [Are.na](https://are.na). The specific channel that populates the content is private. This is for a few reasons.
