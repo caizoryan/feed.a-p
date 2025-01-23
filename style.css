@@ -5,14 +5,22 @@ body {
 }
 
 a {
-	color: #F9C23F
+	color: black;
 }
 
 .block {
 	margin: 20px auto;
-	border: 1px solid #00000011;
+	border: 1px solid #000000dd;
 	padding: 2.5%;
 	max-width: 600px;
+
+	transition: all 100ms ease-in-out;
+}
+
+.fixed {
+	position: fixed;
+	top: 1em;
+	left: 1em;
 }
 
 img,
@@ -21,9 +29,18 @@ video {
 	transition: all 3.5s ease-in-out;
 }
 
-img:hover,
-video:hover {
-	transform: scale(3);
+input:checked~div {
+	max-width: 1200px;
+}
+
+
+.link {
+	padding: 5px;
+	border: 1px solid #00000011;
+	border-radius: 5px;
+	background: #eee;
+	width: 50%;
+	overflow: hidden;
 }
 
 .date {
