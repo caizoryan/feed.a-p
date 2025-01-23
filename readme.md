@@ -39,6 +39,6 @@ I wanna think of linking to other channels, this again I would restrict by only 
 #### Download Images/videos
 This I'll have to think and consider, because this will also mean I have to manage state for which images/videos have been already downloaded so I don't re-download each time. But should be a pretty simple one.
 
-#### Iframes
+#### iframes
 iframes are a fun tool, I'm thinking of using them in [this](https://wmianecki.github.io/thesis_website) sort of way. Maybe, maybe not but seems like a cool idea.
 
