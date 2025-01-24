@@ -66,12 +66,12 @@ async function create_html(channel) {
 			html += `
 				<div class="block">
 					<p class="date">${date}</p>
+
+
+					<span class="metadata">updated_at: ${updated_at_string}</span>
+					<span class="metadata">posted_on: ${created_at_string}</span>
 					${content}
 
-					<p class="metadata">
-						<span class="metadata">updated_at: ${updated_at_string}</span>
-						<span class="metadata">posted_on: ${created_at_string}</span>
-					</p>
 				</div>
 			`
 		}

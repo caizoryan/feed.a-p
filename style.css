@@ -68,11 +68,15 @@ input:checked~div {
 }
 
 .metadata {
-	padding: 10px 0px;
+	padding: 3px;
 	font-size: 0.9em;
 	border-top: .8px dotted var(--light-grey);
 	color: #00000033;
 	margin: 10px 0;
+
+	border: 1px dotted var(--light-grey);
+	border-radius: 5px;
+	background: #eee;
 }
 
 .date {
