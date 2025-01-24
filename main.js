@@ -42,6 +42,22 @@ async function run() {
 	write_html(html)
 }
 
+let padd_zero = (num) => num < 10 ? "0" + num : num
+
+let time_string = (time) => {
+	let week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+	let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+	let date = time.getDate()
+	let month = time.getMonth()
+	let year = time.getFullYear()
+	let day = time.getDay()
+	let hours = time.getHours()
+	let minutes = time.getMinutes()
+	let seconds = time.getSeconds()
+
+	return `${date} ${months[month]}, ${week[day]}, ${padd_zero(hours)}:${padd_zero(minutes)} `
+}
+
 async function create_html(channel) {
 	let html = ''
 
@@ -53,11 +69,10 @@ async function create_html(channel) {
 
 			let date = block.title
 			let updated_at = new Date(block.updated_at)
-			console.log(updated_at.toDateString())
-			let updated_at_string = updated_at.toDateString()
+			let updated_at_string = time_string(updated_at)
 
 			let created_at = new Date(block.created_at)
-			let created_at_string = created_at.toDateString()
+			let created_at_string = time_string(created_at)
 
 
 			let content = await MD(block.content)
@@ -66,8 +81,6 @@ async function create_html(channel) {
 			html += `
 				<div class="block">
 					<p class="date">${date}</p>
-
-
 					<span class="metadata">updated_at: ${updated_at_string}</span>
 					<span class="metadata">posted_on: ${created_at_string}</span>
 					${content}
