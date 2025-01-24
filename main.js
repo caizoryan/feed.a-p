@@ -52,6 +52,14 @@ async function create_html(channel) {
 			if (block.title == "DRAFT") continue
 
 			let date = block.title
+			let updated_at = new Date(block.updated_at)
+			console.log(updated_at.toDateString())
+			let updated_at_string = updated_at.toDateString()
+
+			let created_at = new Date(block.created_at)
+			let created_at_string = created_at.toDateString()
+
+
 			let content = await MD(block.content)
 
 			content = content.flat().join('\n')
@@ -59,6 +67,11 @@ async function create_html(channel) {
 				<div class="block">
 					<p class="date">${date}</p>
 					${content}
+
+					<p class="metadata">
+						<span class="metadata">updated_at: ${updated_at_string}</span>
+						<span class="metadata">posted_on: ${created_at_string}</span>
+					</p>
 				</div>
 			`
 		}
