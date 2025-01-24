@@ -9,7 +9,7 @@ I would also like to point to you to [Grant Custer's space](https://feed.grantcu
 
 Here is a quick run through of current workflow of working in this repository:
 1. All editing happens on Are.na
-2. Any html assembling and css styling happens in node.js
+2. Any html assembling and css styling happens in main.js
 3. main.js compiles an index.html that is hosted on github pages
 
 ## Outline
