@@ -57,7 +57,6 @@ input:checked~div {
 	max-width: 1200px;
 }
 
-
 .link {
 	padding: 5px;
 	border: 1px solid var(--light-grey);
@@ -65,6 +64,48 @@ input:checked~div {
 	background: #eee;
 	width: 50%;
 	overflow: hidden;
+}
+
+.pdf {
+	padding: 15px;
+	width: 95%;
+	border: 1px solid var(--light-grey);
+	border-radius: 5px;
+	background: #eee;
+	height: 300px;
+	overflow: hidden;
+}
+
+.pdf img {
+	padding-top: 10px;
+}
+
+button {
+	cursor: pointer;
+}
+
+.hover {
+	transition: all 100ms ease-in-out;
+}
+
+.hover:hover {
+	transform: scale(1.1);
+}
+
+.media {
+	padding: 3px;
+	font-size: 1.2em;
+	border-top: .8px dotted var(--light-grey);
+	margin: 10px 0;
+
+	border: 1px dotted var(--light-grey);
+	border-radius: 5px;
+	background: #eee;
+}
+
+.media p {
+	margin: 1em 0;
+	padding: 0;
 }
 
 .metadata {

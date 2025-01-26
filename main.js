@@ -29,9 +29,29 @@ let link_svg = `<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmln
 // SECTION : Rendering for Special Components
 // ********************************
 //
+const media_embed = (block) => `<span class="media">${block.embed?.html}</span>`
+const media = (block) => `
+	<div class="media">
+		<p class="title">${'"' + block.title + '"'}</p>
+		<a class="hover" href=${block?.source?.url}><img src="${block.image.display.url}" /></a>
+		<a class="hover" href=${block?.source?.url}> <p class="metadata">${block.source?.url}</p> </a>
+	</div>
+`
+
 const video = (block) => `<video src=${block.attachment.url} autoplay controls loop></video> `
 const image = (block) => `<img src="${block.image.display.url}" />`
 const link = (block) => `<span class="link"> <a target="_blank" href=${block.source.url}>${block.title} ${link_svg}</a> </span>`
+
+const pdf = (block) => `
+<a target="_blank" href=${block.attachment.url}>
+	<p class="pdf">
+		<span>
+		${block.title} ${link_svg}
+		</span>
+		<img src="${block.image.display.url}" />
+	</p>
+</a>
+`
 
 async function run() {
 	let channel = await get_channel("blog-feed?force=true")
@@ -60,7 +80,6 @@ let time_string = (time) => {
 
 async function create_html(channel) {
 	let html = ''
-
 	for await (const block of channel.contents) {
 
 		if (block.class == "Text") {
@@ -151,16 +170,29 @@ async function eat(tree) {
 				let id = extract_block_id(at.href)
 				let block = await get_block(id)
 
-				if (
-					block.class == "Attachment" &&
-					block.attachment.extension == "mp4"
-				) {
-					ret.push(video(block))
+				if (block.class == "Attachment") {
+					if (block.attachment.extension == "mp4") {
+						ret.push(video(block))
+					}
+					else if (block.attachment.extension == "pdf") {
+						ret.push(pdf(block))
+					}
 					let word = await eat(tree)
 					ignore = true
 				}
 
-				if (
+
+				else if (
+					block.class == "Media"
+				) {
+					if (block.class == "Media" && block.embed) ret.push(media_embed(block))
+					else ret.push(media(block))
+					let word = await eat(tree)
+					ignore = true
+
+				}
+
+				else if (
 					block.class == "Image"
 				) {
 					ret.push(image(block))
@@ -168,7 +200,8 @@ async function eat(tree) {
 					ignore = true
 				}
 
-				if (
+
+				else if (
 					block.class == "Link"
 				) {
 					ret.push(link(block))
