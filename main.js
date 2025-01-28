@@ -30,11 +30,14 @@ let link_svg = `<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmln
 //
 const media_embed = (block) => `<span class="media">${block.embed?.html}</span>`
 const media = (block) => `
+
+<a href=${block?.source?.url}>
 	<div class="media">
-		<p class="title">${'"' + block.title + '"'}</p>
-		<a class="hover" href=${block?.source?.url}><img src="${block.image.display.url}" /></a>
-		<a class="hover" href=${block?.source?.url}> <p class="metadata">${block.source?.url}</p> </a>
+		<p class="title">${block.title}</p>
+		<img src="${block.image.display.url}" />
+		<p class="metadata">${block.source?.url}</p> 
 	</div>
+</a>
 `
 
 const video = (block) => `<video src=${block.attachment.url} autoplay controls loop></video> `

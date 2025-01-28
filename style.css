@@ -1,8 +1,8 @@
 :root {
-	--color: #0000ff;
 	--secondary: #F9C23F;
 	--background: #D1F6DB;
 	--background: #00000011;
+	--color: #0000ff;
 
 	--light-grey: #00000022
 }
@@ -14,9 +14,9 @@
 
 body {
 	background: var(--background);
-	font-family: monospace;
 	color: var(--color);
-	font-family: 'ops';
+	line-height: 1.4em;
+	font-family: "ops", sans-serif;
 }
 
 a {
@@ -33,7 +33,7 @@ a {
 .block {
 	margin: 20px auto;
 	border: 1px solid var(--light-grey);
-	padding: 12px;
+	padding: 40px;
 	/* box-shadow: 0 0 10px 0px var(--light-grey); */
 	border-top: 3px dotted var(--light-grey);
 	max-width: 600px;
@@ -57,23 +57,27 @@ input:checked~div {
 	max-width: 1200px;
 }
 
-.link {
+.link,
+.pdf,
+.media {
 	padding: 5px;
-	border: 1px solid var(--light-grey);
+	border: 2px solid var(--light-grey);
 	border-radius: 5px;
 	background: #eee;
 	width: 50%;
 	overflow: hidden;
 }
 
-.pdf {
-	padding: 15px;
+.media {
 	width: 95%;
-	border: 1px solid var(--light-grey);
-	border-radius: 5px;
-	background: #eee;
+	font-size: 1.2em;
+	margin: 10px 0;
+	box-shadow: 0 0 10px 1px var(--light-grey);
+}
+
+.pdf {
+	width: 95%;
 	height: 300px;
-	overflow: hidden;
 }
 
 .pdf img {
@@ -92,16 +96,6 @@ button {
 	transform: scale(1.1);
 }
 
-.media {
-	padding: 3px;
-	font-size: 1.2em;
-	border-top: .8px dotted var(--light-grey);
-	margin: 10px 0;
-
-	border: 1px dotted var(--light-grey);
-	border-radius: 5px;
-	background: #eee;
-}
 
 .media p {
 	margin: 1em 0;
