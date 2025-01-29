@@ -78,6 +78,7 @@ input:checked~div {
 .pdf {
 	width: 95%;
 	height: 300px;
+	box-shadow: 0 0 10px 1px var(--light-grey);
 }
 
 .pdf img {
