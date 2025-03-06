@@ -32,15 +32,15 @@ let link_svg =
 //
 const media_embed = (block) =>
 	`<span class="media">${block.embed?.html}</span>`;
-const media = (block) => `
 
-<a href=${block?.source?.url}>
-	<div class="media">
-		<p class="title">${block.title}</p>
-		<img src="${block.image.display.url}" />
-		<p class="metadata">${block.source?.url}</p> 
-	</div>
-</a>
+const media = (block) => `
+	<a href=${block?.source?.url}>
+		<div class="media">
+			<p class="title">${block.title}</p>
+			<img src="${block.image.display.url}" />
+			<p class="metadata">${block.source?.url}</p> 
+		</div>
+	</a>
 `;
 
 const video = (block) =>
@@ -50,14 +50,14 @@ const link = (block) =>
 	`<span class="link"> <a target="_blank" href=${block.source.url}>${block.title} ${link_svg}</a> </span>`;
 
 const pdf = (block) => `
-<a target="_blank" href=${block.attachment.url}>
-	<p class="pdf">
-		<span>
-		${block.title} ${link_svg}
-		</span>
-		<img src="${block.image.display.url}" />
-	</p>
-</a>
+	<a target="_blank" href=${block.attachment.url}>
+		<p class="pdf">
+			<span>
+			${block.title} ${link_svg}
+			</span>
+			<img src="${block.image.display.url}" />
+		</p>
+	</a>
 `;
 
 async function run() {
@@ -95,8 +95,7 @@ let time_string = (time) => {
 	let minutes = time.getMinutes();
 	let seconds = time.getSeconds();
 
-	return `${date} ${months[month]}, ${week[day]}, ${padd_zero(hours)}:${padd_zero(minutes)
-		} `;
+	return `${date} ${months[month]}, ${week[day]}, ${padd_zero(hours)}:${padd_zero(minutes)}`;
 };
 
 async function create_html(channel) {
@@ -186,7 +185,11 @@ async function eat(tree) {
 				let id = extract_block_id(at.href);
 				let block = await get_block(id);
 
+				// --------------------------------
+				// Attachment
+				// --------------------------------
 				if (block.class == "Attachment") {
+
 					if (block.attachment.extension == "mp4") {
 						ret.push(video(block));
 					} else if (block.attachment.extension == "pdf") {
@@ -194,33 +197,50 @@ async function eat(tree) {
 					}
 					let word = await eat(tree);
 					ignore = true;
-				} else if (
-					block.class == "Media"
-				) {
+
+				}
+
+				// --------------------------------
+				// Media
+				// --------------------------------
+				else if (block.class == "Media") {
+
 					if (block.class == "Media" && block.embed) {
 						ret.push(media_embed(block));
 					} else ret.push(media(block));
 					let word = await eat(tree);
 					ignore = true;
-				} else if (
-					block.class == "Image"
-				) {
+
+				}
+
+				// --------------------------------
+				// Image
+				// --------------------------------
+				else if (block.class == "Image") {
+
 					ret.push(image(block));
 					let word = await eat(tree);
 					ignore = true;
-				} else if (
-					block.class == "Link"
-				) {
+
+				}
+
+				// --------------------------------
+				// Link
+				// --------------------------------
+				else if (block.class == "Link") {
+
 					ret.push(link(block));
 					let word = await eat(tree);
 					ignore = true;
+
 				}
 			}
 
+			let entries = Object.entries
 			let at_string =
 				// convert attribute (in object form)
 				// to an html stringified attribute form
-				Object.entries(at)
+				entries(at)
 					.map(([key, value]) => `${key} = "${value}"`)
 					.join(" ");
 
