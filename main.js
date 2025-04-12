@@ -20,7 +20,10 @@ let options = {
 
 const fetch_json = (link, options) =>
 	fetch(link, options).then((r) => r.json());
-const get_channel = (slug) => fetch_json(host + "/channels/" + slug, options);
+const get_channel = (slug) => {
+	console.log("getting", slug)
+	return fetch_json(host + "/channels/" + slug, options)
+}
 const get_block = (id) => fetch_json(host + "/blocks/" + id, options);
 
 let link_svg =
@@ -61,7 +64,8 @@ const pdf = (block) => `
 `;
 
 async function run() {
-	let channel = await get_channel("blog-feed?force=true");
+	let channel = await get_channel("blog-feed?force=true&per=300");
+	console.log("len", channel.length)
 	channel.contents = channel.contents.sort((a, b) => b.position - a.position);
 
 	let html = await create_html(channel);
