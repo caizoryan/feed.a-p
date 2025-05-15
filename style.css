@@ -17,6 +17,7 @@ body {
 	color: var(--color);
 	line-height: 1.4em;
 	font-family: "ops", sans-serif;
+	display: inline-flex;
 }
 
 a {
@@ -36,16 +37,60 @@ a {
 	padding: 40px;
 	/* box-shadow: 0 0 10px 0px var(--light-grey); */
 	border-top: 3px dotted var(--light-grey);
-	max-width: 600px;
+	max-height: 600px;
+	overflow-y: scroll;
+	width: 400px;
+	margin-right: 20px;
 
 	transition: all 100ms ease-in-out;
 }
 
 .fixed {
 	position: fixed;
-	top: 1em;
 	left: 1em;
 }
+
+.t1 {
+	top: 1em;
+}
+
+.t2 {
+	top: 2em;
+}
+
+.t3 {
+	top: 3em;
+}
+
+.mt5 {
+	margin-top: 5rem;
+}
+
+
+.mt10 {
+	margin-top: 10rem;
+}
+
+
+.mt15 {
+	margin-top: 15rem;
+}
+
+
+.mt20 {
+	margin-top: 20rem;
+}
+
+
+.mt25 {
+	margin-top: 25rem;
+}
+
+
+.mt30 {
+	margin-top: 30rem;
+}
+
 
 img,
 video {
@@ -53,8 +98,16 @@ video {
 }
 
 
-input:checked~div {
-	max-width: 1200px;
+input.t1:checked~.block {
+	width: 900px;
+}
+
+input.t2:checked~.block {
+	width: 600px;
+}
+
+input.t3:checked~.block {
+	width: 300px;
 }
 
 .link,
@@ -79,6 +132,10 @@ input:checked~div {
 	width: 95%;
 	height: 300px;
 	box-shadow: 0 0 10px 1px var(--light-grey);
+}
+
+label {
+	margin-left: 1em;
 }
 
 .pdf img {
