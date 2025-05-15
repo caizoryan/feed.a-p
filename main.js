@@ -47,7 +47,7 @@ const media = (block) => `
 `;
 
 const video = (block) =>
-	`<video src=${block.attachment.url} autoplay controls loop></video> `;
+	`<video src=${block.attachment.url} controls loop></video> `;
 const image = (block) => `<img src="${block.image.display.url}" />`;
 const link = (block) =>
 	`<span class="link"> <a target="_blank" href=${block.source.url}>${block.title} ${link_svg}</a> </span>`;
