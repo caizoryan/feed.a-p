@@ -102,9 +102,54 @@ let time_string = (time) => {
 	return `${date} ${months[month]}, ${week[day]}, ${padd_zero(hours)}:${padd_zero(minutes)}`;
 };
 
+let months = [
+	"Jan",
+	"Feb",
+	"Mar",
+	"Apr",
+	"May",
+	"Jun",
+	"Jul",
+	"Aug",
+	"Sep",
+	"Oct",
+	"Nov",
+	"Dec",
+];
+
+let date_string = (time) => {
+	let date = time.getDate();
+	let month = time.getMonth();
+	let year = time.getFullYear();
+
+	return `${date} ${months[month]} ${year}`;
+};
+
+let month = (time) => {
+	let months = [
+		"Jan",
+		"Feb",
+		"Mar",
+		"Apr",
+		"May",
+		"Jun",
+		"Jul",
+		"Aug",
+		"Sep",
+		"Oct",
+		"Nov",
+		"Dec",
+	];
+	let month = time.getMonth();
+
+	return months[month];
+};
+
 async function create_html(channel) {
 	let html = "";
 	let options = ["mt5", "mt10", "mt15", "mt20", "mt25", "mt30"]
+
+	let lastmonth = "";
 
 	for await (const block of channel.contents) {
 		if (block.class == "Text") {
@@ -116,8 +161,20 @@ async function create_html(channel) {
 
 			let created_at = new Date(block.created_at);
 			let created_at_string = time_string(created_at);
+			if (date == "") date = date_string(created_at)
 
 			let content = await MD(block.content);
+			let m = month(new Date(date));
+
+			if (months.includes(m) && m != lastmonth) {
+				html += `
+				<div class="block month ${options[Math.floor(Math.random() * options.length)]}">
+					<h1>${m}</h1>
+				</div>
+			`;
+			}
+
+			if (months.includes(m)) lastmonth = m
 
 			content = content.flat().join("\n");
 			html += `
@@ -129,6 +186,7 @@ async function create_html(channel) {
 
 				</div>
 			`;
+
 		}
 	}
 
@@ -147,10 +205,10 @@ function write_html(html) {
 		  <input type="radio" name="any" value="HTML" class="fixed t1">
 
 			<label for="b" class="fixed t2">500px</label>
-		  <input type="radio" name="any" value="b" class="fixed t2">
+		  <input type="radio" checked name="any" value="b" class="fixed t2">
 
 			<label for="c" class="fixed t3">300px</label>
-		  <input type="radio" checked name="any" value="c" class="fixed t3">
+		  <input type="radio" name="any" value="c" class="fixed t3">
 
 			<div style="position:fixed;right:2em;top:1em;background-color:#fff9;padding:1em">
 				<a href="https://github.com/caizoryan/feed.a-p">about</a>
