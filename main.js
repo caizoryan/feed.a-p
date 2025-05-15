@@ -104,6 +104,7 @@ let time_string = (time) => {
 
 async function create_html(channel) {
 	let html = "";
+	let options = ["mt5", "mt10", "mt15", "mt20", "mt25", "mt30"]
 
 	for await (const block of channel.contents) {
 		if (block.class == "Text") {
@@ -120,7 +121,7 @@ async function create_html(channel) {
 
 			content = content.flat().join("\n");
 			html += `
-				<div class="block">
+				<div class="block ${options[Math.floor(Math.random() * options.length)]}">
 					<p class="date">${date}</p>
 					<span class="metadata">updated_at: ${updated_at_string}</span>
 					<span class="metadata">posted_on: ${created_at_string}</span>
@@ -151,7 +152,7 @@ function write_html(html) {
 		  <input type="radio" checked name="any" value="c" class="fixed t3">
 			<label for="c" class="fixed t3">300px</label>
 
-			<div class="block">
+			<div style="position:fixed;right:2em;top:1em;background-color:#fff9;padding:1em">
 				<a href="https://github.com/caizoryan/feed.a-p">about</a>
 			</div>
 			${html}
