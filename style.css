@@ -1,10 +1,14 @@
 :root {
-	--secondary: #F9C23F;
-	--background: #D1F6DB;
-	--background: #00000011;
-	--color: #0000ff;
-
+	--secondary: #ff0;
+	--background: #00000022;
+	--color: #333;
 	--light-grey: #00000022
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
 }
 
 @font-face {
@@ -12,16 +16,36 @@
 	src: url('./ops.ttf') format('truetype');
 }
 
+@font-face {
+	font-family: "chicago";
+	src: url("./chicago.woff2");
+}
+
 body {
 	background: var(--background);
 	color: var(--color);
-	line-height: 1.4em;
-	font-family: "ops", sans-serif;
+	font-family: "chicago", monospace;
 	display: inline-flex;
+	padding-left: 5rem;
+}
+
+p {
+	line-height: 1.3em;
+	font-size: .9rem;
+	font-family: "ops", monospace;
+}
+
+p.date {
+	font-family: "chicago", monospace;
 }
 
 a {
 	color: var(--color);
+}
+
+h1 {
+	font-size: 2.3em;
+	line-height: 1.1em;
 }
 
 /* .block:first-of-type { */
@@ -35,31 +59,36 @@ a {
 	margin: 20px auto;
 	border: 1px solid var(--light-grey);
 	padding: 40px;
-	/* box-shadow: 0 0 10px 0px var(--light-grey); */
+	box-shadow: 0 0 10px 0px var(--light-grey);
 	border-top: 3px dotted var(--light-grey);
 	max-height: 600px;
 	overflow-y: scroll;
 	width: 400px;
 	margin-right: 20px;
+	transition: width 600ms ease-in-out;
+	cursor: crosshair;
+}
 
-	transition: all 100ms ease-in-out;
+.block:hover {
+	transform: scale(1.02);
 }
 
 .fixed {
 	position: fixed;
 	left: 1em;
+	z-index: 99;
 }
 
 .t1 {
-	top: 1em;
+	top: 1rem;
 }
 
 .t2 {
-	top: 2em;
+	top: 2.5rem;
 }
 
 .t3 {
-	top: 3em;
+	top: 4rem;
 }
 
 .mt5 {
@@ -99,11 +128,11 @@ video {
 
 
 input.t1:checked~.block {
-	width: 900px;
+	width: 800px;
 }
 
 input.t2:checked~.block {
-	width: 600px;
+	width: 500px;
 }
 
 input.t3:checked~.block {
@@ -135,7 +164,22 @@ input.t3:checked~.block {
 }
 
 label {
-	margin-left: 1em;
+	padding-left: 1.5em;
+	padding-right: .5em;
+	background-color: yellow;
+}
+
+input[type="radio"] {
+	appearance: none;
+	width: 1em;
+	height: 1em;
+	border: 1px solid var(--color);
+	background-color: white;
+}
+
+input[type="radio"]:checked {
+	border: 1px solid white;
+	background-color: var(--color);
 }
 
 .pdf img {
@@ -161,10 +205,11 @@ button {
 }
 
 .metadata {
-	padding: 3px;
-	font-size: 0.9em;
+	padding: .1em;
+	font-size: 0.6em;
 	border-top: .8px dotted var(--light-grey);
 	color: #00000033;
+	font-family: "ops", monospace;
 	margin: 10px 0;
 
 	border: 1px dotted var(--light-grey);

@@ -143,14 +143,14 @@ function write_html(html) {
 				<link rel="stylesheet" href="./style.css">
 			</head> 
 		<body>
+			<label for="html" class="fixed t1">800px</label>
 		  <input type="radio" name="any" value="HTML" class="fixed t1">
-			<label for="html" class="fixed t1">900px</label>
 
+			<label for="b" class="fixed t2">500px</label>
 		  <input type="radio" name="any" value="b" class="fixed t2">
-			<label for="b" class="fixed t2">600px</label>
 
-		  <input type="radio" checked name="any" value="c" class="fixed t3">
 			<label for="c" class="fixed t3">300px</label>
+		  <input type="radio" checked name="any" value="c" class="fixed t3">
 
 			<div style="position:fixed;right:2em;top:1em;background-color:#fff9;padding:1em">
 				<a href="https://github.com/caizoryan/feed.a-p">about</a>
