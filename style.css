@@ -94,12 +94,9 @@ h1 {
 }
 
 .block.month:hover {
-	filter: blur(5px);
+	transform: none;
 }
 
-.block.month:hover::before {
-	opacity: 0;
-}
 
 .block.month::before {
 	content: "";

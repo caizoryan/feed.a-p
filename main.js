@@ -77,44 +77,27 @@ let padd_zero = (num) => num < 10 ? "0" + num : num;
 
 let time_string = (time) => {
 	let week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-	let months = [
-		"Jan",
-		"Feb",
-		"Mar",
-		"Apr",
-		"May",
-		"Jun",
-		"Jul",
-		"Aug",
-		"Sep",
-		"Oct",
-		"Nov",
-		"Dec",
-	];
 	let date = time.getDate();
 	let month = time.getMonth();
-	let year = time.getFullYear();
 	let day = time.getDay();
 	let hours = time.getHours();
 	let minutes = time.getMinutes();
-	let seconds = time.getSeconds();
-
 	return `${date} ${months[month]}, ${week[day]}, ${padd_zero(hours)}:${padd_zero(minutes)}`;
 };
 
 let months = [
-	"Jan",
-	"Feb",
-	"Mar",
-	"Apr",
+	"January",
+	"February",
+	"March",
+	"April",
 	"May",
-	"Jun",
-	"Jul",
-	"Aug",
-	"Sep",
-	"Oct",
-	"Nov",
-	"Dec",
+	"June",
+	"July",
+	"August",
+	"September",
+	"October",
+	"November",
+	"December",
 ];
 
 let date_string = (time) => {
@@ -126,22 +109,7 @@ let date_string = (time) => {
 };
 
 let month = (time) => {
-	let months = [
-		"Jan",
-		"Feb",
-		"Mar",
-		"Apr",
-		"May",
-		"Jun",
-		"Jul",
-		"Aug",
-		"Sep",
-		"Oct",
-		"Nov",
-		"Dec",
-	];
 	let month = time.getMonth();
-
 	return months[month];
 };
 
@@ -168,7 +136,7 @@ async function create_html(channel) {
 
 			if (months.includes(m) && m != lastmonth) {
 				html += `
-				<div class="block month ${options[Math.floor(Math.random() * options.length)]}">
+				<div class="block month mt30">
 					<h1>${m}</h1>
 				</div>
 			`;
