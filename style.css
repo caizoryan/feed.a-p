@@ -23,6 +23,12 @@ a {
 	color: var(--color);
 }
 
+xmp {
+	color: #ff2e5f;
+  padding: 1rem;
+  background: #ffe5;
+}
+
 /* .block:first-of-type { */
 /* 	position: sticky; */
 /* 	top: 0; */

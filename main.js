@@ -191,7 +191,7 @@ function write_html(html) {
 // ********************************
 // SECTION : MARKDOWN RENDERING
 // ********************************
-let md = new markdownIt().use(makrdownItMark);
+let md = new markdownIt('commonmark')//.use(makrdownItMark);
 
 let attrs = (item) => {
 	let attrs = item.attrs;
@@ -214,7 +214,6 @@ async function eat(tree) {
 
 	while (tree.length > 0) {
 		let item = tree.shift();
-
 		if (item.nesting === 1) {
 			let at = attrs(item);
 			let ignore = false;
@@ -285,15 +284,29 @@ async function eat(tree) {
 			if (!ignore) {
 				let children = await eat(tree);
 				children = Array.isArray(children) ? children.join("") : children;
+
+				if (debug_print) {
+					console.log("---\nxxx\ntag:\nxxx\nx----\n", item.tag)
+					// 	console.log("---\nxxx\nitem:\nxxx\n----\n", item)
+				}
+
 				ret.push(`<${item.tag} ${at_string}> ${children} </${item.tag}>`);
 			}
 		}
 
 		if (item.nesting === 0) {
 			if (!item.children || item.children.length === 0) {
-				let p = item.type === "softbreak" ? "<br></br>" : item.content;
+				let p = item.type === "softbreak"
+						? "<br></br>"
+						: item.type === "fence"
+								? `<xmp>${item.content}</xmp>`
+								: item.content;
 				ret.push(p);
 			} else {
+				if (debug_print) {
+					// console.log("---\ntype:\n----\n", item.type)
+					//console.log("---\ncontent:\n----\n", item.content)
+				}
 				let children = await eat(item.children);
 				children = Array.isArray(children) ? children.join("") : children;
 				ret.push(children);
@@ -314,15 +327,39 @@ let safe_parse = (content) => {
 	}
 };
 
+let debug_print = false
 const MD = async (content) => {
-	let tree = safe_parse(content);
 
-	let body;
+	// if (content.includes('# How templater work')) debug_print = true
+	// else debug_print = false
+
+	let tree, body;
+	tree = safe_parse(content);
+
+	// if (debug_print) {
+	// 	fs.writeFileSync("templater.md", content)
+	// 	let templater = fs.readFileSync("./templater.md", { encoding: "utf-8" })
+	// 	tree = safe_parse(templater);
+	// 	console.log(tree)
+	// }
+
+	// else {
+	// }
 
 	if (tree) body = await eat(tree);
 	else body = content;
 
+	if (debug_print) {
+		//console.log('body', body)
+	//	console.log("content:", content)
+	}
+
 	return body;
 };
+
+// let test = fs.readFileSync("./templater.md", { encoding: "utf-8" })
+// let parsed = md.parse(test)
+// console.log(parsed)
+
 
 run();
