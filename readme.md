@@ -2,7 +2,7 @@
 
 Welcome to anyone browsing this. This is a space for me to play around with static site generation while also making something to host a log of me making things. I wanted a space where I can document things I'm making, sketches, prototypes, ideas, seed of future projects.
 
-I would also like to point to you to [Grant Custer's space](https://feed.grantcuster.com/) that I was very much inspired by. This is an aim to create a similar kind of space.
+I would also like to point you to [Grant Custer's space](https://feed.grantcuster.com/) that I was very much inspired by. This is an aim to create a similar kind of space.
 
 
 ## How this repo works
