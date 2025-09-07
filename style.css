@@ -42,7 +42,7 @@ xmp {
 	padding: 40px;
 	/* box-shadow: 0 0 10px 0px var(--light-grey); */
 	border-top: 3px dotted var(--light-grey);
-	max-width: 600px;
+	/* max-width: 600px; */
 
 	transition: all 100ms ease-in-out;
 }
@@ -60,15 +60,15 @@ video {
 
 
 input.t1:checked~.block {
-	width: 800px;
+	width: 1100px;
 }
 
 input.t2:checked~.block {
-	width: 500px;
+	width: 800px;
 }
 
 input.t3:checked~.block {
-	width: 300px;
+	width: 500px;
 }
 
 label {

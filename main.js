@@ -169,13 +169,13 @@ function write_html(html) {
 				<link rel="stylesheet" href="./style.css">
 			</head> 
 		<body>
-			<label for="html" class="fixed t1">800px</label>
+			<label for="html" class="fixed t1">1100px</label>
 		  <input type="radio" name="any" value="HTML" class="fixed t1">
 
-			<label for="b" class="fixed t2">500px</label>
+			<label for="b" class="fixed t2">800px</label>
 		  <input type="radio" checked name="any" value="b" class="fixed t2">
 
-			<label for="c" class="fixed t3">300px</label>
+			<label for="c" class="fixed t3">500px</label>
 		  <input type="radio" name="any" value="c" class="fixed t3">
 
 			<div style="position:fixed;right:2em;top:1em;background-color:#fff9;padding:1em">
