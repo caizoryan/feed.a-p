@@ -1,8 +1,8 @@
 :root {
-	--secondary: #F9C23F;
+	--secondary: #fff;
 	--background: #D1F6DB;
-	--background: #00000011;
-	--color: #0000ff;
+	/* --background: #666666; */
+	--color: #4F9C64;
 
 	--light-grey: #00000022
 }
@@ -12,11 +12,28 @@
 	src: url('./ops.ttf') format('truetype');
 }
 
+
+@font-face {
+	font-family: 'gap';
+	src: url('./GapSans.ttf') format('truetype');
+}
+
 body {
 	background: var(--background);
 	color: var(--color);
+	color: var(--color);
 	line-height: 1.4em;
-	font-family: "ops", sans-serif;
+	font-family: "Arial Narrow", sans-serif;
+	font-weight: 600; 
+	font-size: 1.2em;
+}
+
+h1{
+	line-height: 1.4em;
+}
+
+h1,h2,h3,h4,h5,h6, a {
+	font-family: 'gap';
 }
 
 a {
