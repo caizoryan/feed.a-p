@@ -72,7 +72,7 @@ const channel = c => `
 `
 
 let force = 'force=true&'
-force = ''
+// force = ''
 async function run() {
 	let channel = await get_channel("blog-feed?"+force+"per=300");
 	let channels = []
@@ -89,10 +89,12 @@ async function run() {
 		channels.push(c)
   }
 	
-	let links = channels.map(e => ({
-		href: './'+e.slug+'.html',
-		title: e.title.replace('[FEED] ', '')
-	}))
+	let projects = channels.map(e => 
+		`<p><a href='${'./'+e.slug+'.html'}'>${e.title.replace('[FEED] ', '')}</a></p>`).join('')
+
+	let links = `
+<p><a href='/'>Home</a></p>
+<h4> Projects </h4> ${projects}`
 
 	write_html(html, 'index.html', links);
 
@@ -155,10 +157,13 @@ async function create_html(channel) {
 			<label for="c" class="fixed t3">500px</label>
 		  <input type="radio" name="any" value="c" class="fixed t3">
 
-			<label for="c" class="fixed t4">unskew</label>
+			<label for="c" class="fixed t4">unfunky</label>
 		  <input type="radio" name="dawg" value="c" class="fixed t4">
-			<label for="c" class="fixed t5">skew</label>
+			<label for="c" class="fixed t5">funky</label>
 		  <input type="radio" name="dawg" value="c" class="fixed t5">
+
+			<label for="c" class="fixed t6">list</label>
+		  <input type="radio" name="dawg" value="c" class="fixed t6">
 `;
 	let options = ["mt5", "mt10", "mt15", "mt20", "mt25", "mt30"]
 
@@ -193,6 +198,12 @@ async function create_html(channel) {
 
 			content = content.flat().join("\n");
 			html += `
+				<div class="block-list">
+					<a href='./blocks/${block.id}.html'>
+						<h1>${content.split('\n')[0]}</h1>
+					</a>
+				</div>
+
 				<div class="block ${options[Math.floor(Math.random() * options.length)]}">
 					<p class="date">${date}</p>
 					<span class="metadata">updated_at: ${updated_at_string}</span>
@@ -202,6 +213,8 @@ async function create_html(channel) {
 				</div>
 			`;
 
+			write_html(content, './blocks/' + block.id + '.html')
+
 		}
 		else if (block.class == "Channel") { channels.push(block) }
 	}
@@ -209,7 +222,7 @@ async function create_html(channel) {
 	return html;
 }
 
-function write_html(html, file, links=[]) {
+function write_html(html, file, links='') {
 	let html_full = `
 		<!DOCTYPE html>
 		<html>
@@ -220,7 +233,7 @@ function write_html(html, file, links=[]) {
 
 			<div class='nav'>
 				<a href="https://github.com/caizoryan/feed.a-p">about</a>
-				${links.map(e => `<p><a href=${e.href}>${e.title}</a></p>`).join('')}
+				${links}
 			</div>
 			${html}
 		</body>

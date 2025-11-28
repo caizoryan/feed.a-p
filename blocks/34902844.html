@@ -1,0 +1,46 @@
+
+		<!DOCTYPE html>
+		<html>
+			<head>
+				<link rel="stylesheet" href="./style.css">
+			</head> 
+		<body>
+
+			<div class='nav'>
+				<a href="https://github.com/caizoryan/feed.a-p">about</a>
+				
+			</div>
+			<p > > ##########################<br></br>> ## drafting/inprogress<br></br>> ########################## </p>
+<h1 > (editor-editor) Updates </h1>
+<p > So I got the editor to <a href = ""> work on a canvas </a> and its been fun using it since then. I was busy playing around and working <strong > with </strong> the editor so haven't spent much time working <strong > on </strong> the editor. Anyways, just some stuff I've recorded over the past week. </p>
+<h2 > Editor in editor </h2>
+<p > The whole idea that made me make this editor was having the editor be able to edit itself at multiple levels. Partly goes back to ideas in this video, titled: "programming should eat itself" </p>
+<p > 
+	<a href=https://www.youtube.com/watch?v=SrKj4hYic5A>
+		<div class="media">
+			<p class="title">"Programming Should Eat Itself" by Nada Amin</p>
+			<img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIzNDkwMjg2Ny9vcmlnaW5hbF9hNjg5ODdiMTZmODQ0ODlkZmI5Y2RhMWUwODVmZmM0Ni5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" />
+			<p class="metadata">https://www.youtube.com/watch?v=SrKj4hYic5A</p> 
+		</div>
+	</a>
+ </p>
+<h3 > e-e-e </h3>
+<p > An instance of editor runs and instance of editor that is running in an editor </p>
+<p > <video src=https://attachments.are.na/34902883/b8ca703283b2d674ac713cb23b594020.mp4?1740817122 controls loop></video>  </p>
+<h3 > Progression of editors </h3>
+<p > Here's a quick overview of progression of editors, nothing comprehensive, just loading the files of each editor. </p>
+<p > <video src=https://attachments.are.na/34902887/4918bb7f391b4368da9828069919c556.mp4?1740817193 controls loop></video>  </p>
+<h3 > Editing syntax highlighting </h3>
+<p > A video of changing css for the (2)editor's syntax highlighting, from (1)editor while (2)editor outputs parts of <a href = "https://conditionaldesign.org/manifesto/"> conditional design manifesto </a>. </p>
+<p > <video src=https://attachments.are.na/34902911/21ab37a806a8e27575f5f5d3b197fba9.mp4?1740817508 controls loop></video>  </p>
+<h3 > JSON viewer + code navigator </h3>
+<p > A JSON viewer that renders the current code's navigation tree. The tsserver running for the editor responds a json blob with the whole navigation tree, and each item has a start position in it, the json viewer checks if a key is named 'start' and value is a number, and if it is, it will send a message to the editor to focus on the given position. </p>
+<h5 > Here is the speedrun: </h5>
+<p > <video src=https://attachments.are.na/34902932/a182a02ffb87568fd71aaf230ca9b2bc.mp4?1740817793 controls loop></video>  </p>
+<h5 > Here is the final functional demo </h5>
+<p > <video src=https://attachments.are.na/34903037/a80310392a9bad84782e64434c2532a2.mp4?1740818785 controls loop></video>  </p>
+<p > Will be working on this further. Will make it embedded in the editor so it can be searchable and one can easily navigate to symbols in the editor. </p>
+<p > Also need to implement a scroll to active block position for the canvas. Will also look into the canvas library I'm using I think it has a zoom to rectangle function, so could think of saving and navigating to rectangles and saving these. And then I can have a save and navigate to certain views. </p>
+<p > Also Thinking about how the navigation tree can be used for metaprogramming for javascript/typescript. For instance you can query the editor for current tree. Have a matcher, say match the global scope Editor. Then for each of Editor's methods do something. And that can be outputed and added to script. Or it could also be used to templativize making a display component for a class. Like if you make a display component for Editor, you could have a live feed of its internals as the editor runs. And if you have templativizer, it could generate render methods and match statements and generate a function which you can manually fill in. Hopefully this is verbose enough to let me remember this idea. </p>
+		</body>
+		</html>

@@ -1,0 +1,34 @@
+
+		<!DOCTYPE html>
+		<html>
+			<head>
+				<link rel="stylesheet" href="./style.css">
+			</head> 
+		<body>
+
+			<div class='nav'>
+				<a href="https://github.com/caizoryan/feed.a-p">about</a>
+				
+			</div>
+			<h1 > Lots of work on the Editor today </h1>
+<h3 > Setting up TSSERVER </h3>
+<p > The goal today was to get LSP/intellisense/autcomplete working. So I can get tooling over the code. Tsserver is a package maintained by microsoft that lets you create a virtual filesystem in the browser and get diagnostics, completions, linting, refernce trees and basically tooling over your code. I had seen this was possible before but it is a whole task to set this up. So I started by getting this tsserver connected to the editor. This took much longer than I would have wanted it to. </p>
+<h3 > Reconciling blocks, character positioning </h3>
+<p > The main issue with connecting the tsserver to the editor was reconciling the splitting of the file. The main function of the editor is to give you components that add up to the file. So a file is split up into smaller self contained chunks. This works all and good till the tsserver returns a {from, to} position for the diagnostics. </p>
+<p > Each codemirror instance can work with from and to position only relative to its own state and has no way of knowing what had come before or after it. The way I fixed it was adding start property in each blocks state which the parent of the block manages. So everytime you save a file it increments and assigns a start value to each block. </p>
+<p > There was also a whole thing about managing a live version of the file seperate than the file that is saved for iframe to update (can't update iframe at every key press, but need autcomplete response at each key press, so have to maintain two versions..) </p>
+<h3 > Autocomplete + Linting/Diagnostics </h3>
+
+<p > <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIzNDUwMzM4OC9vcmlnaW5hbF85NjMxZDBlZGRhZDk0Mzk5MzNjYWMzMzBjYmRiMjdjZC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p > So anyways got all of that working and here is a demo of getting a reference to functions defined in another block. And when you mistype it, or don't pass in expected value -> it shows you errors. </p>
+<p > <video src=https://attachments.are.na/34503395/73f5ec08fa4c391455563544fe6cefc1.mp4?1739426755 controls loop></video>  </p>
+<p > I did some writing in it and honestly its pretty helpful and works pretty well, feels quite robust, not as good as neovim obviously but pretty great for a web editor. </p>
+<h3 > Editor Reference passing </h3>
+<p > Finally, this is something I will work further on tomorrow... but a sneak peak: </p>
+<p > <video src=https://attachments.are.na/34503079/58a90274a81d310b7ff23d05307a8121.mp4?1739425466 controls loop></video>  </p>
+<p > I am able to pass the reference of Editor to the iframe, so the code running in the iframe is able to edit the editor. The below video will make it more clear, the editor outputs an iframe with buttons that onclick change the positioning of the editor. </p>
+<p > <video src=https://attachments.are.na/34503077/4b84b6ea05b94190be9c570f20e2f772.mp4?1739425465 controls loop></video>  </p>
+<h3 > File saves itself </h3>
+<p > The next one is going to be, creating a file in the editor that will output an interface and have functionality that will read the editor's state and save the state to a file locally using the fs functionality implemented on the local server. So will be writing a js script that will save itself using itself. </p>
+		</body>
+		</html>

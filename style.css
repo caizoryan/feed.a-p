@@ -55,12 +55,15 @@ xmp {
   background: #444;
 }
 
-/* .block:first-of-type { */
-/* 	position: sticky; */
-/* 	top: 0; */
-/* 	left: 0; */
-/* 	background-color: beige; */
-/* } */
+.block-list {
+	display: none;
+	border-top: 1px solid var(--grey2);
+	margin: 20px auto;
+}
+
+.block-list h1{
+	font-size: 1em;
+}
 
 .block {
 	margin: 20px auto;
@@ -87,11 +90,17 @@ video {
 input.t1:checked~.block {width: 1100px;}
 input.t2:checked~.block {width: 800px;}
 input.t3:checked~.block {width: 500px;}
+
+input.t1:checked~.block-list {width: 1100px;}
+input.t2:checked~.block-list {width: 800px;}
+input.t3:checked~.block-list {width: 500px;}
+
 input.t4:checked~.block {transform: skewX(0deg) !important;}
 
 
 input.t6:checked~.block {display:none}
 input.t6:checked~.block-list {display:block}
+
 
 label  {
 	padding-left: 1.5em;
@@ -118,6 +127,7 @@ input[type="radio"] {
 .t3 {top: 4rem;}
 .t4 {top: 6rem;}
 .t5 {top: 7.5rem;}
+.t6 {top: 9rem;}
 
 .mt5 {transform: skewX(-3deg);}
 .mt10 {transform: skewX(-2deg);}
