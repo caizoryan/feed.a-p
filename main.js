@@ -63,14 +63,44 @@ const pdf = (block) => `
 	</a>
 `;
 
+const channel = c => `
+	<a target="_blank" href=./${c.slug}>
+		<p class="channel">
+			<span> ${c.title} </span>
+		</p>
+	</a>
+`
+
+let force = 'force=true&'
+force = ''
 async function run() {
-	let channel = await get_channel("blog-feed?force=true&per=300");
-	console.log("len", channel.length)
+	let channel = await get_channel("blog-feed?"+force+"per=300");
+	let channels = []
+	let channel_slugs = channel.contents.filter(e => e.class == 'Channel')
+
 	channel.contents = channel.contents.sort((a, b) => b.position - a.position);
 
 	let html = await create_html(channel);
 
-	write_html(html);
+	for (const slug of channel_slugs) {
+    const c = await get_channel(slug.slug+"?"+force+"per=300");
+		c.contents = c.contents.sort((a, b) => a.position - b.position);
+		console.log("Got: ", c.slug)
+		channels.push(c)
+  }
+	
+	let links = channels.map(e => ({
+		href: './'+e.slug+'.html',
+		title: e.title.replace('[FEED] ', '')
+	}))
+
+	write_html(html, 'index.html', links);
+
+	for (const c of channels) {
+		console.log("Creating HTML file for:", c.slug)
+    const h = await create_html(c)
+		write_html(h, c.slug+'.html', links);
+  }
 }
 
 let padd_zero = (num) => num < 10 ? "0" + num : num;
@@ -114,10 +144,27 @@ let month = (time) => {
 };
 
 async function create_html(channel) {
-	let html = "";
+	console.log("Length: ", channel.contents.length)
+	let html = `
+			<label for="html" class="fixed t1">1100px</label>
+		  <input type="radio" name="any" value="HTML" class="fixed t1">
+
+			<label for="b" class="fixed t2">800px</label>
+		  <input type="radio" checked name="any" value="b" class="fixed t2">
+
+			<label for="c" class="fixed t3">500px</label>
+		  <input type="radio" name="any" value="c" class="fixed t3">
+
+			<label for="c" class="fixed t4">unskew</label>
+		  <input type="radio" name="dawg" value="c" class="fixed t4">
+			<label for="c" class="fixed t5">skew</label>
+		  <input type="radio" name="dawg" value="c" class="fixed t5">
+`;
 	let options = ["mt5", "mt10", "mt15", "mt20", "mt25", "mt30"]
 
 	let lastmonth = "";
+
+	let channels = []
 
 	for await (const block of channel.contents) {
 		if (block.class == "Text") {
@@ -156,12 +203,13 @@ async function create_html(channel) {
 			`;
 
 		}
+		else if (block.class == "Channel") { channels.push(block) }
 	}
 
 	return html;
 }
 
-function write_html(html) {
+function write_html(html, file, links=[]) {
 	let html_full = `
 		<!DOCTYPE html>
 		<html>
@@ -169,23 +217,16 @@ function write_html(html) {
 				<link rel="stylesheet" href="./style.css">
 			</head> 
 		<body>
-			<label for="html" class="fixed t1">1100px</label>
-		  <input type="radio" name="any" value="HTML" class="fixed t1">
 
-			<label for="b" class="fixed t2">800px</label>
-		  <input type="radio" checked name="any" value="b" class="fixed t2">
-
-			<label for="c" class="fixed t3">500px</label>
-		  <input type="radio" name="any" value="c" class="fixed t3">
-
-			<div style="position:fixed;right:2em;top:1em;background-color:#fff9;padding:1em">
+			<div class='nav'>
 				<a href="https://github.com/caizoryan/feed.a-p">about</a>
+				${links.map(e => `<p><a href=${e.href}>${e.title}</a></p>`).join('')}
 			</div>
 			${html}
 		</body>
 		</html>`;
 
-	fs.writeFileSync("index.html", html_full);
+	fs.writeFileSync(file, html_full);
 }
 
 // ********************************
@@ -254,12 +295,11 @@ async function eat(tree) {
 				// Image
 				// --------------------------------
 				else if (block.class == "Image") {
-
 					ret.push(image(block));
 					let word = await eat(tree);
 					ignore = true;
-
 				}
+
 
 				// --------------------------------
 				// Link
@@ -297,10 +337,10 @@ async function eat(tree) {
 		if (item.nesting === 0) {
 			if (!item.children || item.children.length === 0) {
 				let p = item.type === "softbreak"
-						? "<br></br>"
-						: item.type === "fence"
-								? `<xmp>${item.content}</xmp>`
-								: item.content;
+					? "<br></br>"
+					: item.type === "fence"
+						? `<xmp>${item.content}</xmp>`
+						: item.content;
 				ret.push(p);
 			} else {
 				if (debug_print) {
@@ -351,7 +391,7 @@ const MD = async (content) => {
 
 	if (debug_print) {
 		//console.log('body', body)
-	//	console.log("content:", content)
+		//	console.log("content:", content)
 	}
 
 	return body;

@@ -1,0 +1,346 @@
+
+		<!DOCTYPE html>
+		<html>
+			<head>
+				<link rel="stylesheet" href="./style.css">
+			</head> 
+		<body>
+
+			<div class='nav'>
+				<a href="https://github.com/caizoryan/feed.a-p">about</a>
+				<p><a href=./feed-publication-tool.html>Publication tool</a></p><p><a href=./feed-editor-editor.html>Editor Editor</a></p>
+			</div>
+			
+			<label for="html" class="fixed t1">1100px</label>
+		  <input type="radio" name="any" value="HTML" class="fixed t1">
+
+			<label for="b" class="fixed t2">800px</label>
+		  <input type="radio" checked name="any" value="b" class="fixed t2">
+
+			<label for="c" class="fixed t3">500px</label>
+		  <input type="radio" name="any" value="c" class="fixed t3">
+
+			<label for="c" class="fixed t4">unskew</label>
+		  <input type="radio" name="dawg" value="c" class="fixed t4">
+			<label for="c" class="fixed t5">skew</label>
+		  <input type="radio" name="dawg" value="c" class="fixed t5">
+
+				<div class="block month mt30">
+					<h1>January</h1>
+				</div>
+			
+				<div class="block mt5">
+					<p class="date">19 January 2025</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:46</span>
+					<span class="metadata">posted_on: 21 January, Tue, 10:26</span>
+					<p > Added edges to the wave function tile component for <a href = ""> buffalo </a> </p>
+<p > <video src=https://attachments.are.na/33857809/f33830525b98cbb414384f9e20f2d4ee.mp4?1737473417 controls loop></video>  </p>
+
+				</div>
+			
+				<div class="block mt10">
+					<p class="date">20 January 2025</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:46</span>
+					<span class="metadata">posted_on: 21 January, Tue, 10:22</span>
+					<h1 > Implemented color detect sliders. </h1>
+<p > <video src=https://attachments.are.na/33857567/c764402bf8e1a4972cfb7680109337a2.mp4?1737472943 controls loop></video>  </p>
+<p > The colors on the sliders are misleading because it isn't really reading the color, but the grayscale values, so in theory all of them can be grayscale and it would still work. </p>
+<p > TODO: abrupt progression instead of smooth gradient. Gradients with stops and what not. </p>
+<p > Questions:<br></br>Can I encode bezier animations in color? </p>
+<p > Statement:<br></br>A print is a certain type of movement. </p>
+
+				</div>
+			
+				<div class="block mt25">
+					<p class="date">23 January 2025</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:46</span>
+					<span class="metadata">posted_on: 23 January, Thu, 17:22</span>
+					<h1 > Creative Coding Club </h1>
+<p > <video src=https://attachments.are.na/33936501/ec4c5b7f9eaff861ea0d10ede7dc9033.mp4?1737670810 controls loop></video>  </p>
+<p > A p5 sketch. </p>
+<h3 > Components </h3>
+<ul > <li > <p > Grid -> animating </p> </li><li > <p > Glitching text </p> </li><li > <p > Animating text with circles (wormhole) </p> </li><li > <p > dynamic(moving anchors) -> bezier curves </p> </li><li > <p > text and colors </p> </li> </ul>
+
+				</div>
+			
+				<div class="block month mt30">
+					<h1>February</h1>
+				</div>
+			
+				<div class="block mt20">
+					<p class="date">8 February 2025</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:47</span>
+					<span class="metadata">posted_on: 8 February, Sat, 15:25</span>
+					<h1 > Yay! </h1>
+<p > This was already in theory possible, but rewrote the editor for it to be a much simpler implementation and then ran the editor in the editor </p>
+<p > <video src=https://attachments.are.na/34381403/5082dacd7f69475e57f89b6bcad18e54.mp4?1739046192 controls loop></video>  </p>
+<h3 > Next steps </h3>
+<ul > <li > <p > Have a way to output a new editor from the editor </p> </li><li > <p > Be able to go back to the source editor and make changes </p> </li><li > <p > Making this traversal between levels smooth essentially </p> </li><li > <p > Define a std-library (saving, updating, deleting, etc) </p> </li><li > <p > Implement Tsserver LSP (intellisense) </p> </li> </ul>
+<h2 > Once the above is rock solid </h2>
+<p > Hopefully by the end of this weekend, I can start implementing my own components in this and stuff. </p>
+
+				</div>
+			
+				<div class="block mt10">
+					<p class="date">9 February 2025</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:47</span>
+					<span class="metadata">posted_on: 9 February, Sun, 19:17</span>
+					<h1 > Editing Editor using Editor </h1>
+<p > <video src=https://attachments.are.na/34402469/c69702490b769454ff5150d3107c6bd4.mp4?1739146366 controls loop></video>  </p>
+<p > I implemented saving and outputing html files and a mechanism to traverse levels. Just have to make it a little smoother to work. Right now its very jaggedy, mostly because I don't know how it should work. </p>
+<p > The current implementation outputs the html file with a SOURCE_PATH variable which can be used to navigate back to the source files. I think this is the way to do it. </p>
+<p > Also re-watched Nada Amin's <a href = "https://www.youtube.com/watch?v=SrKj4hYic5A"> Programming should eat itself </a> talk which I think got the cogs turning for me about metaprogramming. Though the talk mostly goes over my head. </p>
+
+				</div>
+			
+				<div class="block mt10">
+					<p class="date">12 February 2025</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:47</span>
+					<span class="metadata">posted_on: 12 February, Wed, 17:20</span>
+					<p > (B)it<br></br>^<br></br>|<br></br>-- basically Git </p>
+<p > I wanna implement something like <a href = "https://github.com/LingDong-/srcsnap/tree/main"> this </a> for my workflow. </p>
+<p > <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIzNDQ5NTk3Ny9vcmlnaW5hbF84N2FmMzIwZDFlNTg3YjdjZTUxZDMxZmJkNWMwZGQyZi5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p > The way I'm thinking is it would be a ui where I can see the screenshots (or can custom generate covers based on params) and those would be the branches of the code. Git branches sound very interesting in concept, but anytime I think of using them and consider merging and all of that stuff, I feel like its going to be not worth using because it will just escalate complexity and things are prone to go wrong. So if I could implement something based on git branches, I'll figure out how it works and then maybe I can use it... and maybe think of how I can engage in process differently using this branching sort of structure to iterate in different directions.... </p>
+<p > Like there can be multiple ways of implementing something... and whatever seems promising you work on it in parallel. </p>
+
+				</div>
+			
+				<div class="block mt20">
+					<p class="date">12 February 2025</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:47</span>
+					<span class="metadata">posted_on: 13 February, Thu, 00:45</span>
+					<h1 > Lots of work on the Editor today </h1>
+<h3 > Setting up TSSERVER </h3>
+<p > The goal today was to get LSP/intellisense/autcomplete working. So I can get tooling over the code. Tsserver is a package maintained by microsoft that lets you create a virtual filesystem in the browser and get diagnostics, completions, linting, refernce trees and basically tooling over your code. I had seen this was possible before but it is a whole task to set this up. So I started by getting this tsserver connected to the editor. This took much longer than I would have wanted it to. </p>
+<h3 > Reconciling blocks, character positioning </h3>
+<p > The main issue with connecting the tsserver to the editor was reconciling the splitting of the file. The main function of the editor is to give you components that add up to the file. So a file is split up into smaller self contained chunks. This works all and good till the tsserver returns a {from, to} position for the diagnostics. </p>
+<p > Each codemirror instance can work with from and to position only relative to its own state and has no way of knowing what had come before or after it. The way I fixed it was adding start property in each blocks state which the parent of the block manages. So everytime you save a file it increments and assigns a start value to each block. </p>
+<p > There was also a whole thing about managing a live version of the file seperate than the file that is saved for iframe to update (can't update iframe at every key press, but need autcomplete response at each key press, so have to maintain two versions..) </p>
+<h3 > Autocomplete + Linting/Diagnostics </h3>
+
+<p > <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIzNDUwMzM4OC9vcmlnaW5hbF85NjMxZDBlZGRhZDk0Mzk5MzNjYWMzMzBjYmRiMjdjZC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p > So anyways got all of that working and here is a demo of getting a reference to functions defined in another block. And when you mistype it, or don't pass in expected value -> it shows you errors. </p>
+<p > <video src=https://attachments.are.na/34503395/73f5ec08fa4c391455563544fe6cefc1.mp4?1739426755 controls loop></video>  </p>
+<p > I did some writing in it and honestly its pretty helpful and works pretty well, feels quite robust, not as good as neovim obviously but pretty great for a web editor. </p>
+<h3 > Editor Reference passing </h3>
+<p > Finally, this is something I will work further on tomorrow... but a sneak peak: </p>
+<p > <video src=https://attachments.are.na/34503079/58a90274a81d310b7ff23d05307a8121.mp4?1739425466 controls loop></video>  </p>
+<p > I am able to pass the reference of Editor to the iframe, so the code running in the iframe is able to edit the editor. The below video will make it more clear, the editor outputs an iframe with buttons that onclick change the positioning of the editor. </p>
+<p > <video src=https://attachments.are.na/34503077/4b84b6ea05b94190be9c570f20e2f772.mp4?1739425465 controls loop></video>  </p>
+<h3 > File saves itself </h3>
+<p > The next one is going to be, creating a file in the editor that will output an interface and have functionality that will read the editor's state and save the state to a file locally using the fs functionality implemented on the local server. So will be writing a js script that will save itself using itself. </p>
+
+				</div>
+			
+				<div class="block mt5">
+					<p class="date">13 February 2025</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:47</span>
+					<span class="metadata">posted_on: 27 February, Thu, 01:45</span>
+					<h1 > CSS Algorithms </h1>
+<p > 
+	<a href=https://youtu.be/dxY5CdZNzsk?t=1972>
+		<div class="media">
+			<p class="title">"CSS Algorithms" by Lara Schenck</p>
+			<img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIzNDUxOTkwNi9vcmlnaW5hbF8wODYxNjU3Mzg0ZDViOGMwYzNjOWYwNTU5MDEzYzNmNC5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" />
+			<p class="metadata">https://youtu.be/dxY5CdZNzsk?t=1972</p> 
+		</div>
+	</a>
+ </p>
+<h3 > Exceprt </h3>
+<p > <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIzNDUxOTkxNi9vcmlnaW5hbF9kMDg4ZTBjNjM4ZTBjNDg0MzQ0YTM2NWE4YzQ5ZTQ0Yy5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p > This was nice to see, she talks about masculinity in the tech... Made me rethink some ways I have been thinking about programming. </p>
+
+				</div>
+			
+				<div class="block mt10">
+					<p class="date">21 February 2025</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:47</span>
+					<span class="metadata">posted_on: 27 February, Thu, 01:49</span>
+					<h1 > Editor on a canvas </h1>
+<p > <video src=https://attachments.are.na/34703221/5ab30b3466d9f5bb2a71fbcbc51d385f.mp4?1740118605 controls loop></video>  </p>
+<p > OCR viewer for omama's ISP </p>
+
+				</div>
+			
+				<div class="block mt15">
+					<p class="date">28 February 2025</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:47</span>
+					<span class="metadata">posted_on: 1 March, Sat, 02:33</span>
+					<p > I love this guy's editor (towards the end) </p>
+<p > 
+	<a href=https://www.youtube.com/watch?v=WqUe7q-NJ8s>
+		<div class="media">
+			<p class="title">TypeScript Theatre: Coding Art Performances with Algorithms, AI and Assembly by Phoomparin Mano</p>
+			<img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIzNDkwMjY2MS9vcmlnaW5hbF9jMTQ0YTFiZGI0MjE5Yjk3YTExODVkMTFhMTcyMTczMC5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" />
+			<p class="metadata">https://www.youtube.com/watch?v=WqUe7q-NJ8s</p> 
+		</div>
+	</a>
+ </p>
+<p > Basically made his own touch designer but writes assembly + gui components? Pretty rad. Also references Uxn and the 100 rabbits stack. Dance stuff in the beginning was interesting too, how he thinks of composing through <a href = "http://www.todo.com"> directed graph functions </a> . </p>
+
+				</div>
+			
+				<div class="block month mt30">
+					<h1>March</h1>
+				</div>
+			
+				<div class="block mt25">
+					<p class="date">1 March 2025</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:47</span>
+					<span class="metadata">posted_on: 1 March, Sat, 03:07</span>
+					<p > > ##########################<br></br>> ## drafting/inprogress<br></br>> ########################## </p>
+<h1 > (editor-editor) Updates </h1>
+<p > So I got the editor to <a href = ""> work on a canvas </a> and its been fun using it since then. I was busy playing around and working <strong > with </strong> the editor so haven't spent much time working <strong > on </strong> the editor. Anyways, just some stuff I've recorded over the past week. </p>
+<h2 > Editor in editor </h2>
+<p > The whole idea that made me make this editor was having the editor be able to edit itself at multiple levels. Partly goes back to ideas in this video, titled: "programming should eat itself" </p>
+<p > 
+	<a href=https://www.youtube.com/watch?v=SrKj4hYic5A>
+		<div class="media">
+			<p class="title">"Programming Should Eat Itself" by Nada Amin</p>
+			<img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIzNDkwMjg2Ny9vcmlnaW5hbF9hNjg5ODdiMTZmODQ0ODlkZmI5Y2RhMWUwODVmZmM0Ni5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" />
+			<p class="metadata">https://www.youtube.com/watch?v=SrKj4hYic5A</p> 
+		</div>
+	</a>
+ </p>
+<h3 > e-e-e </h3>
+<p > An instance of editor runs and instance of editor that is running in an editor </p>
+<p > <video src=https://attachments.are.na/34902883/b8ca703283b2d674ac713cb23b594020.mp4?1740817122 controls loop></video>  </p>
+<h3 > Progression of editors </h3>
+<p > Here's a quick overview of progression of editors, nothing comprehensive, just loading the files of each editor. </p>
+<p > <video src=https://attachments.are.na/34902887/4918bb7f391b4368da9828069919c556.mp4?1740817193 controls loop></video>  </p>
+<h3 > Editing syntax highlighting </h3>
+<p > A video of changing css for the (2)editor's syntax highlighting, from (1)editor while (2)editor outputs parts of <a href = "https://conditionaldesign.org/manifesto/"> conditional design manifesto </a>. </p>
+<p > <video src=https://attachments.are.na/34902911/21ab37a806a8e27575f5f5d3b197fba9.mp4?1740817508 controls loop></video>  </p>
+<h3 > JSON viewer + code navigator </h3>
+<p > A JSON viewer that renders the current code's navigation tree. The tsserver running for the editor responds a json blob with the whole navigation tree, and each item has a start position in it, the json viewer checks if a key is named 'start' and value is a number, and if it is, it will send a message to the editor to focus on the given position. </p>
+<h5 > Here is the speedrun: </h5>
+<p > <video src=https://attachments.are.na/34902932/a182a02ffb87568fd71aaf230ca9b2bc.mp4?1740817793 controls loop></video>  </p>
+<h5 > Here is the final functional demo </h5>
+<p > <video src=https://attachments.are.na/34903037/a80310392a9bad84782e64434c2532a2.mp4?1740818785 controls loop></video>  </p>
+<p > Will be working on this further. Will make it embedded in the editor so it can be searchable and one can easily navigate to symbols in the editor. </p>
+<p > Also need to implement a scroll to active block position for the canvas. Will also look into the canvas library I'm using I think it has a zoom to rectangle function, so could think of saving and navigating to rectangles and saving these. And then I can have a save and navigate to certain views. </p>
+<p > Also Thinking about how the navigation tree can be used for metaprogramming for javascript/typescript. For instance you can query the editor for current tree. Have a matcher, say match the global scope Editor. Then for each of Editor's methods do something. And that can be outputed and added to script. Or it could also be used to templativize making a display component for a class. Like if you make a display component for Editor, you could have a live feed of its internals as the editor runs. And if you have templativizer, it could generate render methods and match statements and generate a function which you can manually fill in. Hopefully this is verbose enough to let me remember this idea. </p>
+
+				</div>
+			
+				<div class="block mt5">
+					<p class="date">1 March 2025</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:47</span>
+					<span class="metadata">posted_on: 1 March, Sat, 04:52</span>
+					<p > Also would like to implement something like this in the editor. </p>
+<p > <span class="link"> <a target="_blank" href=https://www.theatrejs.com/>Theatre.js - animation toolbox for the web <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.51194 3.00541C9.18829 2.54594 10.0435 2.53694 10.6788 2.95419C10.8231 3.04893 10.9771 3.1993 11.389 3.61119C11.8009 4.02307 11.9513 4.17714 12.046 4.32141C12.4633 4.95675 12.4543 5.81192 11.9948 6.48827C11.8899 6.64264 11.7276 6.80811 11.3006 7.23511L10.6819 7.85383C10.4867 8.04909 10.4867 8.36567 10.6819 8.56093C10.8772 8.7562 11.1938 8.7562 11.389 8.56093L12.0077 7.94221L12.0507 7.89929C12.4203 7.52976 12.6568 7.2933 12.822 7.0502C13.4972 6.05623 13.5321 4.76252 12.8819 3.77248C12.7233 3.53102 12.4922 3.30001 12.1408 2.94871L12.0961 2.90408L12.0515 2.85942C11.7002 2.508 11.4692 2.27689 11.2277 2.11832C10.2377 1.46813 8.94398 1.50299 7.95001 2.17822C7.70691 2.34336 7.47044 2.57991 7.1009 2.94955L7.058 2.99247L6.43928 3.61119C6.24401 3.80645 6.24401 4.12303 6.43928 4.31829C6.63454 4.51355 6.95112 4.51355 7.14638 4.31829L7.7651 3.69957C8.1921 3.27257 8.35757 3.11027 8.51194 3.00541ZM4.31796 7.14672C4.51322 6.95146 4.51322 6.63487 4.31796 6.43961C4.12269 6.24435 3.80611 6.24435 3.61085 6.43961L2.99213 7.05833L2.94922 7.10124C2.57957 7.47077 2.34303 7.70724 2.17788 7.95035C1.50265 8.94432 1.4678 10.238 2.11799 11.2281C2.27656 11.4695 2.50766 11.7005 2.8591 12.0518L2.90374 12.0965L2.94837 12.1411C3.29967 12.4925 3.53068 12.7237 3.77214 12.8822C4.76219 13.5324 6.05589 13.4976 7.04986 12.8223C7.29296 12.6572 7.52943 12.4206 7.89896 12.051L7.89897 12.051L7.94188 12.0081L8.5606 11.3894C8.75586 11.1941 8.75586 10.8775 8.5606 10.6823C8.36533 10.487 8.04875 10.487 7.85349 10.6823L7.23477 11.301C6.80777 11.728 6.6423 11.8903 6.48794 11.9951C5.81158 12.4546 4.95642 12.4636 4.32107 12.0464C4.17681 11.9516 4.02274 11.8012 3.61085 11.3894C3.19896 10.9775 3.0486 10.8234 2.95385 10.6791C2.53661 10.0438 2.54561 9.18863 3.00507 8.51227C3.10993 8.35791 3.27224 8.19244 3.69924 7.76544L4.31796 7.14672ZM9.62172 6.08558C9.81698 5.89032 9.81698 5.57373 9.62172 5.37847C9.42646 5.18321 9.10988 5.18321 8.91461 5.37847L5.37908 8.91401C5.18382 9.10927 5.18382 9.42585 5.37908 9.62111C5.57434 9.81637 5.89092 9.81637 6.08619 9.62111L9.62172 6.08558Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg></a> </span> </p>
+<p > I thinking looking into the architecture of theatre.js would be really nice because it seems to have very similar workflows as I have been working with the editor, namely these: </p>
+<ul > <li > <p > Editor edits state </p> </li><li > <p > State can be used independently </p> </li><li > <p > making editors for state, and letting them interoperate </p> </li><li > <p > live edit data and see output </p> </li> </ul>
+<p > While this is three.js specific I can use these qualities to just use in anything js essentially with the editor. </p>
+
+				</div>
+			
+				<div class="block mt15">
+					<p class="date">1 March 2025</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:48</span>
+					<span class="metadata">posted_on: 1 March, Sat, 14:40</span>
+					<p > This is any interesting pattern: </p>
+<p > <span class="link"> <a target="_blank" href=https://svelte.dev/tutorial/svelte/context-api>setContext and getContext • Svelte Tutorial <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.51194 3.00541C9.18829 2.54594 10.0435 2.53694 10.6788 2.95419C10.8231 3.04893 10.9771 3.1993 11.389 3.61119C11.8009 4.02307 11.9513 4.17714 12.046 4.32141C12.4633 4.95675 12.4543 5.81192 11.9948 6.48827C11.8899 6.64264 11.7276 6.80811 11.3006 7.23511L10.6819 7.85383C10.4867 8.04909 10.4867 8.36567 10.6819 8.56093C10.8772 8.7562 11.1938 8.7562 11.389 8.56093L12.0077 7.94221L12.0507 7.89929C12.4203 7.52976 12.6568 7.2933 12.822 7.0502C13.4972 6.05623 13.5321 4.76252 12.8819 3.77248C12.7233 3.53102 12.4922 3.30001 12.1408 2.94871L12.0961 2.90408L12.0515 2.85942C11.7002 2.508 11.4692 2.27689 11.2277 2.11832C10.2377 1.46813 8.94398 1.50299 7.95001 2.17822C7.70691 2.34336 7.47044 2.57991 7.1009 2.94955L7.058 2.99247L6.43928 3.61119C6.24401 3.80645 6.24401 4.12303 6.43928 4.31829C6.63454 4.51355 6.95112 4.51355 7.14638 4.31829L7.7651 3.69957C8.1921 3.27257 8.35757 3.11027 8.51194 3.00541ZM4.31796 7.14672C4.51322 6.95146 4.51322 6.63487 4.31796 6.43961C4.12269 6.24435 3.80611 6.24435 3.61085 6.43961L2.99213 7.05833L2.94922 7.10124C2.57957 7.47077 2.34303 7.70724 2.17788 7.95035C1.50265 8.94432 1.4678 10.238 2.11799 11.2281C2.27656 11.4695 2.50766 11.7005 2.8591 12.0518L2.90374 12.0965L2.94837 12.1411C3.29967 12.4925 3.53068 12.7237 3.77214 12.8822C4.76219 13.5324 6.05589 13.4976 7.04986 12.8223C7.29296 12.6572 7.52943 12.4206 7.89896 12.051L7.89897 12.051L7.94188 12.0081L8.5606 11.3894C8.75586 11.1941 8.75586 10.8775 8.5606 10.6823C8.36533 10.487 8.04875 10.487 7.85349 10.6823L7.23477 11.301C6.80777 11.728 6.6423 11.8903 6.48794 11.9951C5.81158 12.4546 4.95642 12.4636 4.32107 12.0464C4.17681 11.9516 4.02274 11.8012 3.61085 11.3894C3.19896 10.9775 3.0486 10.8234 2.95385 10.6791C2.53661 10.0438 2.54561 9.18863 3.00507 8.51227C3.10993 8.35791 3.27224 8.19244 3.69924 7.76544L4.31796 7.14672ZM9.62172 6.08558C9.81698 5.89032 9.81698 5.57373 9.62172 5.37847C9.42646 5.18321 9.10988 5.18321 8.91461 5.37847L5.37908 8.91401C5.18382 9.10927 5.18382 9.42585 5.37908 9.62111C5.57434 9.81637 5.89092 9.81637 6.08619 9.62111L9.62172 6.08558Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg></a> </span> </p>
+<p > I wonder if I can implement something like JSX now that I have a render list. Also need to see if I can write a Lezer grammar for that. </p>
+<p > I also need to make a trello board for these tasks. I think I should do color library and this trello board thing next in my editor. </p>
+
+				</div>
+			
+				<div class="block mt10">
+					<p class="date">Notes.</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:48</span>
+					<span class="metadata">posted_on: 3 March, Mon, 15:35</span>
+					<p > what kind of things do you  notice making your own tools. When you're building entireity of functionality and tweaking each single detail, what kind of thoughts cross by: </p>
+<p > Eg. Oh I really wanna be able to click this block to be active<br></br>which would be a note on me expecting -> (mouse and keyboard to work in coherence) </p>
+<p > The thing come out of this would be 1. just an archive of ui/ux research kind of notes, but framed as my personal inclinations and how I incorporate them + 2.it would also be documentation for anyone else to learn and lastly the presentation of this documentation would be awesome to do in the editor, as -> editor views. </p>
+<p > State -> which also includes the display (panzoom position included) + movement locked or something. </p>
+<p > ^<br></br>|<br></br>_____ As files/websites. </p>
+<p > Also I need to figure out bundling because that will show me how to export out webpages out of the editor (in the form of packages.) (resolve and push dependencies). This will also help me backend on are.na or something. </p>
+<h2 > Other examples </h2>
+<p > Autosave.<br></br>Some kind of confirmation when something is saved.<br></br>Need for feeling safe about your files, these past few weeks me working in the editor, it always feels so precarious. I also want to implement some sort of versioning because I am also scared of overwritting my files. So yeah, maybe another solution is using swp files and having a history of swp files. So its cache-versioing that you can just clear if you feel so or smth. </p>
+<p > Git<br></br>I wonder if I could use git in a way where it tracks an entire folder, but since all my interactions with this folder happens through a node server, maybe each fs call can make a commit for any file change and then this commit can have a certain grammar, and I can query the commit tree for a single file's history that I can track. </p>
+
+				</div>
+			
+				<div class="block mt15">
+					<p class="date">3 March 2025</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:48</span>
+					<span class="metadata">posted_on: 3 March, Mon, 16:03</span>
+					<p > The feed is also a workshop. </p>
+<p > If I port the feed to the editor, I can workshop blog pages. For instance I can start with combining feed posts, or writing one long feed post and exporting it as a webpage. And I can edit and refine the blocks on feed.a-p.space. Sanchari used a term called "soft-studio" I'm wondering if I can think of Feed as a "soft-studio". </p>
+
+				</div>
+			
+				<div class="block mt30">
+					<p class="date">5 March 2025</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:48</span>
+					<span class="metadata">posted_on: 5 March, Wed, 03:25</span>
+					<h1 > Editor Updates </h1>
+<h3 > Url file loading </h3>
+<p > Until now if you wanted to load a file in the editor, you used the loader-object. Where you would enter the file path and press enter. </p>
+<p > I added url based file loading today. It would have been super easy if the editor had a base url. Currently I have multiple versions of the editor as files that I can open and run them through /fs-run/* endpoint. </p>
+<p > Anyways, so if I want to run editor five I go to: (url)/fs-run/editor/five.json </p>
+<p > for six: (url)/fs-run/editor/six.json </p>
+<p > for canvas: (url)/fs-run/editor/canvas-editor.json </p>
+<p > and so on. </p>
+<p > Today I added:<br></br><img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIzNDk5MzcwMC9vcmlnaW5hbF8yNTZiOWVjODBhZTk3ZjcxY2EwNzA1OGQwZjIzY2Y2ZC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p > Which basically says open utils/fileviewer using editor/canvas-editor </p>
+<p > <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIzNDk5MzY5OC9vcmlnaW5hbF85MzQ4MDM0Y2E5Yzg3MzcyMDU0OTU0YWRhNmM5MWM5Mi5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p > This one says open editor/canvas-editor source file using editor/canvas-editor. (editor-editor) </p>
+<p > <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIzNDk5MzcwMS9vcmlnaW5hbF81YzRlMjlkNTYxN2VhODY5NGYyOTY4Yzg5NWViMzE2MS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<h3 > Design Refresh </h3>
+<p > <video src=https://attachments.are.na/34993703/ccaea4692cb59d23229a25995d2f72d1.mp4?1741163116 controls loop></video>  </p>
+<h3 > Added an Autofocus </h3>
+<p > Whenever an element gets active (either using mouse or arrow keys[h, j, k, l]) the editor gets its x, y, w, h and zooms in on that region. This is useful when using only keyboard and don't wanna switch to mouse, the view will automatically follow the cursor. And also works with mouse :) </p>
+<p > <video src=https://attachments.are.na/34993704/19ba5763e5dea5d8ab54a7e428b2e68b.mp4?1741163116 controls loop></video>  </p>
+<h3 > Component write Component </h3>
+<p > Just added a component that will run the code you give it and render it in the component itself. So a mini sandbox of sorts. Will be useful to make GUI widgets - inputs, renderers while working on things... </p>
+<p > <video src=https://attachments.are.na/34993702/5bed9e86b21d3ffbc62d6d23abe856e3.mp4?1741163116 controls loop></video>  </p>
+<p > This will, should have access to both states... will run in editor runtime but will have access to iframe runtime through m() </p>
+
+				</div>
+			
+				<div class="block mt20">
+					<p class="date">10th March-ish 2025</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:48</span>
+					<span class="metadata">posted_on: 22 March, Sat, 18:17</span>
+					<h1 > Some more updates </h1>
+<h4 > Redesign </h4>
+<p > Some color changes<br></br><video src=https://attachments.are.na/35440277/01c403b3e1f05c1f41d69b8d2df2051e.mp4?1742682152 controls loop></video>  </p>
+<h4 > Edit Live components </h4>
+<p > A components that takes the top level function and treats it like a render function for a render div in the component. </p>
+<p > Have to add support to have tsserver work in this... maybe will have it take the source file as context... </p>
+<p > <video src=https://attachments.are.na/35440281/9d89395b91cfa9f9a9509e18d729f0c7.mp4?1742682174 controls loop></video>  </p>
+<h4 > Autofocus </h4>
+<p > On click autofocus the block in frame </p>
+<p > <video src=https://attachments.are.na/35440284/16c5fe921dac9e97d066f16ad9fe7419.mp4?1742682194 controls loop></video>  </p>
+<p > And also the ability to transition it smoothly. Smooth transition doesn't make it snap to size..., will probably make snapping it's own thing have smooth move and instant move... maybe just need a config object </p>
+<p > --smooth move V<br></br><video src=https://attachments.are.na/35440287/a0eaa6bdfbb4ccf2ead5735a8ae6ad38.mp4?1742682194 controls loop></video>  </p>
+<h4 > YUH </h4>
+<p > <video src=https://attachments.are.na/35440285/f0f28f812db5c7a2b48547b41fa17aa8.mp4?1742682194 controls loop></video>  </p>
+<h4 > CSS File didn't load </h4>
+<p > <video src=https://attachments.are.na/35440286/57b98c1e33470ece2884d527b5b4bf6c.mp4?1742682194 controls loop></video>  </p>
+
+				</div>
+			
+				<div class="block mt25">
+					<p class="date">22 March 2025</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:49</span>
+					<span class="metadata">posted_on: 22 March, Sat, 18:16</span>
+					<h1 > Working on a typesetting algorithm </h1>
+<p > Wondering if I could implement a paragraph styles, text overflow etc stuff and make a basic indesign clone... </p>
+<p > <video src=https://attachments.are.na/35440196/fb349e6c38e76bfcdc913a9d21ba7537.mp4?1742681746 controls loop></video>  </p>
+
+				</div>
+			
+				<div class="block mt10">
+					<p class="date">23 March 2024</p>
+					<span class="metadata">updated_at: 27 November, Thu, 21:49</span>
+					<span class="metadata">posted_on: 23 March, Sun, 22:04</span>
+					<h1 > Overflow working </h1>
+<p > <video src=https://attachments.are.na/35462595/4cda268f3e505774242f8cbb2edea6f5.mp4?1742781867 controls loop></video>  </p>
+
+				</div>
+			
+		</body>
+		</html>
