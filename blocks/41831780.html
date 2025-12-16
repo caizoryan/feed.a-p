@@ -1,0 +1,28 @@
+
+		<!DOCTYPE html>
+		<html>
+			<head>
+				<link rel="stylesheet" href="./style.css">
+			</head> 
+		<body>
+
+			<div class='nav'>
+				<a href="https://github.com/caizoryan/feed.a-p">about</a>
+				
+			</div>
+			<h1 > Folding Problems </h1>
+<p > I've been working on this for a month. but essentially this was the problem: </p>
+<p > <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MTgzMTc1NS9vcmlnaW5hbF80ZmQ2MDgxNDIwMmYwYzIxYTg1ZDk1NjNmMTQ3OGVmMS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /><br></br>Given a fold line on a sheet of paper, find how the paper would fold. So calculate the vector coordinates for the shape after these two quads are folded. </p>
+<p > It took me quite some time to figure this out. I had to go back to high school math, and re-learn all the stuff I slept through. Revised on how to find perpendicular lines, what the slope/gradient of a line is. The constructing triangles using perpendicular line, using triangles soh cah toa properties to calculate the reflected points, etc... </p>
+<p > <img src="https://d2w9rnfcy7mm78.cloudfront.net/41831782/original_49d9cb46bb62247f2e2c401db229e8c1.gif?1765866708?bc=0" /> </p>
+<p > After bunch and bunch of failed attempts I got something like this working. Even after getting this working I had to tweak some stuff because it wouldn't work for all directions and what not. </p>
+<p > Then once I had this working for a single fold, I was like cool, let me try for two folds! </p>
+<p > <video src=https://attachments.are.na/41831797/edd7b7ee953461f05c89d140285d8028.mp4?1765866815 controls loop></video>  </p>
+<p > And that worked by just incrementally reflecting all the points past a fold and iterating through them... Eventually made it so I can edit foldlines and have multiples. </p>
+<p > <video src=https://attachments.are.na/41831814/a1656b8381b87e8aca7ad155ed52874f.mp4?1765866907 controls loop></video>  </p>
+<p > And then finally, given a printed surface with say some image or graphic on it, how would the graphic look folded up given the fold lines. This one was more tough than I thought and it still break sometimes if the angle of rotation is more than 180 degrees, which I need to figure out how to fix. But still it looks so awesome and feels gratifying! </p>
+<p > <video src=https://attachments.are.na/41831815/f8f00108882556941c14588d533c5aed.mp4?1765866911 controls loop></video>  </p>
+<p > I find this video the coolest.<br></br><video src=https://attachments.are.na/41831851/c5ef23de7b62dc6e53c18781496bd5e5.mp4?1765867140 controls loop></video> <br></br><video src=https://attachments.are.na/41831852/9b8de84601354badc73144a57ef9ed2d.mp4?1765867145 controls loop></video>  </p>
+<p > Although its funny cause when I print it out and fabricate it... it just feels like... oh cool you printed on a long piece of paper and folded it up :) I shall figure out some use case for this now that I've implemented it :P </p>
+		</body>
+		</html>
