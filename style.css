@@ -37,6 +37,13 @@ body {
 	font-size: 1.2em;
 }
 
+blockquote{
+	margin: 0;
+  padding: .4em;
+  background-color: var(--color);
+  color: var(--black);
+}
+
 h1{
 	line-height: 1.4em;
 }
@@ -129,12 +136,12 @@ input[type="radio"] {
 .t5 {top: 7.5rem;}
 .t6 {top: 9rem;}
 
-.mt5 {transform: skewX(-3deg);}
-.mt10 {transform: skewX(-2deg);}
-.mt15 {transform: skewX(3deg);}
-.mt20 {transform: skewX(5deg);}
-.mt25 {transform: skewX(-4deg);}
-.mt30 {transform: skewX(-5deg);}
+/* .mt5 {transform: skewX(-3deg);} */
+/* .mt10 {transform: skewX(-2deg);} */
+/* .mt15 {transform: skewX(3deg);} */
+/* .mt20 {transform: skewX(5deg);} */
+/* .mt25 {transform: skewX(-4deg);} */
+/* .mt30 {transform: skewX(-5deg);} */
 
 input[type="radio"]:checked {
 	border: 1px solid white;
