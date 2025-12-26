@@ -73,6 +73,7 @@ xmp {
 }
 
 .block {
+	width: 800px;
 	margin: 20px auto;
 	border: 1px solid var(--grey2);
 	padding: 1em;
@@ -155,7 +156,7 @@ input[type="radio"]:checked {
 	padding: 5px;
 	border: 2px solid var(--light-grey);
 	border-radius: 5px;
-	background: #eee;
+	background: var(--color);
 	width: 50%;
 	overflow: hidden;
 }

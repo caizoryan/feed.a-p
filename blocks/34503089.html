@@ -2,7 +2,7 @@
 		<!DOCTYPE html>
 		<html>
 			<head>
-				<link rel="stylesheet" href="./style.css">
+				<link rel="stylesheet" href="/style.css">
 			</head> 
 		<body>
 
@@ -10,7 +10,7 @@
 				<a href="https://github.com/caizoryan/feed.a-p">about</a>
 				
 			</div>
-			<h1 > Lots of work on the Editor today </h1>
+			<div class='block'><h1 > Lots of work on the Editor today </h1>
 <h3 > Setting up TSSERVER </h3>
 <p > The goal today was to get LSP/intellisense/autcomplete working. So I can get tooling over the code. Tsserver is a package maintained by microsoft that lets you create a virtual filesystem in the browser and get diagnostics, completions, linting, refernce trees and basically tooling over your code. I had seen this was possible before but it is a whole task to set this up. So I started by getting this tsserver connected to the editor. This took much longer than I would have wanted it to. </p>
 <h3 > Reconciling blocks, character positioning </h3>
@@ -29,6 +29,6 @@
 <p > I am able to pass the reference of Editor to the iframe, so the code running in the iframe is able to edit the editor. The below video will make it more clear, the editor outputs an iframe with buttons that onclick change the positioning of the editor. </p>
 <p > <video src=https://attachments.are.na/34503077/4b84b6ea05b94190be9c570f20e2f772.mp4?1739425465 controls loop></video>  </p>
 <h3 > File saves itself </h3>
-<p > The next one is going to be, creating a file in the editor that will output an interface and have functionality that will read the editor's state and save the state to a file locally using the fs functionality implemented on the local server. So will be writing a js script that will save itself using itself. </p>
+<p > The next one is going to be, creating a file in the editor that will output an interface and have functionality that will read the editor's state and save the state to a file locally using the fs functionality implemented on the local server. So will be writing a js script that will save itself using itself. </p></div>
 		</body>
 		</html>

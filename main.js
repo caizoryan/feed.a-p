@@ -1,7 +1,6 @@
 import fs from "fs";
 import markdownIt from "./markdown-it/markdown-it.js";
 import { auth } from "./auth.js";
-import makrdownItMark from "./markdown-it/markdown-it-mark.js";
 
 // ********************************
 // SECTION : Are.na Utilities
@@ -72,7 +71,7 @@ const channel = c => `
 `
 
 let force = 'force=true&'
-// force = ''
+// let force = ''
 async function run() {
 	let channel = await get_channel("blog-feed?"+force+"per=300");
 	let channels = []
@@ -145,7 +144,7 @@ let month = (time) => {
 	return months[month];
 };
 
-async function create_html(channel) {
+async function create_html(channel, slice=5) {
 	console.log("Length: ", channel.contents.length)
 	let html = `
 			<label for="html" class="fixed t1">1100px</label>
@@ -196,24 +195,26 @@ async function create_html(channel) {
 
 			if (months.includes(m)) lastmonth = m
 
-			content = content.flat().join("\n");
+			let contentstring = content.flat().join("\n");
+			let contentsliced = content.flat().slice(0,slice).join("\n");
 			html += `
 				<div class="block-list">
 					<a href='./blocks/${block.id}.html'>
-						<h1>${content.split('\n')[0]}</h1>
+						<h1>${contentsliced.split('\n')[0]}</h1>
 					</a>
 				</div>
 
-				<div class="block ${options[Math.floor(Math.random() * options.length)]}">
-					<p class="date">${date}</p>
-					<span class="metadata">updated_at: ${updated_at_string}</span>
-					<span class="metadata">posted_on: ${created_at_string}</span>
-					${content}
+					<div class="block ${options[Math.floor(Math.random() * options.length)]}">
+						<p class="date">${date}</p>
+						<span class="metadata">updated_at: ${updated_at_string}</span>
+						<span class="metadata">posted_on: ${created_at_string}</span>
+						${contentsliced}
 
-				</div>
+					<a href='./blocks/${block.id}.html'> See more </a>
+					</div>
 			`;
 
-			write_html(content, './blocks/' + block.id + '.html')
+			write_html(`<div class='block'>${contentstring}</div>`, './blocks/' + block.id + '.html')
 
 		}
 		else if (block.class == "Channel") { channels.push(block) }
@@ -227,7 +228,7 @@ function write_html(html, file, links='') {
 		<!DOCTYPE html>
 		<html>
 			<head>
-				<link rel="stylesheet" href="./style.css">
+				<link rel="stylesheet" href="/style.css">
 			</head> 
 		<body>
 
@@ -295,7 +296,6 @@ async function eat(tree) {
 				// Media
 				// --------------------------------
 				else if (block.class == "Media") {
-
 					if (block.class == "Media" && block.embed) {
 						ret.push(media_embed(block));
 					} else ret.push(media(block));
@@ -315,10 +315,14 @@ async function eat(tree) {
 
 
 				// --------------------------------
+				// TEXT
+				// --------------------------------
+
+
+				// --------------------------------
 				// Link
 				// --------------------------------
 				else if (block.class == "Link") {
-
 					ret.push(link(block));
 					let word = await eat(tree);
 					ignore = true;
@@ -338,28 +342,26 @@ async function eat(tree) {
 				let children = await eat(tree);
 				children = Array.isArray(children) ? children.join("") : children;
 
-				if (debug_print) {
-					console.log("---\nxxx\ntag:\nxxx\nx----\n", item.tag)
-					// 	console.log("---\nxxx\nitem:\nxxx\n----\n", item)
-				}
-
 				ret.push(`<${item.tag} ${at_string}> ${children} </${item.tag}>`);
 			}
 		}
 
 		if (item.nesting === 0) {
 			if (!item.children || item.children.length === 0) {
-				let p = item.type === "softbreak"
-					? "<br></br>"
-					: item.type === "fence"
-						? `<xmp>${item.content}</xmp>`
-						: item.content;
+				let p = ''
+				if (item.type == 'softbreak'){
+					p =  "<br></br>"
+				}
+				else if (item.type=='fence'){
+					p = `<xmp>${item.content}</xmp>`
+				}
+
+				else {
+					if (item.content.charAt(0) == '>') p = `<blockquote>${item.content.slice(1)}</blockquote>`
+						else p = item.content;
+				}
 				ret.push(p);
 			} else {
-				if (debug_print) {
-					// console.log("---\ntype:\n----\n", item.type)
-					//console.log("---\ncontent:\n----\n", item.content)
-				}
 				let children = await eat(item.children);
 				children = Array.isArray(children) ? children.join("") : children;
 				ret.push(children);
@@ -379,40 +381,15 @@ let safe_parse = (content) => {
 		return undefined;
 	}
 };
-
-let debug_print = false
 const MD = async (content) => {
-
-	// if (content.includes('# How templater work')) debug_print = true
-	// else debug_print = false
-
 	let tree, body;
 	tree = safe_parse(content);
-
-	// if (debug_print) {
-	// 	fs.writeFileSync("templater.md", content)
-	// 	let templater = fs.readFileSync("./templater.md", { encoding: "utf-8" })
-	// 	tree = safe_parse(templater);
-	// 	console.log(tree)
-	// }
-
-	// else {
-	// }
 
 	if (tree) body = await eat(tree);
 	else body = content;
 
-	if (debug_print) {
-		//console.log('body', body)
-		//	console.log("content:", content)
-	}
 
 	return body;
 };
-
-// let test = fs.readFileSync("./templater.md", { encoding: "utf-8" })
-// let parsed = md.parse(test)
-// console.log(parsed)
-
 
 run();
