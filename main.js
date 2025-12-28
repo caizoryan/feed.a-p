@@ -92,8 +92,8 @@ async function run() {
 		`<p><a href='${'./'+e.slug+'.html'}'>${e.title.replace('[FEED] ', '')}</a></p>`).join('')
 
 	let links = `
-<p><a href='/'>Home</a></p>
-<h4> Projects </h4> ${projects}`
+<h4> Projects </h4>
+${projects}`
 
 	write_html(html, 'index.html', links);
 
@@ -233,7 +233,10 @@ function write_html(html, file, links='') {
 		<body>
 
 			<div class='nav'>
-				<a href="https://github.com/caizoryan/feed.a-p">about</a>
+				<h4>Pages</h4>
+				<p><a href="/">home</a></p>
+				<p><a href="https://github.com/caizoryan/feed.a-p">about</a></p>
+
 				${links}
 			</div>
 			${html}
