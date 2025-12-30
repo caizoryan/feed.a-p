@@ -165,12 +165,13 @@ input[type="radio"]:checked {
 
 .link,
 .pdf,
+.image,
 .media {
 	padding: 5px;
 	border: 2px solid var(--light-grey);
 	border-radius: 5px;
 	background: var(--color);
-	width: 50%;
+	width: 100%;
 	overflow: hidden;
 }
 
