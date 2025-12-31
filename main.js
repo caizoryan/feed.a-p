@@ -76,11 +76,9 @@ async function run() {
 	let channel = await get_channel("blog-feed?"+force+"per=300");
 	let channels = []
 	let channel_slugs = channel.contents.filter(e => e.class == 'Channel')
-
 	channel.contents = channel.contents.sort((a, b) => b.position - a.position);
 
 	let html = await create_html(channel);
-
 	for (const slug of channel_slugs) {
     const c = await get_channel(slug.slug+"?"+force+"per=300");
 		c.contents = c.contents.sort((a, b) => a.position - b.position);
