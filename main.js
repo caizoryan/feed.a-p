@@ -170,7 +170,8 @@ async function create_html(channel, slice=5) {
 
 	for await (const block of channel.contents) {
 		if (block.class == "Text") {
-			if (block.title == "DRAFT") continue;
+			if (block.title.toUpperCase() == "DRAFT"
+					|| block.title.toLowerCase() == '.canvas') continue;
 
 			let date = block.title;
 			let updated_at = new Date(block.updated_at);
