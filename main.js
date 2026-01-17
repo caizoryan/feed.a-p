@@ -73,21 +73,21 @@ const channel = c => `
 let force = 'force=true&'
 // let force = ''
 async function run() {
-	let channel = await get_channel("blog-feed?"+force+"per=300");
+	let channel = await get_channel("blog-feed?" + force + "per=300");
 	let channels = []
 	let channel_slugs = channel.contents.filter(e => e.class == 'Channel')
 	channel.contents = channel.contents.sort((a, b) => b.position - a.position);
 
 	let html = await create_html(channel);
 	for (const slug of channel_slugs) {
-    const c = await get_channel(slug.slug+"?"+force+"per=300");
+		const c = await get_channel(slug.slug + "?" + force + "per=300");
 		c.contents = c.contents.sort((a, b) => a.position - b.position);
 		console.log("Got: ", c.slug)
 		channels.push(c)
-  }
-	
-	let projects = channels.map(e => 
-		`<p><a href='${'./'+e.slug+'.html'}'>${e.title.replace('[FEED] ', '')}</a></p>`).join('')
+	}
+
+	let projects = channels.map(e =>
+		`<p><a href='${'./' + e.slug + '.html'}'>${e.title.replace('[FEED] ', '')}</a></p>`).join('')
 
 	let links = `
 <h4> Projects </h4>
@@ -97,9 +97,9 @@ ${projects}`
 
 	for (const c of channels) {
 		console.log("Creating HTML file for:", c.slug)
-    const h = await create_html(c)
-		write_html(h, c.slug+'.html', links);
-  }
+		const h = await create_html(c)
+		write_html(h, c.slug + '.html', links);
+	}
 }
 
 let padd_zero = (num) => num < 10 ? "0" + num : num;
@@ -142,7 +142,7 @@ let month = (time) => {
 	return months[month];
 };
 
-async function create_html(channel, slice=5) {
+async function create_html(channel, slice = 5) {
 	console.log("Length: ", channel.contents.length)
 	let html = `
 			<label for="html" class="fixed t1">1100px</label>
@@ -171,7 +171,7 @@ async function create_html(channel, slice=5) {
 	for await (const block of channel.contents) {
 		if (block.class == "Text") {
 			if (block.title.toUpperCase() == "DRAFT"
-					|| block.title.toLowerCase() == '.canvas') continue;
+				|| block.title.toLowerCase() == '.canvas') continue;
 
 			let date = block.title;
 			let updated_at = new Date(block.updated_at);
@@ -195,7 +195,7 @@ async function create_html(channel, slice=5) {
 			if (months.includes(m)) lastmonth = m
 
 			let contentstring = content.flat().join("\n");
-			let contentsliced = content.flat().slice(0,slice).join("\n");
+			let contentsliced = content.flat().slice(0, slice).join("\n");
 			html += `
 				<div class="block-list">
 					<a href='./blocks/${block.id}.html'>
@@ -222,7 +222,7 @@ async function create_html(channel, slice=5) {
 	return html;
 }
 
-function write_html(html, file, links='') {
+function write_html(html, file, links = '') {
 	let html_full = `
 		<!DOCTYPE html>
 		<html>
@@ -351,16 +351,16 @@ async function eat(tree) {
 		if (item.nesting === 0) {
 			if (!item.children || item.children.length === 0) {
 				let p = ''
-				if (item.type == 'softbreak'){
-					p =  "<br></br>"
+				if (item.type == 'softbreak') {
+					p = "<br></br>"
 				}
-				else if (item.type=='fence'){
+				else if (item.type == 'fence') {
 					p = `<xmp>${item.content}</xmp>`
 				}
 
 				else {
 					if (item.content.charAt(0) == '>') p = `<blockquote>${item.content.slice(1)}</blockquote>`
-						else p = item.content;
+					else p = item.content;
 				}
 				ret.push(p);
 			} else {
