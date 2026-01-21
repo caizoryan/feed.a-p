@@ -20,9 +20,9 @@ let options = {
 const fetch_json = (link, options) =>
 	fetch(link, options).then((r) => r.json());
 const get_channel = (slug) => {
-	console.log("getting", slug)
-	return fetch_json(host + "/channels/" + slug, options)
-}
+	console.log("getting", slug);
+	return fetch_json(host + "/channels/" + slug, options);
+};
 const get_block = (id) => fetch_json(host + "/blocks/" + id, options);
 
 let link_svg =
@@ -47,7 +47,8 @@ const media = (block) => `
 
 const video = (block) =>
 	`<div class="media"><video src=${block.attachment.url} controls loop></video></div>`;
-const image = (block) => `<div class="image"><img src="${block.image.display.url}" /></div>`;
+const image = (block) =>
+	`<div class="image"><img src="${block.image.display.url}" /></div>`;
 const link = (block) =>
 	`<span class="link"> <a target="_blank" href=${block.source.url}>${block.title} ${link_svg}</a> </span>`;
 
@@ -62,43 +63,45 @@ const pdf = (block) => `
 	</a>
 `;
 
-const channel = c => `
+const channel = (c) => `
 	<a target="_blank" href=./${c.slug}>
 		<p class="channel">
 			<span> ${c.title} </span>
 		</p>
 	</a>
-`
+`;
 
-let force = 'force=true&'
+let force = "force=true&";
 // let force = ''
 async function run() {
 	let channel = await get_channel("blog-feed?" + force + "per=300");
-	let channels = []
-	let channel_slugs = channel.contents.filter(e => e.class == 'Channel')
+	let channels = [];
+	let channel_slugs = channel.contents.filter((e) => e.class == "Channel");
 	channel.contents = channel.contents.sort((a, b) => b.position - a.position);
 
 	let html = await create_html(channel);
 	for (const slug of channel_slugs) {
 		const c = await get_channel(slug.slug + "?" + force + "per=300");
 		c.contents = c.contents.sort((a, b) => a.position - b.position);
-		console.log("Got: ", c.slug)
-		channels.push(c)
+		console.log("Got: ", c.slug);
+		channels.push(c);
 	}
 
-	let projects = channels.map(e =>
-		`<p><a href='${'./' + e.slug + '.html'}'>${e.title.replace('[FEED] ', '')}</a></p>`).join('')
+	let projects = channels.map((e) =>
+		`<p><a href='${"./" + e.slug + ".html"}'>${e.title.replace("[FEED] ", "")
+		}</a></p>`
+	).join("");
 
 	let links = `
 <h4> Projects </h4>
-${projects}`
+${projects}`;
 
-	write_html(html, 'index.html', links);
+	write_html(html, "index.html", links);
 
 	for (const c of channels) {
-		console.log("Creating HTML file for:", c.slug)
-		const h = await create_html(c)
-		write_html(h, c.slug + '.html', links);
+		console.log("Creating HTML file for:", c.slug);
+		const h = await create_html(c);
+		write_html(h, c.slug + ".html", links);
 	}
 }
 
@@ -111,7 +114,8 @@ let time_string = (time) => {
 	let day = time.getDay();
 	let hours = time.getHours();
 	let minutes = time.getMinutes();
-	return `${date} ${months[month]}, ${week[day]}, ${padd_zero(hours)}:${padd_zero(minutes)}`;
+	return `${date} ${months[month]}, ${week[day]}, ${padd_zero(hours)}:${padd_zero(minutes)
+		}`;
 };
 
 let months = [
@@ -143,7 +147,7 @@ let month = (time) => {
 };
 
 async function create_html(channel, slice = 5) {
-	console.log("Length: ", channel.contents.length)
+	console.log("Length: ", channel.contents.length);
 	let html = `
 			<label for="html" class="fixed t1">1100px</label>
 		  <input type="radio" name="any" value="HTML" class="fixed t1">
@@ -162,16 +166,18 @@ async function create_html(channel, slice = 5) {
 			<label for="c" class="fixed t6">list</label>
 		  <input type="radio" name="dawg" value="c" class="fixed t6">
 `;
-	let options = ["mt5", "mt10", "mt15", "mt20", "mt25", "mt30"]
+	let options = ["mt5", "mt10", "mt15", "mt20", "mt25", "mt30"];
 
 	let lastmonth = "";
 
-	let channels = []
+	let channels = [];
 
 	for await (const block of channel.contents) {
 		if (block.class == "Text") {
-			if (block.title.toUpperCase() == "DRAFT"
-				|| block.title.toLowerCase() == '.canvas') continue;
+			if (
+				block.title.toUpperCase() == "DRAFT" ||
+				block.title.toLowerCase() == ".canvas"
+			) continue;
 
 			let date = block.title;
 			let updated_at = new Date(block.updated_at);
@@ -179,7 +185,7 @@ async function create_html(channel, slice = 5) {
 
 			let created_at = new Date(block.created_at);
 			let created_at_string = time_string(created_at);
-			if (date == "") date = date_string(created_at)
+			if (date == "") date = date_string(created_at);
 
 			let content = await MD(block.content);
 			let m = month(new Date(date));
@@ -192,18 +198,19 @@ async function create_html(channel, slice = 5) {
 			`;
 			}
 
-			if (months.includes(m)) lastmonth = m
+			if (months.includes(m)) lastmonth = m;
 
 			let contentstring = content.flat().join("\n");
 			let contentsliced = content.flat().slice(0, slice).join("\n");
 			html += `
 				<div class="block-list">
 					<a href='./blocks/${block.id}.html'>
-						<h1>${contentsliced.split('\n')[0]}</h1>
+						<h1>${contentsliced.split("\n")[0]}</h1>
 					</a>
 				</div>
 
-					<div class="block ${options[Math.floor(Math.random() * options.length)]}">
+					<div class="block ${options[Math.floor(Math.random() * options.length)]
+				}">
 						<p class="date">${date}</p>
 						<span class="metadata">updated_at: ${updated_at_string}</span>
 						<span class="metadata">posted_on: ${created_at_string}</span>
@@ -213,16 +220,17 @@ async function create_html(channel, slice = 5) {
 					</div>
 			`;
 
-			write_html(`<div class='block'>${contentstring}</div>`, './blocks/' + block.id + '.html')
-
-		}
-		else if (block.class == "Channel") { channels.push(block) }
+			write_html(
+				`<div class='block'>${contentstring}</div>`,
+				"./blocks/" + block.id + ".html",
+			);
+		} else if (block.class == "Channel") channels.push(block);
 	}
 
 	return html;
 }
 
-function write_html(html, file, links = '') {
+function write_html(html, file, links = "") {
 	let html_full = `
 		<!DOCTYPE html>
 		<html>
@@ -248,7 +256,7 @@ function write_html(html, file, links = '') {
 // ********************************
 // SECTION : MARKDOWN RENDERING
 // ********************************
-let md = new markdownIt('commonmark')//.use(makrdownItMark);
+let md = new markdownIt("commonmark"); //.use(makrdownItMark);
 
 let attrs = (item) => {
 	let attrs = item.attrs;
@@ -283,7 +291,6 @@ async function eat(tree) {
 				// Attachment
 				// --------------------------------
 				if (block.class == "Attachment") {
-
 					if (block.attachment.extension == "mp4") {
 						ret.push(video(block));
 					} else if (block.attachment.extension == "pdf") {
@@ -291,10 +298,7 @@ async function eat(tree) {
 					}
 					let word = await eat(tree);
 					ignore = true;
-
-				}
-
-				// --------------------------------
+				} // --------------------------------
 				// Media
 				// --------------------------------
 				else if (block.class == "Media") {
@@ -303,23 +307,16 @@ async function eat(tree) {
 					} else ret.push(media(block));
 					let word = await eat(tree);
 					ignore = true;
-
-				}
-
-				// --------------------------------
+				} // --------------------------------
 				// Image
 				// --------------------------------
 				else if (block.class == "Image") {
 					ret.push(image(block));
 					let word = await eat(tree);
 					ignore = true;
-				}
-
-
-				// --------------------------------
+				} // --------------------------------
 				// TEXT
 				// --------------------------------
-
 
 				// --------------------------------
 				// Link
@@ -328,11 +325,10 @@ async function eat(tree) {
 					ret.push(link(block));
 					let word = await eat(tree);
 					ignore = true;
-
 				}
 			}
 
-			let entries = Object.entries
+			let entries = Object.entries;
 			let at_string =
 				// convert attribute (in object form)
 				// to an html stringified attribute form
@@ -350,17 +346,15 @@ async function eat(tree) {
 
 		if (item.nesting === 0) {
 			if (!item.children || item.children.length === 0) {
-				let p = ''
-				if (item.type == 'softbreak') {
-					p = "<br></br>"
-				}
-				else if (item.type == 'fence') {
-					p = `<xmp>${item.content}</xmp>`
-				}
-
-				else {
-					if (item.content.charAt(0) == '>') p = `<blockquote>${item.content.slice(1)}</blockquote>`
-					else p = item.content;
+				let p = "";
+				if (item.type == "softbreak") {
+					p = "<br></br>";
+				} else if (item.type == "fence") {
+					p = `<xmp>${item.content}</xmp>`;
+				} else {
+					if (item.content.charAt(0) == ">") {
+						p = `<blockquote>${item.content.slice(1)}</blockquote>`;
+					} else p = item.content;
 				}
 				ret.push(p);
 			} else {
@@ -389,7 +383,6 @@ const MD = async (content) => {
 
 	if (tree) body = await eat(tree);
 	else body = content;
-
 
 	return body;
 };
