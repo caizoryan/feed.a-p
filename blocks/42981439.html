@@ -1,0 +1,25 @@
+
+		<!DOCTYPE html>
+		<html>
+			<head>
+				<link rel="stylesheet" href="/style.css">
+			</head> 
+		<body>
+
+			<div class='nav'>
+				<h4>Pages</h4>
+				<p><a href="/">home</a></p>
+				<p><a href="https://github.com/caizoryan/feed.a-p">about</a></p>
+
+				
+			</div>
+			<div class='block'><h1 > Getting to stable grounds </h1>
+<p > <div class="media"><video src=https://attachments.are.na/42981437/c8e814f821ea1844221e2e36f62df39d.mp4?1769399071 controls loop></video></div> </p>
+<p > Revamped the graph system so its simpler to make new nodes and manage them. Still contemplating the validation system I have... that might need some clean up. </p>
+<p > <div class="image"><img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0Mjk4MTY4Ny9vcmlnaW5hbF9hYWI0NTI1NTg5Yjg3MGZkZTg5Mzc4ZmQ5ZGYzZjFmNS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /></div> </p>
+<p > Also contemplating adding reverse flow. So basically the circle that gets outputted on canvas could be overlaid with a bounding box that I could drag. </p>
+<p > Updates from the drag can be sent back in a reverse flow, essentially I would inform the circle element which in turn has to find what supplied it the x and y coordinates and propogate the flow to them. </p>
+<p > This eventually would turn into sort of like a constraint solver. For instance what if the source leads to an add node or something. Which value do you propagate the change to? Maybe someway to choose? choose at random? ask / specify / lock icon... wont flow back unless all locks in place... if not will error out or smth? </p>
+<p > Is this worth putting in the time and effort into? </p></div>
+		</body>
+		</html>

@@ -1,21 +1,22 @@
 :root {
--brown: #441D01;
-  --red: #E30F00;
-  --grey: #030303;
-  --grey2: #000;
-  --purple: #C1B3FE;
-  --purple-2: #a08bff;
-  --blue: #555577;
-  --pink: #FEB8D5;
-  --black: #e9e9e9;
-  --secondary: #8361fe;
-  --background: #D1F6DB;
-  --color: var(--purple);
-  --light-grey: #00000022;}
+	-brown: #441D01;
+	--red: #E30F00;
+	--grey: #030303;
+	--grey2: #000;
+	--purple: #C1B3FE;
+	--purple-2: #a08bff;
+	--blue: #555577;
+	--pink: #FEB8D5;
+	--black: #e9e9e9;
+	--secondary: #8361fe;
+	--background: #D1F6DB;
+	--color: var(--purple);
+	--light-grey: #00000022;
+}
 
 @font-face {
-	font-family: 'ops';
-	src: url('./ops.ttf') format('truetype');
+	font-family: 'intervariable';
+	src: url('./inter_variable.woff2');
 }
 
 
@@ -27,24 +28,30 @@
 body {
 	background: var(--black);
 	color: var(--grey);
-	line-height: 1.4em;
-	font-family: "Arial Narrow", sans-serif;
-	font-weight: 600; 
-	font-size: 1.2em;
+	line-height: 1.3em;
+	font-family: "intervariable", sans-serif;
+	font-weight: 600;
+	font-size: 1.1em;
 }
 
-blockquote{
+blockquote {
 	margin: 0;
-  padding: .4em;
-  background-color: var(--color);
-  color: var(--black);
+	padding: .4em;
+	background-color: var(--color);
+	color: var(--black);
 }
 
-h1{
+h1 {
 	line-height: 1.4em;
 }
 
-h1,h2,h3,h4,h5,h6, a {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
 	font-family: 'gap';
 }
 
@@ -54,8 +61,8 @@ a {
 
 xmp {
 	color: var(--purple);
-  padding: 1rem;
-  background: #444;
+	padding: 1rem;
+	background: #444;
 }
 
 .block-list {
@@ -64,15 +71,16 @@ xmp {
 	margin: 20px auto;
 }
 
-.block-list h1{
+.block-list h1 {
 	font-size: 1em;
 }
 
-.block.month{
+.block.month {
 	background: var(--color);
-  color: var(--purple-2);
-  border: none;
+	color: var(--purple-2);
+	border: none;
 }
+
 .block {
 	width: 800px;
 	margin: 20px auto;
@@ -96,26 +104,50 @@ video {
 }
 
 
-input.t1:checked~.block {width: 1100px;}
-input.t2:checked~.block {width: 800px;}
-input.t3:checked~.block {width: 500px;}
+input.t1:checked~.block {
+	width: 1100px;
+}
 
-input.t1:checked~.block-list {width: 1100px;}
-input.t2:checked~.block-list {width: 800px;}
-input.t3:checked~.block-list {width: 500px;}
+input.t2:checked~.block {
+	width: 800px;
+}
 
-input.t4:checked~.block {transform: skewX(0deg) !important;}
+input.t3:checked~.block {
+	width: 500px;
+}
+
+input.t1:checked~.block-list {
+	width: 1100px;
+}
+
+input.t2:checked~.block-list {
+	width: 800px;
+}
+
+input.t3:checked~.block-list {
+	width: 500px;
+}
+
+input.t4:checked~.block {
+	transform: skewX(0deg) !important;
+}
 
 
-input.t6:checked~.block {display:none}
-input.t6:checked~.block-list {display:block}
+input.t6:checked~.block {
+	display: none
+}
+
+input.t6:checked~.block-list {
+	display: block
+}
 
 
-label  {
+label {
 	padding-left: 1.5em;
 	background-color: var(--purple);
 	padding-right: .5em;
 }
+
 .nav {
 	position: fixed;
 	background-color: var(--purple);
@@ -126,14 +158,15 @@ label  {
 }
 
 .nav h4 {
-  margin-bottom: 1em;
-  padding: 0;
-  line-height: 0;
+	margin-bottom: 1em;
+	padding: 0;
+	line-height: 0;
 }
 
-.nav a, .nav p {
-  margin: 0;
-  padding: .2em 0;
+.nav a,
+.nav p {
+	margin: 0;
+	padding: .2em 0;
 }
 
 input[type="radio"] {
@@ -143,12 +176,29 @@ input[type="radio"] {
 	background-color: white;
 }
 
-.t1 {top: 1rem;}
-.t2 {top: 2.5rem;}
-.t3 {top: 4rem;}
-.t4 {top: 6rem;}
-.t5 {top: 7.5rem;}
-.t6 {top: 9rem;}
+.t1 {
+	top: 1rem;
+}
+
+.t2 {
+	top: 2.5rem;
+}
+
+.t3 {
+	top: 4rem;
+}
+
+.t4 {
+	top: 6rem;
+}
+
+.t5 {
+	top: 7.5rem;
+}
+
+.t6 {
+	top: 9rem;
+}
 
 /* .mt5 {transform: skewX(-3deg);} */
 /* .mt10 {transform: skewX(-2deg);} */
