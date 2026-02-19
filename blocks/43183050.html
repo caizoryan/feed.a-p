@@ -1,0 +1,23 @@
+
+		<!DOCTYPE html>
+		<html>
+			<head>
+				<link rel="stylesheet" href="/style.css">
+			</head> 
+		<body>
+
+			<div class='nav'>
+				<h4>Pages</h4>
+				<p><a href="/">home</a></p>
+				<p><a href="https://github.com/caizoryan/feed.a-p">about</a></p>
+
+				
+			</div>
+			<div class='block'><h2 > Essentially... </h2>
+<p > What I seem to figure out is how are loops and functions going to work... </p>
+<p > <div class="image"><img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MzIxNTU2MS9vcmlnaW5hbF82YjBjZDA3NGJiZjhlMzAwMTAzZGI1ODA1NGE4MzJjMi5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /></div> </p>
+<p > This is one way I'm thinking of setting it up. This may take place as a group looking thing. The group will be a node that outputs a function and can be referenced as a variable. The group will have inputPoint and an OutputPoint. The group will construct a function composition by traversing the nodes contained within it. </p>
+<p > It will take the nodes that connect to inputPoint and follow them to each node that is connected to its ouput. While traversing, construct a transform function map. Once you make it to the output node, close the transform function map and export it as a function closure. </p>
+<p > Some things to consider -> When does the function get recompiled ? (when any nodes inside emit a change... in a sense all of these nodes output to the group. Being in a group means to ouptut into it...) </p></div>
+		</body>
+		</html>
