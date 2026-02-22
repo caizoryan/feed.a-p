@@ -158,13 +158,11 @@ async function create_html(channel, slice = 5) {
 			<label for="c" class="fixed t3">500px</label>
 		  <input type="radio" name="any" value="c" class="fixed t3">
 
-			<label for="c" class="fixed t4">unfunky</label>
-		  <input type="radio" name="dawg" value="c" class="fixed t4">
-			<label for="c" class="fixed t5">funky</label>
-		  <input type="radio" name="dawg" value="c" class="fixed t5">
+			<label for="c" class="fixed t4">normal</label>
+		  <input type="radio" checked name="dawg" value="c" class="fixed t4">
 
-			<label for="c" class="fixed t6">list</label>
-		  <input type="radio" name="dawg" value="c" class="fixed t6">
+			<label for="c" class="fixed t5">list</label>
+		  <input type="radio" name="dawg" value="c" class="fixed t5">
 `;
 	let options = ["mt5", "mt10", "mt15", "mt20", "mt25", "mt30"];
 
