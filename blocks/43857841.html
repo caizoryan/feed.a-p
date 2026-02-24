@@ -1,0 +1,31 @@
+
+		<!DOCTYPE html>
+		<html>
+			<head>
+				<link rel="stylesheet" href="/style.css">
+			</head> 
+		<body>
+
+			<div class='nav'>
+				<h4>Pages</h4>
+				<p><a href="/">home</a></p>
+				<p><a href="https://github.com/caizoryan/feed.a-p">about</a></p>
+
+				
+			</div>
+			<div class='block'><h1 > Updates on the node tool! </h1>
+<p > Changed the theme and rewrote the implementation for the svg lines that connect the nodes together. This was a gigantic performance boost. The way I had set it up before was that for each mutation on any of the lines would re-render every single one of those lines. Not only that, it was also leaking memory because all the old svg line elements weren't correctly disposed. Anyways all that is fixed now and memory is at a steady 20-30mb. </p>
+<p > Functions work now! This was a funky exercise to figure out how to make work. But they work now! </p>
+<p > <div class="media"><video src=https://attachments.are.na/43857837/0fd5fa170b28ad935c2ff4fba9fe3a2a.mp4?1771873490 controls loop></video></div> </p>
+<p > A function declaration node will follow all the nodes it connects to till it finds a return node. Then it will create a virtual system for all the tracked nodes and export it as a function closure. Whenever this function is applied, it will just use that function and see what data flows into the return node and just return that data. </p>
+<p > <div class="media"><video src=https://attachments.are.na/43857835/89477f4faa65a1bb5f00b6bc6193c127.mp4?1771873490 controls loop></video></div> </p>
+<p > Text updates when you change it :) </p>
+<p > <div class="media"><video src=https://attachments.are.na/43857836/8e6f636c0097a470c0e21740f3698100.mp4?1771873490 controls loop></video></div> </p>
+<p > Here is how the variables work. </p>
+<p > <div class="media"><video src=https://attachments.are.na/43857838/123a00bc189702858dd0280b9b8ce007.mp4?1771873490 controls loop></video></div> </p>
+<p > And you can still position stuff </p>
+<p > What I think I need to work on now is making all the nodes visually different than one another so the navigability is easier and you can find what needs to be found. </p>
+<p > I need to add a sidebar/property editor also, just so each node can expose more data that its tiny UI can show. </p>
+<p > And finally searching through nodes and finding them in someway? </p></div>
+		</body>
+		</html>
