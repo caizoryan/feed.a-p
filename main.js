@@ -46,9 +46,9 @@ const media = (block) => `
 `;
 
 const video = (block) =>
-	`<div class="media"><video src=${block.attachment.url} controls loop></video></div>`;
+	`<div class="media"><video src=${block.attachment.url} loading='lazy' controls loop></video></div>`;
 const image = (block) =>
-	`<div class="image"><img src="${block.image.display.url}" /></div>`;
+	`<div class="image"><img loading='lazy' src="${block.image.display.url}" /></div>`;
 const link = (block) =>
 	`<span class="link"> <a target="_blank" href=${block.source.url}>${block.title} ${link_svg}</a> </span>`;
 
