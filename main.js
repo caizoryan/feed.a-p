@@ -49,6 +49,10 @@ const video = (block) =>
 	`<div class="media"><video src=${block.attachment.url} loading='lazy' controls loop></video></div>`;
 const image = (block) =>
 	`<div class="image"><img loading='lazy' src="${block.image.display.url}" /></div>`;
+
+const thumb = (block) =>{
+	return `<div class="image"><img loading='lazy' src="${block.image.thumb.url}" /></div>`;
+}
 const link = (block) =>
 	`<span class="link"> <a target="_blank" href=${block.source.url}>${block.title} ${link_svg}</a> </span>`;
 
@@ -71,8 +75,8 @@ const channel = (c) => `
 	</a>
 `;
 
-let force = "force=true&";
-// let force = ''
+// let force = "force=true&";
+let force = ''
 async function run() {
 	let channel = await get_channel("blog-feed?" + force + "per=300");
 	let channels = [];
@@ -185,7 +189,8 @@ async function create_html(channel, slice = 5) {
 			let created_at_string = time_string(created_at);
 			if (date == "") date = date_string(created_at);
 
-			let content = await MD(block.content);
+			let images = []
+			let content = await MD(block.content, images);
 			let m = month(new Date(date));
 
 			if (months.includes(m) && m != lastmonth) {
@@ -205,6 +210,11 @@ async function create_html(channel, slice = 5) {
 					<a href='./blocks/${block.id}.html'>
 						<h1>${contentsliced.split("\n")[0]}</h1>
 					</a>
+						${images.length > 0 ? `
+							<div class='image-thumbnails'>
+								${images.join('\n')}
+							</div>`
+							: ''}
 				</div>
 
 					<div class="block ${options[Math.floor(Math.random() * options.length)]
@@ -270,7 +280,13 @@ const extract_block_id = (link) => {
 	return link.split("/").pop();
 };
 
-async function eat(tree) {
+async function eat(tree, med) {
+
+	let fillMedia = false
+	if (med && Array.isArray(med)){
+		fillMedia = true
+		// fill this with media
+	}
 	let ret = [];
 
 	if (!tree) return "";
@@ -291,10 +307,11 @@ async function eat(tree) {
 				if (block.class == "Attachment") {
 					if (block.attachment.extension == "mp4") {
 						ret.push(video(block));
+						if (fillMedia && block.image) med.push(image(block))
 					} else if (block.attachment.extension == "pdf") {
 						ret.push(pdf(block));
 					}
-					let word = await eat(tree);
+					let word = await eat(tree, med);
 					ignore = true;
 				} // --------------------------------
 				// Media
@@ -303,14 +320,18 @@ async function eat(tree) {
 					if (block.class == "Media" && block.embed) {
 						ret.push(media_embed(block));
 					} else ret.push(media(block));
-					let word = await eat(tree);
+					let word = await eat(tree, med);
 					ignore = true;
 				} // --------------------------------
 				// Image
 				// --------------------------------
 				else if (block.class == "Image") {
-					ret.push(image(block));
-					let word = await eat(tree);
+					let img = image(block)
+					ret.push(img);
+					if (fillMedia){
+						med.push(img)
+					}
+					let word = await eat(tree, med);
 					ignore = true;
 				} // --------------------------------
 				// TEXT
@@ -321,7 +342,7 @@ async function eat(tree) {
 				// --------------------------------
 				else if (block.class == "Link") {
 					ret.push(link(block));
-					let word = await eat(tree);
+					let word = await eat(tree, med);
 					ignore = true;
 				}
 			}
@@ -335,7 +356,7 @@ async function eat(tree) {
 					.join(" ");
 
 			if (!ignore) {
-				let children = await eat(tree);
+				let children = await eat(tree, med);
 				children = Array.isArray(children) ? children.join("") : children;
 
 				ret.push(`<${item.tag} ${at_string}> ${children} </${item.tag}>`);
@@ -356,7 +377,7 @@ async function eat(tree) {
 				}
 				ret.push(p);
 			} else {
-				let children = await eat(item.children);
+				let children = await eat(item.children, med);
 				children = Array.isArray(children) ? children.join("") : children;
 				ret.push(children);
 			}
@@ -375,12 +396,13 @@ let safe_parse = (content) => {
 		return undefined;
 	}
 };
-const MD = async (content) => {
+const MD = async (content, media) => {
 	let tree, body;
 	tree = safe_parse(content);
 
-	if (tree) body = await eat(tree);
+	if (tree) body = await eat(tree, media);
 	else body = content;
+
 
 	return body;
 };

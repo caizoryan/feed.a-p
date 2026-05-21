@@ -238,6 +238,17 @@ input[type="radio"]:checked {
 	/* box-shadow: 0 0 10px 0px var(--light-grey); */
 }
 
+.image-thumbnails .image {
+  margin-right: .5em;
+	width: 80px;
+}
+
+.image-thumbnails {
+  height: 100px;
+  width: 100%;
+  display: flex;
+}
+
 .link a {
 	color: var(--purple-2);
 }
