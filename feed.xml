@@ -17,6 +17,9 @@
 					<link>https://feed.a-p.space/blocks/46418664.html</link>
 					<description><![CDATA[<p > Looks like I have an RSS Feed now! </p>
 <p > ~ thanks to → <a href = "https://github.com/caizoryan/feed.a-p/issues/1"> issue </a> ~ weeewooo! </p>
+<p > It's still pretty buggy and I don't know how exactly should the content of this website translate to the RSS. </p>
+<p > For instance should I leave the videos and images in? I don't know... right now I just embed the entire post as CDATA (which allows you to embed html in the description) but some readers render the posts with video funny... so I added a style tag that limits the width of the video to 500px. </p>
+<p > Anyways... </p>
 <p > <a href = "https://feed.a-p.space/feed.xml"> Feed Link </a> </p>]]></description>
 					<pubDate>Fri, 22 May 2026 15:02:43 GMT</pubDate>
 				</item>
