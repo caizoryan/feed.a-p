@@ -235,7 +235,7 @@ async function create_html(channel, slice = 5, rss) {
 				<item>
 					<title>${titleStripped}</title>
 					<link>${"https://feed.a-p.space/blocks/" + block.id + ".html"}</link>
-					<description>${ descHtml }</description>
+					<description>${ descStripped }</description>
 					<pubDate>${created_at.toUTCString()}</pubDate>
 				</item>
 			`)
