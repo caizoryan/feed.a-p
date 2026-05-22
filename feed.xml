@@ -13,6 +13,14 @@
 
 		
 				<item>
+					<title> RSS Feed </title>
+					<link>https://feed.a-p.space/blocks/46418664.html</link>
+					<description> Looks like I have an RSS Feed now! </description>
+					<pubDate>Fri, 22 May 2026 15:02:43 GMT</pubDate>
+				</item>
+			
+
+				<item>
 					<title> two months later... </title>
 					<link>https://feed.a-p.space/blocks/46133604.html</link>
 					<description> Lots happened over the past 2 months. I been in the shop making, tinkering, designing and fabricating. Prepped for gradex (undergrad final year show) and exhibited for 4 days! it was so quite fun, equally taxing. </description>
@@ -307,14 +315,6 @@
 					<link>https://feed.a-p.space/blocks/37043808.html</link>
 					<description> Playing around with static site generation. Here is a basic draft I made for a static site generator which basically compiles to a js file. </description>
 					<pubDate>Thu, 29 May 2025 08:07:17 GMT</pubDate>
-				</item>
-			
-
-				<item>
-					<title> New Era </title>
-					<link>https://feed.a-p.space/blocks/36928915.html</link>
-					<description>(...)</description>
-					<pubDate>Fri, 23 May 2025 22:58:29 GMT</pubDate>
 				</item>
 			
 	</channel>
