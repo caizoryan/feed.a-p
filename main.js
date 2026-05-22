@@ -1,3 +1,4 @@
+import {parseHTML} from 'linkedom'
 import fs from "fs";
 import markdownIt from "./markdown-it/markdown-it.js";
 import { auth } from "./auth.js";
@@ -16,6 +17,8 @@ let options = {
 		referrerPolicy: "no-referrer",
 	},
 };
+
+const { document } = parseHTML(` <!doctype html> <html lang="en"></html> `);
 
 const fetch_json = (link, options) =>
 	fetch(link, options).then((r) => r.json());
@@ -217,9 +220,13 @@ async function create_html(channel, slice = 5, rss) {
 			let desc = contentsliced.split("\n")[1]
 			if (!desc || desc.includes('"')) desc = '(...)'
 
+			let descDummyEl = document.createElement('div')
+			descDummyEl.innerHTML = desc
+			let descStripped = descDummyEl.innerText
+
 			let titleDummyEl = document.createElement('div')
 			titleDummyEl.innerHTML = contentsliced.split("\n")[0]
-			titleStripped = titleDummyEl.innerText
+			let titleStripped = titleDummyEl.innerText
 
 			if (count > 42) fillRSS = false
 			if (fillRSS) rss.push(`
@@ -231,7 +238,7 @@ async function create_html(channel, slice = 5, rss) {
 						${"https://feed.a-p.space/blocks/" + block.id + ".html"}
 					</link>
 					<description>
-						${ desc }
+						${ descStripped }
 					</description>
 					<pubDate>${created_at.toUTCString()}</pubDate>
 				</item>

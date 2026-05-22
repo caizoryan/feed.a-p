@@ -14,13 +14,13 @@
 		
 				<item>
 					<title>
-						<h1 > two months later... </h1>
+						 two months later... 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/46133604.html
 					</link>
 					<description>
-						<p > Lots happened over the past 2 months. I been in the shop making, tinkering, designing and fabricating. Prepped for gradex (undergrad final year show) and exhibited for 4 days! it was so quite fun, equally taxing. </p>
+						 Lots happened over the past 2 months. I been in the shop making, tinkering, designing and fabricating. Prepped for gradex (undergrad final year show) and exhibited for 4 days! it was so quite fun, equally taxing. 
 					</description>
 					<pubDate>Thu, 14 May 2026 00:58:23 GMT</pubDate>
 				</item>
@@ -28,7 +28,7 @@
 
 				<item>
 					<title>
-						<h1 > Quad Trees </h1>
+						 Quad Trees 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/44792726.html
@@ -42,13 +42,13 @@
 
 				<item>
 					<title>
-						<h1 > Fold typeface </h1>
+						 Fold typeface 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/44253282.html
 					</link>
 					<description>
-						<p > Working on a folding typeface. Here's how the interface lookin! </p>
+						 Working on a folding typeface. Here's how the interface lookin! 
 					</description>
 					<pubDate>Mon, 09 Mar 2026 04:44:16 GMT</pubDate>
 				</item>
@@ -56,13 +56,13 @@
 
 				<item>
 					<title>
-						<h1 > Updates on the node tool! </h1>
+						 Updates on the node tool! 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/43857841.html
 					</link>
 					<description>
-						<p > Changed the theme and rewrote the implementation for the svg lines that connect the nodes together. This was a gigantic performance boost. The way I had set it up before was that for each mutation on any of the lines would re-render every single one of those lines. Not only that, it was also leaking memory because all the old svg line elements weren't correctly disposed. Anyways all that is fixed now and memory is at a steady 20-30mb. </p>
+						 Changed the theme and rewrote the implementation for the svg lines that connect the nodes together. This was a gigantic performance boost. The way I had set it up before was that for each mutation on any of the lines would re-render every single one of those lines. Not only that, it was also leaking memory because all the old svg line elements weren't correctly disposed. Anyways all that is fixed now and memory is at a steady 20-30mb. 
 					</description>
 					<pubDate>Mon, 23 Feb 2026 19:04:58 GMT</pubDate>
 				</item>
@@ -70,13 +70,13 @@
 
 				<item>
 					<title>
-						<h1 > Future of [FEED] </h1>
+						 Future of [FEED] 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/43831187.html
 					</link>
 					<description>
-						<p > I wanna turn this website into an RSS Feed. Essentially anything I want to publish would be here, including stuff over at writing.a-p.space and other stuff. </p>
+						 I wanna turn this website into an RSS Feed. Essentially anything I want to publish would be here, including stuff over at writing.a-p.space and other stuff. 
 					</description>
 					<pubDate>Sun, 22 Feb 2026 22:28:54 GMT</pubDate>
 				</item>
@@ -84,13 +84,13 @@
 
 				<item>
 					<title>
-						<h1 > Some Physarium Algorithm tests </h1>
+						 Some Physarium Algorithm tests 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/43733331.html
 					</link>
 					<description>
-						<p > I wanted to play around with this stuff: </p>
+						 I wanted to play around with this stuff: 
 					</description>
 					<pubDate>Thu, 19 Feb 2026 05:46:18 GMT</pubDate>
 				</item>
@@ -98,13 +98,13 @@
 
 				<item>
 					<title>
-						<h1 > Whittling Final Pieces </h1>
+						 Whittling Final Pieces 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/43732330.html
 					</link>
 					<description>
-						<p > Submitted the first whittling assignment! This was soooooo fun!!! </p>
+						 Submitted the first whittling assignment! This was soooooo fun!!! 
 					</description>
 					<pubDate>Thu, 19 Feb 2026 04:35:58 GMT</pubDate>
 				</item>
@@ -112,13 +112,13 @@
 
 				<item>
 					<title>
-						<h2 > Essentially... </h2>
+						 Essentially... 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/43183050.html
 					</link>
 					<description>
-						<p > What I seem to figure out is how are loops and functions going to work... </p>
+						 What I seem to figure out is how are loops and functions going to work... 
 					</description>
 					<pubDate>Sun, 01 Feb 2026 05:31:03 GMT</pubDate>
 				</item>
@@ -126,7 +126,7 @@
 
 				<item>
 					<title>
-						<h2 > Node Tools Updates! </h2>
+						 Node Tools Updates! 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/43084398.html
@@ -140,7 +140,7 @@
 
 				<item>
 					<title>
-						<h1 > Getting to stable grounds </h1>
+						 Getting to stable grounds 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/42981439.html
@@ -154,13 +154,13 @@
 
 				<item>
 					<title>
-						<h1 > Dynamic connection colors </h1>
+						 Dynamic connection colors 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/42879779.html
 					</link>
 					<description>
-						<p > Changes color based on active link! </p>
+						 Changes color based on active link! 
 					</description>
 					<pubDate>Thu, 22 Jan 2026 07:36:21 GMT</pubDate>
 				</item>
@@ -168,13 +168,13 @@
 
 				<item>
 					<title>
-						<h1 > Lines </h1>
+						 Lines 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/42836587.html
 					</link>
 					<description>
-						<p > <strong > --wW__MmM___WW_ww </strong>_----- </p>
+						  --wW__MmM___WW_ww _----- 
 					</description>
 					<pubDate>Wed, 21 Jan 2026 02:38:24 GMT</pubDate>
 				</item>
@@ -182,13 +182,13 @@
 
 				<item>
 					<title>
-						<h1 > Node based editor for publication tool </h1>
+						 Node based editor for publication tool 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/42768520.html
 					</link>
 					<description>
-						<p > The idea is to take the interface of are.na canvas, so positioning, zooming, draggin etc and then combine it with the engine of the publication tool, essentially giving me a node based procedural publication design tool. </p>
+						 The idea is to take the interface of are.na canvas, so positioning, zooming, draggin etc and then combine it with the engine of the publication tool, essentially giving me a node based procedural publication design tool. 
 					</description>
 					<pubDate>Mon, 19 Jan 2026 00:47:55 GMT</pubDate>
 				</item>
@@ -196,13 +196,13 @@
 
 				<item>
 					<title>
-						<h1 > Taking a woodworking class this semester </h1>
+						 Taking a woodworking class this semester 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/42728605.html
 					</link>
 					<description>
-						<p > Day 1: Basic Whittling... </p>
+						 Day 1: Basic Whittling... 
 					</description>
 					<pubDate>Sat, 17 Jan 2026 06:00:09 GMT</pubDate>
 				</item>
@@ -210,13 +210,13 @@
 
 				<item>
 					<title>
-						<h1 > Moving back to Neovim :) </h1>
+						 Moving back to Neovim :) 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/42728542.html
 					</link>
 					<description>
-						<p > I've been using Emacs for the past 6-8 months and I've grown to like it quite a lot. I shifted to it when I was doing C programming and eventually wanted to do some Lisp. </p>
+						 I've been using Emacs for the past 6-8 months and I've grown to like it quite a lot. I shifted to it when I was doing C programming and eventually wanted to do some Lisp. 
 					</description>
 					<pubDate>Sat, 17 Jan 2026 05:54:37 GMT</pubDate>
 				</item>
@@ -224,7 +224,7 @@
 
 				<item>
 					<title>
-						<h3 > 2026 </h3>
+						 2026 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/42462903.html
@@ -238,13 +238,15 @@
 
 				<item>
 					<title>
-						<h1 > UPPPPPDATES </h1>
+						 UPPPPPDATES 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/42452629.html
 					</link>
 					<description>
-						<p > <blockquote> Update Number #2 (JAN 17): since having started this post, I began a refactor and now the refactor is done... Fully rewrote the repo to make it more easier to work with and better organised and performance wise much better + added undo redo by using a reversible store object.</blockquote> </p>
+						 
+ Update Number #2 (JAN 17): since having started this post, I began a refactor and now the refactor is done... Fully rewrote the repo to make it more easier to work with and better organised and performance wise much better + added undo redo by using a reversible store object. 
+
 					</description>
 					<pubDate>Wed, 07 Jan 2026 20:31:06 GMT</pubDate>
 				</item>
@@ -252,13 +254,13 @@
 
 				<item>
 					<title>
-						<h1 > Making a post from Canvas </h1>
+						 Making a post from Canvas 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/42246917.html
 					</link>
 					<description>
-						<p > I'm updating this post from the canvas :) I think the canvas itself is almost ready and excited to share it online. There was some weird bug where when I saved the .canvas file to are.na channel and loaded it back in there was a JSON parsing error. Although it happened only for a specific block and hasn't happened since... so I dunno. Will see if this comes back later. </p>
+						 I'm updating this post from the canvas :) I think the canvas itself is almost ready and excited to share it online. There was some weird bug where when I saved the .canvas file to are.na channel and loaded it back in there was a JSON parsing error. Although it happened only for a specific block and hasn't happened since... so I dunno. Will see if this comes back later. 
 					</description>
 					<pubDate>Fri, 02 Jan 2026 01:28:23 GMT</pubDate>
 				</item>
@@ -266,13 +268,13 @@
 
 				<item>
 					<title>
-						<h1 > Updates on Are.na Canvas </h1>
+						 Updates on Are.na Canvas 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/42228558.html
 					</link>
 					<description>
-						<h3 > Updated the UI </h3>
+						 Updated the UI 
 					</description>
 					<pubDate>Wed, 31 Dec 2025 20:59:23 GMT</pubDate>
 				</item>
@@ -280,13 +282,13 @@
 
 				<item>
 					<title>
-						<h1 > Nodes and connections </h1>
+						 Nodes and connections 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/42196651.html
 					</link>
 					<description>
-						<p > Working on Are.na canvas to refresh my brain on concepts on how to make a draggable + canvas based tools. Going to make the interface for the publication tool a node based interface. So this is sort of the first draft/testing space for that. </p>
+						 Working on Are.na canvas to refresh my brain on concepts on how to make a draggable + canvas based tools. Going to make the interface for the publication tool a node based interface. So this is sort of the first draft/testing space for that. 
 					</description>
 					<pubDate>Tue, 30 Dec 2025 06:06:46 GMT</pubDate>
 				</item>
@@ -294,13 +296,13 @@
 
 				<item>
 					<title>
-						<h1 > french curves </h1>
+						 french curves 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/42153135.html
 					</link>
 					<description>
-						<p > Made some sketches using french curves. </p>
+						 Made some sketches using french curves. 
 					</description>
 					<pubDate>Sun, 28 Dec 2025 07:29:17 GMT</pubDate>
 				</item>
@@ -308,13 +310,13 @@
 
 				<item>
 					<title>
-						<h1 > A space for writing and learning </h1>
+						 A space for writing and learning 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/42153130.html
 					</link>
 					<description>
-						<p > As this year is coming to an end, I'm sowing seeds for the next year. I started writing.a-p.space, this is mostly going to be a space akin to this feed where I can document, and formulate ideas. So I can look back on these, reflect and iterate. </p>
+						 As this year is coming to an end, I'm sowing seeds for the next year. I started writing.a-p.space, this is mostly going to be a space akin to this feed where I can document, and formulate ideas. So I can look back on these, reflect and iterate. 
 					</description>
 					<pubDate>Sun, 28 Dec 2025 07:28:09 GMT</pubDate>
 				</item>
@@ -322,13 +324,13 @@
 
 				<item>
 					<title>
-						<h1 > Making an infinite canvas for are.na </h1>
+						 Making an infinite canvas for are.na 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/42153050.html
 					</link>
 					<description>
-						<p > Will make use of the open file format spec'd by Obsidian. This should potentially have interoperability with obsidian. </p>
+						 Will make use of the open file format spec'd by Obsidian. This should potentially have interoperability with obsidian. 
 					</description>
 					<pubDate>Sun, 28 Dec 2025 07:12:54 GMT</pubDate>
 				</item>
@@ -336,13 +338,13 @@
 
 				<item>
 					<title>
-						<h1 > First Post over at writing.a-p </h1>
+						 First Post over at writing.a-p 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/42112306.html
 					</link>
 					<description>
-						<p > Go check it out! </p>
+						 Go check it out! 
 					</description>
 					<pubDate>Fri, 26 Dec 2025 22:22:09 GMT</pubDate>
 				</item>
@@ -350,7 +352,7 @@
 
 				<item>
 					<title>
-						<h1 > DRAFT </h1>
+						 DRAFT 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/41883662.html
@@ -364,7 +366,7 @@
 
 				<item>
 					<title>
-						<h1 > A wishlist for this feed and tangents </h1>
+						 A wishlist for this feed and tangents 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/41831928.html
@@ -378,13 +380,13 @@
 
 				<item>
 					<title>
-						<h1 > Folding Problems </h1>
+						 Folding Problems 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/41831780.html
 					</link>
 					<description>
-						<p > I've been working on this for a month. but essentially this was the problem: </p>
+						 I've been working on this for a month. but essentially this was the problem: 
 					</description>
 					<pubDate>Tue, 16 Dec 2025 06:31:31 GMT</pubDate>
 				</item>
@@ -392,13 +394,13 @@
 
 				<item>
 					<title>
-						<h1 > Added project pages and some view options </h1>
+						 Added project pages and some view options 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/41429470.html
 					</link>
 					<description>
-						<p > Added project pages, you can probably see this on the right here -> </p>
+						 Added project pages, you can probably see this on the right here -> 
 					</description>
 					<pubDate>Fri, 28 Nov 2025 04:23:50 GMT</pubDate>
 				</item>
@@ -406,7 +408,7 @@
 
 				<item>
 					<title>
-						<h1 > Adding categories (more like projects) here! </h1>
+						 Adding categories (more like projects) here! 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/41428638.html
@@ -420,7 +422,7 @@
 
 				<item>
 					<title>
-						<h1 > Working on a booklet with Craig </h1>
+						 Working on a booklet with Craig 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/41270263.html
@@ -434,13 +436,13 @@
 
 				<item>
 					<title>
-						<h1 > Using instagram </h1>
+						 Using instagram 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/41244256.html
 					</link>
 					<description>
-						<p > I've been off instagram for almost the past 3 years. And I'm extremely happy with that decision and it has brought nothing but joy to me. However I think I need to interact with it for professional reasons. </p>
+						 I've been off instagram for almost the past 3 years. And I'm extremely happy with that decision and it has brought nothing but joy to me. However I think I need to interact with it for professional reasons. 
 					</description>
 					<pubDate>Thu, 20 Nov 2025 07:32:52 GMT</pubDate>
 				</item>
@@ -448,13 +450,13 @@
 
 				<item>
 					<title>
-						<h1 > Gave a talk today at [Creative Coding Toronto] </h1>
+						 Gave a talk today at [Creative Coding Toronto] 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/41244068.html
 					</link>
 					<description>
-						<p > Presented a breakdown of the parts that constitute this publication tool I've been working on. So presented it as a library of functions written down as an interrogation of a typographic vocabulary. </p>
+						 Presented a breakdown of the parts that constitute this publication tool I've been working on. So presented it as a library of functions written down as an interrogation of a typographic vocabulary. 
 					</description>
 					<pubDate>Thu, 20 Nov 2025 07:09:49 GMT</pubDate>
 				</item>
@@ -462,7 +464,7 @@
 
 				<item>
 					<title>
-						<h1 > Turning Publication software into: </h1>
+						 Turning Publication software into: 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/41015262.html
@@ -476,13 +478,13 @@
 
 				<item>
 					<title>
-						<h1 > Menu </h1>
+						 Menu 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/39365447.html
 					</link>
 					<description>
-						<p > The software view: </p>
+						 The software view: 
 					</description>
 					<pubDate>Sun, 07 Sep 2025 18:04:50 GMT</pubDate>
 				</item>
@@ -490,13 +492,13 @@
 
 				<item>
 					<title>
-						<h1 > Imposition tool updates </h1>
+						 Imposition tool updates 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/38533198.html
 					</link>
 					<description>
-						<p > Was working on this tool last semester, and recently need it for another project where I need to make a publication (a menu) where pages are offset vertically and horizontally. </p>
+						 Was working on this tool last semester, and recently need it for another project where I need to make a publication (a menu) where pages are offset vertically and horizontally. 
 					</description>
 					<pubDate>Sun, 03 Aug 2025 12:40:10 GMT</pubDate>
 				</item>
@@ -504,13 +506,13 @@
 
 				<item>
 					<title>
-						<h1 > How templater works </h1>
+						 How templater works 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/37043847.html
 					</link>
 					<description>
-						<h3 > Overview </h3>
+						 Overview 
 					</description>
 					<pubDate>Thu, 29 May 2025 08:08:52 GMT</pubDate>
 				</item>
@@ -518,13 +520,13 @@
 
 				<item>
 					<title>
-						<h1 > Templater </h1>
+						 Templater 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/37043808.html
 					</link>
 					<description>
-						<p > Playing around with static site generation. Here is a basic draft I made for a static site generator which basically compiles to a js file. </p>
+						 Playing around with static site generation. Here is a basic draft I made for a static site generator which basically compiles to a js file. 
 					</description>
 					<pubDate>Thu, 29 May 2025 08:07:17 GMT</pubDate>
 				</item>
@@ -532,7 +534,7 @@
 
 				<item>
 					<title>
-						<h1 > New Era </h1>
+						 New Era 
 					</title>
 					<link>
 						https://feed.a-p.space/blocks/36928915.html
