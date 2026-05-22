@@ -250,8 +250,7 @@ async function create_html(channel, slice = 5, rss) {
 							: ''}
 				</div>
 
-					<div class="block ${options[Math.floor(Math.random() * options.length)]
-				}">
+					<div class="block">
 						<p class="date">${date}</p>
 						<span class="metadata">updated_at: ${updated_at_string}</span>
 						<span class="metadata">posted_on: ${created_at_string}</span>
