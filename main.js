@@ -179,8 +179,10 @@ async function create_html(channel, slice = 5, rss) {
 	let lastmonth = "";
 
 	let channels = [];
+	let count = 0
 
 	for await (const block of channel.contents) {
+		count++
 		if (block.class == "Text") {
 			if (
 				block.title.toUpperCase() == "DRAFT" ||
@@ -212,6 +214,7 @@ async function create_html(channel, slice = 5, rss) {
 			let contentstring = content.flat().join("\n");
 			let contentsliced = content.flat().slice(0, slice).join("\n");
 
+			if (count > 10) fillRSS = false
 			if (fillRSS) rss.push(`
 				<item>
 					<title>
