@@ -182,8 +182,8 @@ async function create_html(channel, slice = 5, rss) {
 	let count = 0
 
 	for await (const block of channel.contents) {
-		count++
 		if (block.class == "Text") {
+			count++
 			if (
 				block.title.toUpperCase() == "DRAFT" ||
 				block.title.toLowerCase() == ".canvas"
