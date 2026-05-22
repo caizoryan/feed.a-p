@@ -83,7 +83,10 @@ async function run() {
 	let channel_slugs = channel.contents.filter((e) => e.class == "Channel");
 	channel.contents = channel.contents.sort((a, b) => b.position - a.position);
 
-	let html = await create_html(channel);
+	let rss = []
+	let html = await create_html(channel, 5, rss);
+	write_rss(rss.join('\n'), 'feed.xml')
+	// let rss = 
 	for (const slug of channel_slugs) {
 		const c = await get_channel(slug.slug + "?" + force + "per=300");
 		c.contents = c.contents.sort((a, b) => a.position - b.position);
@@ -150,8 +153,11 @@ let month = (time) => {
 	return months[month];
 };
 
-async function create_html(channel, slice = 5) {
+async function create_html(channel, slice = 5, rss) {
 	console.log("Length: ", channel.contents.length);
+	let fillRSS = false
+	if (rss) fillRSS = true
+
 	let html = `
 			<label for="html" class="fixed t1">1100px</label>
 		  <input type="radio" name="any" value="HTML" class="fixed t1">
@@ -205,6 +211,22 @@ async function create_html(channel, slice = 5) {
 
 			let contentstring = content.flat().join("\n");
 			let contentsliced = content.flat().slice(0, slice).join("\n");
+
+			if (fillRSS) rss.push(`
+				<item>
+					<title>
+						${contentsliced.split("\n")[0]}
+					</title>
+					<link>
+						${"https://feed.a-p.space/blocks/" + block.id + ".html"}
+					</link>
+					<description>
+						${contentsliced.split("\n")[1]}
+					</description>
+					<pubDate>${created_at.toUTCString()}</pubDate>
+				</item>
+			`)
+
 			html += `
 				<div class="block-list">
 					<a href='./blocks/${block.id}.html'>
@@ -257,6 +279,28 @@ function write_html(html, file, links = "") {
 			${html}
 		</body>
 		</html>`;
+
+	fs.writeFileSync(file, html_full);
+}
+
+function write_rss(content, file, ) {
+	let html_full = `
+<rss version="2.0">
+	<channel>
+
+		<title>Aaryan's Feed</title>
+		<link>https://feed.a-p.space/</link>
+		<description>
+			Stuff coming out the workshop
+		</description>
+
+		<language>en-us</language>
+		<pubDate>Fri, 22 May 2026 09:00:00 EST</pubDate>
+
+		${content}
+	</channel>
+</rss>
+`;
 
 	fs.writeFileSync(file, html_full);
 }

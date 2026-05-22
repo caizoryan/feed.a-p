@@ -1,0 +1,27 @@
+<rss version="2.0">
+	<channel>
+
+		<title>Aaryan's Feed</title>
+		<link>https://feed.a-p.space/</link>
+		<description>
+			Stuff coming out the workshop
+		</description>
+
+		<language>en-us</language>
+		<pubDate>Fri, 22 May 2026 09:00:00 EST</pubDate>
+
+		<item>
+			<title>
+				First item?
+			</title>
+			<link>
+				https://yourmom.com
+			</link>
+			<description>
+				Wikitty wonk, sping spong
+			</description>
+			<pubDate>Fri, 22 May 2026 09:00:00 EST</pubDate>
+		</item>
+
+	</channel>
+</rss>
