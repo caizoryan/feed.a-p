@@ -20,7 +20,7 @@
 						https://feed.a-p.space/blocks/46133604.html
 					</link>
 					<description>
-						(...)
+						<p > Lots happened over the past 2 months. I been in the shop making, tinkering, designing and fabricating. Prepped for gradex (undergrad final year show) and exhibited for 4 days! it was so quite fun, equally taxing. </p>
 					</description>
 					<pubDate>Thu, 14 May 2026 00:58:23 GMT</pubDate>
 				</item>
@@ -34,7 +34,7 @@
 						https://feed.a-p.space/blocks/44792726.html
 					</link>
 					<description>
-						(...)
+						<p > Playing around with <a href = "https://en.wikipedia.org/wiki/Quadtree"> quad trees </a> </p>
 					</description>
 					<pubDate>Fri, 27 Mar 2026 05:17:05 GMT</pubDate>
 				</item>
@@ -48,7 +48,7 @@
 						https://feed.a-p.space/blocks/44253282.html
 					</link>
 					<description>
-						(...)
+						<p > Working on a folding typeface. Here's how the interface lookin! </p>
 					</description>
 					<pubDate>Mon, 09 Mar 2026 04:44:16 GMT</pubDate>
 				</item>
@@ -62,7 +62,7 @@
 						https://feed.a-p.space/blocks/43857841.html
 					</link>
 					<description>
-						(...)
+						<p > Changed the theme and rewrote the implementation for the svg lines that connect the nodes together. This was a gigantic performance boost. The way I had set it up before was that for each mutation on any of the lines would re-render every single one of those lines. Not only that, it was also leaking memory because all the old svg line elements weren't correctly disposed. Anyways all that is fixed now and memory is at a steady 20-30mb. </p>
 					</description>
 					<pubDate>Mon, 23 Feb 2026 19:04:58 GMT</pubDate>
 				</item>
@@ -76,7 +76,7 @@
 						https://feed.a-p.space/blocks/43831187.html
 					</link>
 					<description>
-						(...)
+						<p > I wanna turn this website into an RSS Feed. Essentially anything I want to publish would be here, including stuff over at writing.a-p.space and other stuff. </p>
 					</description>
 					<pubDate>Sun, 22 Feb 2026 22:28:54 GMT</pubDate>
 				</item>
@@ -90,7 +90,7 @@
 						https://feed.a-p.space/blocks/43733331.html
 					</link>
 					<description>
-						(...)
+						<p > I wanted to play around with this stuff: </p>
 					</description>
 					<pubDate>Thu, 19 Feb 2026 05:46:18 GMT</pubDate>
 				</item>
@@ -104,7 +104,7 @@
 						https://feed.a-p.space/blocks/43732330.html
 					</link>
 					<description>
-						(...)
+						<p > Submitted the first whittling assignment! This was soooooo fun!!! </p>
 					</description>
 					<pubDate>Thu, 19 Feb 2026 04:35:58 GMT</pubDate>
 				</item>
@@ -118,7 +118,7 @@
 						https://feed.a-p.space/blocks/43183050.html
 					</link>
 					<description>
-						(...)
+						<p > What I seem to figure out is how are loops and functions going to work... </p>
 					</description>
 					<pubDate>Sun, 01 Feb 2026 05:31:03 GMT</pubDate>
 				</item>
@@ -132,7 +132,7 @@
 						https://feed.a-p.space/blocks/43084398.html
 					</link>
 					<description>
-						(...)
+						<p > <div class="media"><video src=https://attachments.are.na/43084519/6e314acb8d7726ac6168d507d906cc12.mp4?1769642372 loading='lazy' controls loop></video></div> </p>
 					</description>
 					<pubDate>Wed, 28 Jan 2026 23:16:21 GMT</pubDate>
 				</item>
