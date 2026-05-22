@@ -224,7 +224,7 @@ async function create_html(channel, slice = 5, rss) {
 			descDummyEl.innerHTML = desc
 			let descStripped = descDummyEl.innerText
 
-			let descHtml = `<![CDATA[${contentsliced}]]>`
+			let descHtml = `<![CDATA[${contentsliced.replaceAll('<video', '<video style="max-width: 500px;"')}]]>`
 
 			let titleDummyEl = document.createElement('div')
 			titleDummyEl.innerHTML = contentsliced.split("\n")[0]
@@ -235,7 +235,7 @@ async function create_html(channel, slice = 5, rss) {
 				<item>
 					<title>${titleStripped}</title>
 					<link>${"https://feed.a-p.space/blocks/" + block.id + ".html"}</link>
-					<description>${ descStripped }</description>
+					<description>${ descHtml }</description>
 					<pubDate>${created_at.toUTCString()}</pubDate>
 				</item>
 			`)
