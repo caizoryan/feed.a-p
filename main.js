@@ -231,15 +231,9 @@ async function create_html(channel, slice = 5, rss) {
 			if (count > 42) fillRSS = false
 			if (fillRSS) rss.push(`
 				<item>
-					<title>
-						${titleStripped}
-					</title>
-					<link>
-						${"https://feed.a-p.space/blocks/" + block.id + ".html"}
-					</link>
-					<description>
-						${ descStripped }
-					</description>
+					<title>${titleStripped}</title>
+					<link>${"https://feed.a-p.space/blocks/" + block.id + ".html"}</link>
+					<description>${ descStripped }</description>
 					<pubDate>${created_at.toUTCString()}</pubDate>
 				</item>
 			`)
