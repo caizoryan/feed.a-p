@@ -224,6 +224,8 @@ async function create_html(channel, slice = 5, rss) {
 			descDummyEl.innerHTML = desc
 			let descStripped = descDummyEl.innerText
 
+			let descHtml = `<![CDATA[${contentsliced}]]>`
+
 			let titleDummyEl = document.createElement('div')
 			titleDummyEl.innerHTML = contentsliced.split("\n")[0]
 			let titleStripped = titleDummyEl.innerText
@@ -233,7 +235,7 @@ async function create_html(channel, slice = 5, rss) {
 				<item>
 					<title>${titleStripped}</title>
 					<link>${"https://feed.a-p.space/blocks/" + block.id + ".html"}</link>
-					<description>${ descStripped }</description>
+					<description>${ descHtml }</description>
 					<pubDate>${created_at.toUTCString()}</pubDate>
 				</item>
 			`)
@@ -275,7 +277,8 @@ function write_html(html, file, links = "") {
 		<!DOCTYPE html>
 		<html>
 			<head>
-				<link rel="stylesheet" href="/style.css">${ file == 'index.html' ? '\n<link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Aaryan\'s Feed">' : ""}
+				<link rel="stylesheet" href="/style.css">
+				${ file == 'index.html' ? '<link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Aaryan\'s Feed">' : ""}
 			</head> 
 		<body>
 
