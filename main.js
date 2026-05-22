@@ -224,7 +224,7 @@ async function create_html(channel, slice = 5, rss) {
 			descDummyEl.innerHTML = desc
 			let descStripped = descDummyEl.innerText
 
-			let descHtml = `<![CDATA[${contentstring.replaceAll('<video', '<video style="max-width: 500px;width:100%;"')}]]>`
+			let descHtml = `<![CDATA[${content.flat().slice(1).join('\n').replaceAll('<video', '<video style="max-width: 500px;width:100%;"')}]]>`
 
 			let titleDummyEl = document.createElement('div')
 			titleDummyEl.innerHTML = contentsliced.split("\n")[0]
