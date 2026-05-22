@@ -217,11 +217,15 @@ async function create_html(channel, slice = 5, rss) {
 			let desc = contentsliced.split("\n")[1]
 			if (!desc || desc.includes('"')) desc = '(...)'
 
+			let titleDummyEl = document.createElement('div')
+			titleDummyEl.innerHTML = contentsliced.split("\n")[0]
+			titleStripped = titleDummyEl.innerText
+
 			if (count > 42) fillRSS = false
 			if (fillRSS) rss.push(`
 				<item>
 					<title>
-						${contentsliced.split("\n")[0]}
+						${titleStripped}
 					</title>
 					<link>
 						${"https://feed.a-p.space/blocks/" + block.id + ".html"}
