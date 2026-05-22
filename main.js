@@ -221,7 +221,9 @@ async function create_html(channel, slice = 5, rss) {
 						${"https://feed.a-p.space/blocks/" + block.id + ".html"}
 					</link>
 					<description>
-						${contentsliced.split("\n")[1]}
+						${
+// contentsliced.split("\n")[1]
+'(...)' }
 					</description>
 					<pubDate>${created_at.toUTCString()}</pubDate>
 				</item>
