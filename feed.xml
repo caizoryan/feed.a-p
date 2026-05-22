@@ -34,7 +34,7 @@
 						https://feed.a-p.space/blocks/44792726.html
 					</link>
 					<description>
-						<p > Playing around with <a href = "https://en.wikipedia.org/wiki/Quadtree"> quad trees </a> </p>
+						(...)
 					</description>
 					<pubDate>Fri, 27 Mar 2026 05:17:05 GMT</pubDate>
 				</item>
@@ -132,9 +132,415 @@
 						https://feed.a-p.space/blocks/43084398.html
 					</link>
 					<description>
-						<p > <div class="media"><video src=https://attachments.are.na/43084519/6e314acb8d7726ac6168d507d906cc12.mp4?1769642372 loading='lazy' controls loop></video></div> </p>
+						(...)
 					</description>
 					<pubDate>Wed, 28 Jan 2026 23:16:21 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Getting to stable grounds </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/42981439.html
+					</link>
+					<description>
+						(...)
+					</description>
+					<pubDate>Mon, 26 Jan 2026 03:44:42 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Dynamic connection colors </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/42879779.html
+					</link>
+					<description>
+						<p > Changes color based on active link! </p>
+					</description>
+					<pubDate>Thu, 22 Jan 2026 07:36:21 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Lines </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/42836587.html
+					</link>
+					<description>
+						<p > <strong > --wW__MmM___WW_ww </strong>_----- </p>
+					</description>
+					<pubDate>Wed, 21 Jan 2026 02:38:24 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Node based editor for publication tool </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/42768520.html
+					</link>
+					<description>
+						<p > The idea is to take the interface of are.na canvas, so positioning, zooming, draggin etc and then combine it with the engine of the publication tool, essentially giving me a node based procedural publication design tool. </p>
+					</description>
+					<pubDate>Mon, 19 Jan 2026 00:47:55 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Taking a woodworking class this semester </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/42728605.html
+					</link>
+					<description>
+						<p > Day 1: Basic Whittling... </p>
+					</description>
+					<pubDate>Sat, 17 Jan 2026 06:00:09 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Moving back to Neovim :) </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/42728542.html
+					</link>
+					<description>
+						<p > I've been using Emacs for the past 6-8 months and I've grown to like it quite a lot. I shifted to it when I was doing C programming and eventually wanted to do some Lisp. </p>
+					</description>
+					<pubDate>Sat, 17 Jan 2026 05:54:37 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h3 > 2026 </h3>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/42462903.html
+					</link>
+					<description>
+						(...)
+					</description>
+					<pubDate>Thu, 08 Jan 2026 05:27:00 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > UPPPPPDATES </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/42452629.html
+					</link>
+					<description>
+						<p > <blockquote> Update Number #2 (JAN 17): since having started this post, I began a refactor and now the refactor is done... Fully rewrote the repo to make it more easier to work with and better organised and performance wise much better + added undo redo by using a reversible store object.</blockquote> </p>
+					</description>
+					<pubDate>Wed, 07 Jan 2026 20:31:06 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Making a post from Canvas </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/42246917.html
+					</link>
+					<description>
+						<p > I'm updating this post from the canvas :) I think the canvas itself is almost ready and excited to share it online. There was some weird bug where when I saved the .canvas file to are.na channel and loaded it back in there was a JSON parsing error. Although it happened only for a specific block and hasn't happened since... so I dunno. Will see if this comes back later. </p>
+					</description>
+					<pubDate>Fri, 02 Jan 2026 01:28:23 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Updates on Are.na Canvas </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/42228558.html
+					</link>
+					<description>
+						<h3 > Updated the UI </h3>
+					</description>
+					<pubDate>Wed, 31 Dec 2025 20:59:23 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Nodes and connections </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/42196651.html
+					</link>
+					<description>
+						<p > Working on Are.na canvas to refresh my brain on concepts on how to make a draggable + canvas based tools. Going to make the interface for the publication tool a node based interface. So this is sort of the first draft/testing space for that. </p>
+					</description>
+					<pubDate>Tue, 30 Dec 2025 06:06:46 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > french curves </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/42153135.html
+					</link>
+					<description>
+						<p > Made some sketches using french curves. </p>
+					</description>
+					<pubDate>Sun, 28 Dec 2025 07:29:17 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > A space for writing and learning </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/42153130.html
+					</link>
+					<description>
+						<p > As this year is coming to an end, I'm sowing seeds for the next year. I started writing.a-p.space, this is mostly going to be a space akin to this feed where I can document, and formulate ideas. So I can look back on these, reflect and iterate. </p>
+					</description>
+					<pubDate>Sun, 28 Dec 2025 07:28:09 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Making an infinite canvas for are.na </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/42153050.html
+					</link>
+					<description>
+						<p > Will make use of the open file format spec'd by Obsidian. This should potentially have interoperability with obsidian. </p>
+					</description>
+					<pubDate>Sun, 28 Dec 2025 07:12:54 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > First Post over at writing.a-p </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/42112306.html
+					</link>
+					<description>
+						<p > Go check it out! </p>
+					</description>
+					<pubDate>Fri, 26 Dec 2025 22:22:09 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > DRAFT </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/41883662.html
+					</link>
+					<description>
+						(...)
+					</description>
+					<pubDate>Thu, 18 Dec 2025 04:52:26 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > A wishlist for this feed and tangents </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/41831928.html
+					</link>
+					<description>
+						(...)
+					</description>
+					<pubDate>Tue, 16 Dec 2025 06:47:50 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Folding Problems </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/41831780.html
+					</link>
+					<description>
+						<p > I've been working on this for a month. but essentially this was the problem: </p>
+					</description>
+					<pubDate>Tue, 16 Dec 2025 06:31:31 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Added project pages and some view options </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/41429470.html
+					</link>
+					<description>
+						<p > Added project pages, you can probably see this on the right here -> </p>
+					</description>
+					<pubDate>Fri, 28 Nov 2025 04:23:50 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Adding categories (more like projects) here! </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/41428638.html
+					</link>
+					<description>
+						(...)
+					</description>
+					<pubDate>Fri, 28 Nov 2025 02:38:33 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Working on a booklet with Craig </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/41270263.html
+					</link>
+					<description>
+						(...)
+					</description>
+					<pubDate>Fri, 21 Nov 2025 06:09:18 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Using instagram </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/41244256.html
+					</link>
+					<description>
+						<p > I've been off instagram for almost the past 3 years. And I'm extremely happy with that decision and it has brought nothing but joy to me. However I think I need to interact with it for professional reasons. </p>
+					</description>
+					<pubDate>Thu, 20 Nov 2025 07:32:52 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Gave a talk today at [Creative Coding Toronto] </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/41244068.html
+					</link>
+					<description>
+						<p > Presented a breakdown of the parts that constitute this publication tool I've been working on. So presented it as a library of functions written down as an interrogation of a typographic vocabulary. </p>
+					</description>
+					<pubDate>Thu, 20 Nov 2025 07:09:49 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Turning Publication software into: </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/41015262.html
+					</link>
+					<description>
+						(...)
+					</description>
+					<pubDate>Tue, 11 Nov 2025 04:59:23 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Menu </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/39365447.html
+					</link>
+					<description>
+						<p > The software view: </p>
+					</description>
+					<pubDate>Sun, 07 Sep 2025 18:04:50 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Imposition tool updates </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/38533198.html
+					</link>
+					<description>
+						<p > Was working on this tool last semester, and recently need it for another project where I need to make a publication (a menu) where pages are offset vertically and horizontally. </p>
+					</description>
+					<pubDate>Sun, 03 Aug 2025 12:40:10 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > How templater works </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/37043847.html
+					</link>
+					<description>
+						<h3 > Overview </h3>
+					</description>
+					<pubDate>Thu, 29 May 2025 08:08:52 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > Templater </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/37043808.html
+					</link>
+					<description>
+						<p > Playing around with static site generation. Here is a basic draft I made for a static site generator which basically compiles to a js file. </p>
+					</description>
+					<pubDate>Thu, 29 May 2025 08:07:17 GMT</pubDate>
+				</item>
+			
+
+				<item>
+					<title>
+						<h1 > New Era </h1>
+					</title>
+					<link>
+						https://feed.a-p.space/blocks/36928915.html
+					</link>
+					<description>
+						(...)
+					</description>
+					<pubDate>Fri, 23 May 2025 22:58:29 GMT</pubDate>
 				</item>
 			
 	</channel>

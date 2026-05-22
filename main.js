@@ -214,7 +214,10 @@ async function create_html(channel, slice = 5, rss) {
 			let contentstring = content.flat().join("\n");
 			let contentsliced = content.flat().slice(0, slice).join("\n");
 
-			if (count > 10) fillRSS = false
+			let desc = contentsliced.split("\n")[1]
+			if (!desc || desc.includes('"')) desc = '(...)'
+
+			if (count > 42) fillRSS = false
 			if (fillRSS) rss.push(`
 				<item>
 					<title>
@@ -224,7 +227,7 @@ async function create_html(channel, slice = 5, rss) {
 						${"https://feed.a-p.space/blocks/" + block.id + ".html"}
 					</link>
 					<description>
-						${ contentsliced.split("\n")[1] }
+						${ desc }
 					</description>
 					<pubDate>${created_at.toUTCString()}</pubDate>
 				</item>
