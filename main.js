@@ -78,8 +78,8 @@ const channel = (c) => `
 	</a>
 `;
 
-let force = "force=true&";
-// let force = ''
+// let force = "force=true&";
+let force = ''
 async function run() {
 	let channel = await get_channel("blog-feed?" + force + "per=300");
 	let channels = [];
@@ -275,7 +275,7 @@ function write_html(html, file, links = "") {
 		<!DOCTYPE html>
 		<html>
 			<head>
-				<link rel="stylesheet" href="/style.css">
+				<link rel="stylesheet" href="/style.css">${ file == 'index.html' ? '\n<link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Aaryan\'s Feed">' : ""}
 			</head> 
 		<body>
 
