@@ -277,6 +277,8 @@ function write_html(html, file, links = "") {
 		<!DOCTYPE html>
 		<html>
 			<head>
+
+				<link rel="icon" type="image/x-icon" href="https://a-p.space/favicon.ico">
 				<link rel="stylesheet" href="/style.css">
 				${ file == 'index.html' ? '<link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Aaryan\'s Feed">' : ""}
 			</head> 
