@@ -78,8 +78,8 @@ const channel = (c) => `
 	</a>
 `;
 
-let force = "force=true&";
-// let force = ''
+// let force = "force=true&";
+let force = ''
 async function run() {
 	let channel = await get_channel("blog-feed?" + force + "per=300");
 	let channels = [];
@@ -224,7 +224,7 @@ async function create_html(channel, slice = 5, rss) {
 			descDummyEl.innerHTML = desc
 			let descStripped = descDummyEl.innerText
 
-			let descHtml = `<![CDATA[${content.flat().slice(1).join('\n').replaceAll('<video', '<video style="max-width: 500px;width:100%;"')}]]>`
+			let descHtml = `<![CDATA[${content.flat().slice(1).join('\n').replaceAll('<video', '<video style="max-width: 500px; width:100%;"')}]]>`
 
 			let titleDummyEl = document.createElement('div')
 			titleDummyEl.innerHTML = contentsliced.split("\n")[0]
@@ -237,6 +237,7 @@ async function create_html(channel, slice = 5, rss) {
 					<link>${"https://feed.a-p.space/blocks/" + block.id + ".html"}</link>
 					<description>${ descHtml }</description>
 					<pubDate>${created_at.toUTCString()}</pubDate>
+					<author>pashineaaryan@gmail.com (Aaryan Pashine)</author>
 				</item>
 			`)
 
