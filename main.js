@@ -237,7 +237,7 @@ async function create_html(channel, slice = 5, rss) {
 					<link>${"https://feed.a-p.space/blocks/" + block.id + ".html"}</link>
 					<description>${ descHtml }</description>
 					<pubDate>${created_at.toUTCString()}</pubDate>
-					<author>pashineaaryan@gmail.com (Aaryan Pashine)</author>
+					<author>Aaryan Pashine</author>
 				</item>
 			`)
 
