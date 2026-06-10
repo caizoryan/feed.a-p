@@ -78,8 +78,8 @@ const channel = (c) => `
 	</a>
 `;
 
-// let force = "force=true&";
-let force = ''
+let force = "force=true&";
+// let force = ''
 async function run() {
 	let channel = await get_channel("blog-feed?" + force + "per=300");
 	let channels = [];
