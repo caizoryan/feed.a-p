@@ -7,8 +7,8 @@ import { auth } from "./auth.js";
 // SECTION : Are.na Utilities
 // ********************************
 //
-let host = "https://api.are.na/v3"
-// let host = "http://localhost:3000/api";
+// let host = "https://api.are.na/v3"
+let host = "http://localhost:3001/api";
 let options = {
 	headers: {
 		Authorization: `Bearer ${auth}`,
@@ -23,44 +23,20 @@ const { document } = parseHTML(` <!doctype html> <html lang="en"></html> `);
 const fetch_json = (link, options) =>
 	fetch(link, options).then((r) => r.json());
 
-// Are.na v3 returns blocks/channels in a richer shape than v2 did. Normalize
-// each item back into the flat shape the rest of this file already expects
-// (class, position, content as a markdown string, image.display/thumb,
-// attachment.extension, source.url, embed.html, ...).
-const normalize_block = (b) => {
-	if (!b) return b;
-	const out = { ...b, class: b.type, title: b.title ?? "" };
-	out.position = b.connection?.position ?? b.position;
-	if (b.type === "Text" && b.content && typeof b.content === "object") {
-		out.content = b.content.markdown ?? "";
-	}
-	if (b.image && typeof b.image === "object") {
-		out.image = {
-			display: { url: b.image.large?.src ?? b.image.src },
-			thumb: { url: b.image.small?.src ?? b.image.src },
-		};
-	}
-	if (b.attachment) {
-		out.attachment = { ...b.attachment, extension: b.attachment.file_extension };
-	}
-	return out;
-};
-
-// v3 paginates channel contents (max per=100), so loop pages until exhausted.
 const get_channel_contents = async (slug) => {
 	let page = 1;
 	let contents = [];
 	let meta;
 	do {
 		const res = await fetch_json(
-			host + "/channels/" + slug + "/contents?page=" + page + "&per=100",
+			host + "/channels/" + slug + "/contents?page=" + page + "&per=100&force=true",
 			options,
 		);
-		contents = contents.concat((res.data ?? []).map(normalize_block));
+		contents = contents.concat(res.data ?? []);
 		meta = res.meta;
 		page = meta?.next_page;
 	} while (meta?.has_more_pages && page);
-	return contents;
+	return contents.sort((b, a) => new Date(a.created_at) - new Date(b.created_at));
 };
 
 // v3 splits channel metadata and channel contents into two endpoints; merge them
@@ -71,8 +47,8 @@ const get_channel = async (slug) => {
 	info.contents = await get_channel_contents(slug);
 	return info;
 };
-const get_block = async (id) =>
-	normalize_block(await fetch_json(host + "/blocks/" + id, options));
+
+const get_block = async (id) => fetch_json(host + "/blocks/" + id, options);
 
 let link_svg =
 	`<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.51194 3.00541C9.18829 2.54594 10.0435 2.53694 10.6788 2.95419C10.8231 3.04893 10.9771 3.1993 11.389 3.61119C11.8009 4.02307 11.9513 4.17714 12.046 4.32141C12.4633 4.95675 12.4543 5.81192 11.9948 6.48827C11.8899 6.64264 11.7276 6.80811 11.3006 7.23511L10.6819 7.85383C10.4867 8.04909 10.4867 8.36567 10.6819 8.56093C10.8772 8.7562 11.1938 8.7562 11.389 8.56093L12.0077 7.94221L12.0507 7.89929C12.4203 7.52976 12.6568 7.2933 12.822 7.0502C13.4972 6.05623 13.5321 4.76252 12.8819 3.77248C12.7233 3.53102 12.4922 3.30001 12.1408 2.94871L12.0961 2.90408L12.0515 2.85942C11.7002 2.508 11.4692 2.27689 11.2277 2.11832C10.2377 1.46813 8.94398 1.50299 7.95001 2.17822C7.70691 2.34336 7.47044 2.57991 7.1009 2.94955L7.058 2.99247L6.43928 3.61119C6.24401 3.80645 6.24401 4.12303 6.43928 4.31829C6.63454 4.51355 6.95112 4.51355 7.14638 4.31829L7.7651 3.69957C8.1921 3.27257 8.35757 3.11027 8.51194 3.00541ZM4.31796 7.14672C4.51322 6.95146 4.51322 6.63487 4.31796 6.43961C4.12269 6.24435 3.80611 6.24435 3.61085 6.43961L2.99213 7.05833L2.94922 7.10124C2.57957 7.47077 2.34303 7.70724 2.17788 7.95035C1.50265 8.94432 1.4678 10.238 2.11799 11.2281C2.27656 11.4695 2.50766 11.7005 2.8591 12.0518L2.90374 12.0965L2.94837 12.1411C3.29967 12.4925 3.53068 12.7237 3.77214 12.8822C4.76219 13.5324 6.05589 13.4976 7.04986 12.8223C7.29296 12.6572 7.52943 12.4206 7.89896 12.051L7.89897 12.051L7.94188 12.0081L8.5606 11.3894C8.75586 11.1941 8.75586 10.8775 8.5606 10.6823C8.36533 10.487 8.04875 10.487 7.85349 10.6823L7.23477 11.301C6.80777 11.728 6.6423 11.8903 6.48794 11.9951C5.81158 12.4546 4.95642 12.4636 4.32107 12.0464C4.17681 11.9516 4.02274 11.8012 3.61085 11.3894C3.19896 10.9775 3.0486 10.8234 2.95385 10.6791C2.53661 10.0438 2.54561 9.18863 3.00507 8.51227C3.10993 8.35791 3.27224 8.19244 3.69924 7.76544L4.31796 7.14672ZM9.62172 6.08558C9.81698 5.89032 9.81698 5.57373 9.62172 5.37847C9.42646 5.18321 9.10988 5.18321 8.91461 5.37847L5.37908 8.91401C5.18382 9.10927 5.18382 9.42585 5.37908 9.62111C5.57434 9.81637 5.89092 9.81637 6.08619 9.62111L9.62172 6.08558Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>`;
@@ -88,7 +64,7 @@ const media = (block) => `
 	<a href=${block?.source?.url}>
 		<div class="media">
 			<p class="title">${block.title}</p>
-			<img src="${block.image.display.url}" />
+			<img src="${block.image?.large?.src ?? block.image?.src}" />
 			<p class="metadata">${block.source?.url}</p> 
 		</div>
 	</a>
@@ -97,10 +73,10 @@ const media = (block) => `
 const video = (block) =>
 	`<div class="media"><video src=${block.attachment.url} loading='lazy' controls loop></video></div>`;
 const image = (block) =>
-	`<div class="image"><img loading='lazy' src="${block.image.display.url}" /></div>`;
+	`<div class="image"><img loading='lazy' src="${block.image?.large?.src ?? block.image?.src}" /></div>`;
 
 const thumb = (block) =>{
-	return `<div class="image"><img loading='lazy' src="${block.image.thumb.url}" /></div>`;
+	return `<div class="image"><img loading='lazy' src="${block.image?.small?.src ?? block.image?.src}" /></div>`;
 }
 const link = (block) =>
 	`<span class="link"> <a target="_blank" href=${block.source.url}>${block.title} ${link_svg}</a> </span>`;
@@ -111,7 +87,7 @@ const pdf = (block) => `
 			<span>
 			${block.title} ${link_svg}
 			</span>
-			<img src="${block.image.display.url}" />
+			<img src="${block.image?.large?.src ?? block.image?.src}" />
 		</p>
 	</a>
 `;
@@ -125,10 +101,12 @@ const channel = (c) => `
 `;
 
 async function run() {
-	let channel = await get_channel("blog-feed");
+	let channel = await get_channel("feed-2026");
 	let channels = [];
-	let channel_slugs = channel.contents.filter((e) => e.class == "Channel");
-	channel.contents = channel.contents.sort((a, b) => b.position - a.position);
+	let channel_slugs = channel.contents.filter((e) => e.type == "Channel");
+	// channel.contents = channel.contents.sort(
+	// 	(a, b) => (b.connection?.position ?? b.position) - (a.connection?.position ?? a.position),
+	// );
 
 	let rss = []
 	let html = await create_html(channel, 5, rss);
@@ -136,7 +114,9 @@ async function run() {
 	// let rss = 
 	for (const slug of channel_slugs) {
 		const c = await get_channel(slug.slug);
-		c.contents = c.contents.sort((a, b) => a.position - b.position);
+		c.contents = c.contents.sort(
+			(a, b) => (a.connection?.position ?? a.position) - (b.connection?.position ?? b.position),
+		);
 		console.log("Got: ", c.slug);
 		channels.push(c);
 	}
@@ -148,7 +128,10 @@ async function run() {
 
 	let links = `
 <h4> Projects </h4>
-${projects}`;
+${projects}
+
+<a href='./feed.xml'><h4> RSS </h4></a>
+`;
 
 	write_html(html, "index.html", links);
 
@@ -229,14 +212,14 @@ async function create_html(channel, slice = 5, rss) {
 	let count = 0
 
 	for await (const block of channel.contents) {
-		if (block.class == "Text") {
+		if (block.type == "Text") {
 			count++
 			if (
-				block.title.toUpperCase() == "DRAFT" ||
-				block.title.toLowerCase() == ".canvas"
+				block.title?.toUpperCase() == "DRAFT" ||
+				block.title?.toLowerCase() == ".canvas"
 			) continue;
 
-			let date = block.title;
+			let date = block.title ?? "";
 			let updated_at = new Date(block.updated_at);
 			let updated_at_string = time_string(updated_at);
 
@@ -245,7 +228,7 @@ async function create_html(channel, slice = 5, rss) {
 			if (date == "") date = date_string(created_at);
 
 			let images = []
-			let content = await MD(block.content, images);
+			let content = await MD(block.content?.markdown ?? "", images);
 			let m = month(new Date(date));
 
 			if (months.includes(m) && m != lastmonth) {
@@ -311,7 +294,7 @@ async function create_html(channel, slice = 5, rss) {
 				`<div class='block'>${contentstring}</div>`,
 				"./blocks/" + block.id + ".html",
 			);
-		} else if (block.class == "Channel") channels.push(block);
+		} else if (block.type == "Channel") channels.push(block);
 	}
 
 	return html;
@@ -408,11 +391,11 @@ async function eat(tree, med) {
 				// --------------------------------
 				// Attachment
 				// --------------------------------
-				if (block.class == "Attachment") {
-					if (block.attachment.extension == "mp4") {
+				if (block.type == "Attachment") {
+					if (block.attachment.file_extension == "mp4") {
 						ret.push(video(block));
 						if (fillMedia && block.image) med.push(image(block))
-					} else if (block.attachment.extension == "pdf") {
+					} else if (block.attachment.file_extension == "pdf") {
 						ret.push(pdf(block));
 					}
 					let word = await eat(tree, med);
@@ -420,8 +403,8 @@ async function eat(tree, med) {
 				} // --------------------------------
 				// Embed (v2 called this "Media")
 				// --------------------------------
-				else if (block.class == "Embed") {
-					if (block.class == "Embed" && block.embed) {
+				else if (block.type == "Embed") {
+					if (block.type == "Embed" && block.embed) {
 						ret.push(media_embed(block));
 					} else ret.push(media(block));
 					let word = await eat(tree, med);
@@ -429,7 +412,7 @@ async function eat(tree, med) {
 				} // --------------------------------
 				// Image
 				// --------------------------------
-				else if (block.class == "Image") {
+				else if (block.type == "Image") {
 					let img = image(block)
 					ret.push(img);
 					if (fillMedia){
@@ -444,7 +427,7 @@ async function eat(tree, med) {
 				// --------------------------------
 				// Link
 				// --------------------------------
-				else if (block.class == "Link") {
+				else if (block.type == "Link") {
 					ret.push(link(block));
 					let word = await eat(tree, med);
 					ignore = true;
