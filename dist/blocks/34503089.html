@@ -1,4 +1,6 @@
-<div class="block"><h1>Lots of work on the Editor today</h1>
+
+		<link rel="stylesheet" href="/style.css">
+		<div class="block"><h1>Lots of work on the Editor today</h1>
 <h3>Setting up TSSERVER</h3>
 <p>The goal today was to get LSP/intellisense/autcomplete working. So I can get tooling over the code. Tsserver is a package maintained by microsoft that lets you create a virtual filesystem in the browser and get diagnostics, completions, linting, refernce trees and basically tooling over your code. I had seen this was possible before but it is a whole task to set this up. So I started by getting this tsserver connected to the editor. This took much longer than I would have wanted it to.</p>
 <h3>Reconciling blocks, character positioning</h3>
@@ -17,3 +19,4 @@
 <p><div class="media"><video src="https://attachments.are.na/34503077/4b84b6ea05b94190be9c570f20e2f772.mp4?1739425465" loading="lazy" controls loop></video></div></p>
 <h3>File saves itself</h3>
 <p>The next one is going to be, creating a file in the editor that will output an interface and have functionality that will read the editor's state and save the state to a file locally using the fs functionality implemented on the local server. So will be writing a js script that will save itself using itself.</p></div>
+		

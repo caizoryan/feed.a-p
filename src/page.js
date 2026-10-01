@@ -48,7 +48,12 @@ export async function renderChannel(channel, { slice = 5 } = {}) {
 				<a href="./blocks/${block.id}.html"> See more </a>
 			</div>
 		`;
-		blockPages.push({ id: block.id, html: `<div class="block">${content}</div>` });
+    blockPages.push({
+      id: block.id, html: `
+		<link rel="stylesheet" href="/style.css">
+		<div class="block">${content}</div>
+		`
+    });
 	}
 
 	return { html, blockPages };
