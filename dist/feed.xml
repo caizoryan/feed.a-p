@@ -5,8 +5,60 @@
 		<link>https://feed.a-p.space/</link>
 		<description>Stuff coming out the workshop</description>
 		<language>en-us</language>
-		<pubDate>Thu, 01 Oct 2026 16:12:32 GMT</pubDate>
+		<pubDate>Thu, 01 Oct 2026 18:09:16 GMT</pubDate>
 		
+		<item>
+			<title>[Plugins] for Are.na Canvas :D</title>
+			<link>https://feed.a-p.space/blocks/50004527.html</link>
+			<description><![CDATA[<p>For the past month or two I've been heavily using Are.na Canvas. Partly because I've started working on it again. I've been meaning turn the structure for Are.na canvas into a plugin system. The idea being that the core (dragging, panning, loading, mounting, state, transactions) become stable ground to build on top. And then you just write components that build on the context of the channel and individual blocks.</p>
+<p>So here's some updates on progress I've made with the plugin system. The way I'm going about it is seeing what are my needs and then figuring out how a plugin could do this. Once I think through that, I can add that to the plugin surface. So right now the plugin surface, or as I call it -> the 
+controller
+ is very messy... but I think over time it will clean itself out. So here goes...</p>
+<h3>Render Cycle</h3>
+<p>The first thing to get absorbed into the plugin system was individual block renderers. I started off with... turning all the render blocks into a plugin. I made a repository (an array) for rendererers and whenever a block is being rendered it will check through the renderer repo and find the first one the matches the match statement.</p>
+<p><div class="image"><img loading="lazy" src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0OTk1OTY2NC9vcmlnaW5hbF80ZmMxOWY1ODAxNGRkYTZjYWE4NzI3YjZmOGY1YTMxMC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjE4MDAsImhlaWdodCI6MTgwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==" /></div></p>
+<h3>Hooks</h3>
+<p>Wee wooo</p>
+<p>Then I added hooks! added a hook for markdown:link.</p>
+<p><div class="image"><img loading="lazy" src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0OTk1OTcxOC9vcmlnaW5hbF9iMmJiYzhmNTgyOWMyZjkxZmU2ZTQ4MjVjYmI0NTllYS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjE4MDAsImhlaWdodCI6MTgwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==" /></div></p>
+<p>if hook returns handled = true, then that can be used as the markdown link. this made the feature where — if there is a link to a block, it becomes a button that you can click and focus the block on canvas — be possible to be turned into a plugin!</p>
+<p><div class="image"><img loading="lazy" src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0OTk1OTc5OS9vcmlnaW5hbF9kMDQyYWZmMDlkMzBhYWVjNjI3OTNjYzQyMTBhYWFhOC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjE4MDAsImhlaWdodCI6MTgwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==" /></div></p>
+<p>How it works:</p>
+<p><div class="media"><video style="max-width: 500px; width:100%;" src="https://attachments.are.na/49959963/002f1274b94279319e1e47b55f948ff1.mp4?1788128441" loading="lazy" controls loop></video></div></p>
+<h3>Preview blocks when there's an are.na block link</h3>
+<p>Next plugin I added: for when there is a link to an are.na block instead of making it a button, it should get the block and create an inline preview. Specifically added this cause this is how my feed is structured. Only text blocks get published and links to other media blocks get resolved and inlined.</p>
+<p>Uses the same markdown:link hook</p>
+<p><div class="image"><img loading="lazy" src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0OTk2NTM5Ny9vcmlnaW5hbF9mMDJhNWI3YTdiNzVhZWZiYTAzN2QzODJjZmVmYjUxZi5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjE4MDAsImhlaWdodCI6MTgwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==" /></div></p>
+<p>And then uses a new markdown:after-rendered hook to asynchronously fetch if needed and replace.</p>
+<p><div class="image"><img loading="lazy" src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0OTk2NTQwMy9vcmlnaW5hbF9kYWI4MTdmYmU0Nzc4MjkwYTc1MzNhNTM0OTFmMjU1OC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjE4MDAsImhlaWdodCI6MTgwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==" /></div></p>
+<p>This is how it looks....</p>
+<p><div class="media"><video style="max-width: 500px; width:100%;" src="https://attachments.are.na/49965499/6057e57190ecb63cf7275bcf7af6c787.mp4?1788148251" loading="lazy" controls loop></video></div></p>
+<h3>And then....</h3>
+<blockquote><p>I added bunch of fun plugins!</p></blockquote>
+<h4>NON DESTRUCTIVE PDF ANNOTATIONS!</h4>
+<p><div class="media"><video style="max-width: 500px; width:100%;" src="https://attachments.are.na/49965176/1b09d81eb61895c3311bbd689079ed9b.mp4?1788147156" loading="lazy" controls loop></video></div></p>
+<h4>Drag and drop for files!!!</h4>
+<p>jpeg, jpg, png, gif, mp3, mp4, and pdf</p>
+<p><div class="media"><video style="max-width: 500px; width:100%;" src="https://attachments.are.na/49965612/331a2fbcb206e275dfa757ad864aba7a.mp4?1788148758" loading="lazy" controls loop></video></div></p>
+<h4>Subtitle / transcripts on video</h4>
+<p>Whenever there is a parseable srt content in the description show them as subtitles and also have the possibility to mount a transcript panel to scroll through and stuff</p>
+<p><div class="media"><video style="max-width: 500px; width:100%;" src="https://attachments.are.na/49966861/5287472473bded3eddea6b45f399324f.mp4?1788150214" loading="lazy" controls loop></video></div></p>
+<h4>Video annotations</h4>
+<p>essentially just timestamps, but can copy text with timestamp when transcript is available</p>
+<p><div class="media"><video style="max-width: 500px; width:100%;" src="https://attachments.are.na/50664819/50be9a676f5059762e09400da2595a23.mp4?1790094567" loading="lazy" controls loop></video></div></p>
+<h4>Group list layout</h4>
+<ul><li><p>sticky</p></li>
+<li><p>auto order</p></li>
+<li><p>size based on first block</p></li></ul>
+<p><div class="media"><video style="max-width: 500px; width:100%;" src="https://attachments.are.na/50663815/8e5b82592c64cd20328bb391e55fbbdd.mp4?1790093509" loading="lazy" controls loop></video></div></p>
+<h4>Pin Blocks</h4>
+<p><div class="media"><video style="max-width: 500px; width:100%;" src="https://attachments.are.na/50959258/a0c4533346f8cccb634bb3a8382b387e.mp4?1790877273" loading="lazy" controls loop></video></div></p>
+<h4>Cut/paste Blocks from region to region</h4>
+<p><div class="media"><video style="max-width: 500px; width:100%;" src="https://attachments.are.na/50959499/a0efd6f8af717dd18553b242d274670f.mp4?1790877977" loading="lazy" controls loop></video></div></p>]]></description>
+			<pubDate>Tue, 01 Sep 2026 04:41:01 GMT</pubDate>
+			<author>Aaryan Pashine</author>
+		</item>
+
 		<item>
 			<title>Are.na Organizer Updates</title>
 			<link>https://feed.a-p.space/blocks/49380055.html</link>

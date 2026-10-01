@@ -33,6 +33,8 @@
 	src: url('./fonts/GapSans.ttf') format('truetype');
 }
 
+* { box-sizing: border-box; }
+
 body {
 	background: var(--black);
 	color: var(--grey);
