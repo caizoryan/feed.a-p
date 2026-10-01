@@ -8,7 +8,7 @@ I would also like to point you to [Grant Custer's space](https://feed.grantcuste
 ## How this repo works
 
 1. Content is edited on Are.na.
-2. `main.js` coordinates fetching, caching, page generation, and RSS output. Rendering and API utilities live in separate modules.
+2. `src/main.js` coordinates fetching, caching, page generation, and RSS output. Rendering and API utilities live in separate modules under `src/`.
 3. Generated site files are written to `dist/` for deployment.
 
 Run a full build with `npm run build`. The first build fetches all linked channels; later builds reuse a channel's cached contents unless its Are.na `updated_at` value has changed. The cache is stored in the ignored `last_state.json` file and is saved after successful or failed runs.
@@ -26,21 +26,22 @@ This website runs on [Are.na](https://are.na). The specific channel that populat
 3. Only text blocks get published, if I want to show images/videos/pdf/link on the webpage, they have to be markdown linked in a text block.
 
 #### Generation modules
-- `main.js` manages the build lifecycle, state, CLI selection, and progress/error logging.
-- `arena.js` handles Are.na API requests.
-- `components.js` transforms Markdown and Are.na block links into components.
-- `page.js` renders channel HTML pages.
-- `rss.js` creates the RSS feed.
-- `utils.js` contains shared file, date, and sorting helpers.
+- `src/main.js` manages the build lifecycle, state, CLI selection, and progress/error logging.
+- `src/arena.js` handles Are.na API requests.
+- `src/components.js` transforms Markdown and Are.na block links into components.
+- `src/page.js` renders channel HTML pages.
+- `src/rss.js` creates the RSS feed.
+- `src/utils.js` contains shared file, date, and sorting helpers.
+- `src/markdown-it/` vendors the Markdown parser bundle used by `components.js`.
 
 #### style.css
-Right now the style lives in here, maybe in the future will also move this in the ssg renderer
+Styling lives in `public/style.css` (with typefaces in `public/fonts/`) and is copied into `dist/` at build time.
 
 #### Generated site
-HTML pages, block pages, `feed.xml`, and a copy of `style.css` are generated into `dist/`. The source `index.html` remains separate from generated output.
+HTML pages, block pages, and `feed.xml` are generated into `dist/`. Static assets live in `public/` (with typefaces in `public/fonts/`) and are copied into `dist/` at build time, so `dist/` is a deployable folder.
 
 #### auth.js && .gitignore
-If you look into main.js there is an import for auth.js but it doesn't appear on the repository. This is because it's ignored by git by marking it to be ignored in the .gitignore file. This file contains credentials/passphrase/token whatever you wanna call it to access my private channels on are.na. You can get your own from this [token generator](https://arena-token-gen.vercel.app/). Once you do that and you're interested in using this template, you can set it up by creating a auth.js file and exporting token from there as such: 
+If you look into `src/arena.js` there is an import for `auth.js` but it doesn't appear on the repository. This is because it's ignored by git by marking it to be ignored in the .gitignore file (the ignored path is `src/auth.js`). This file contains credentials/passphrase/token whatever you wanna call it to access my private channels on are.na. You can get your own from this [token generator](https://arena-token-gen.vercel.app/). Once you do that and you're interested in using this template, you can set it up by creating a `src/auth.js` file and exporting token from there as such: 
 
 ```js
 export const auth = 'your auth token here'
@@ -49,7 +50,7 @@ export const auth = 'your auth token here'
 ## Next steps
 
 #### Multiple Channels
-I wanna think of linking to other channels, this again I would restrict by only linking through text blocks. If a channel is linked in a text block, the process in main.js will also create another html file for that specific channel. And onclick I can have a draggable iframe open up for the channel, but since it's a file it can also be accessed through the link (this is a cool feature coming from single page application world lmao, but is the most basic thing)
+I wanna think of linking to other channels, this again I would restrict by only linking through text blocks. If a channel is linked in a text block, the process in `src/main.js` will also create another html file for that specific channel. And onclick I can have a draggable iframe open up for the channel, but since it's a file it can also be accessed through the link (this is a cool feature coming from single page application world lmao, but is the most basic thing)
 
 #### Download Images/videos
 This I'll have to think and consider, because this will also mean I have to manage state for which images/videos have been already downloaded so I don't re-download each time. But should be a pretty simple one.
