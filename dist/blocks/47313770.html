@@ -1,0 +1,9 @@
+<div class="block"><h1>Spreadsheet interface</h1>
+<p>Saw 
+<a href="https://prabros.com/bean/blog/spreadsheet-interface">this blog post</a>
+ earlier today, and now I'm thinking the next step for the node based + publication tool is to be transplanted into a spreadsheet like interface. After all, spreadsheets have proven to be the most successful interface for spatial end-user programming (and i think that is what I'm after).</p>
+<p>In this scenario the mechanisms of the [node based] will still stay the same, but instead of connecting wires to reference another node or creating a flow of data, it would be location references. Same as spreadsheets, eg. e4, b8.</p>
+<p>When a node is dragged from a position to another, it will also update all its references to its new location.</p>
+<p>The components width will be set in -> cols and rows. This component is 3 cols and 4 rows, etc. The values in pixels will be a dependant value on the sum of the rows and cols. The rows + cols can be resized and that would change the pixel size of the components that exist on that axis.</p>
+<p>Node connections (lines) can be optional. If references are known, connections can be automatically drawn on demand if connections need to be visualized.</p>
+<p>The address of a component will be the top-left cell. A cursor will be implemented that traverses the spreadsheet, when it lands on a components top-left cell, the component is current active component. When a component is active, it receives key presses and can incorporate that to edits its data/ui.</p></div>

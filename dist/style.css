@@ -1,0 +1,306 @@
+:root {
+
+	--blue-hinted-white: #c8d2d4;
+	--beigey-brown: #e3d5c5;
+	--text-brown: #645b40;
+
+	--red: #E30F00;
+	--grey2: #000;
+
+	--purple: #fff;
+	--purple-2: #333;
+
+	--blue: #555577;
+	--pink: #FEB8D5;
+
+	--black: var(--blue-hinted-white);
+	--grey: var(--text-brown);
+
+	--secondary: #8361fe;
+	--background: #D1F6DB;
+	--color: var(--purple);
+	--light-grey: #00000022;
+}
+
+@font-face {
+	font-family: 'intervariable';
+	src: url('./fonts/inter_variable.woff2');
+}
+
+
+@font-face {
+	font-family: 'gap';
+	src: url('./fonts/GapSans.ttf') format('truetype');
+}
+
+body {
+	background: var(--black);
+	color: var(--grey);
+	line-height: 1.3em;
+	font-family: "intervariable", sans-serif;
+	font-weight: 600;
+	font-size: 1.1em;
+}
+
+blockquote {
+	margin: 0;
+	padding: .4em;
+	background-color: var(--color);
+	color: var(--black);
+}
+
+h1 {
+	line-height: 1.4em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+	font-family: 'gap';
+}
+
+a {
+	color: var(--grey);
+}
+
+xmp {
+	color: var(--purple);
+	padding: 1rem;
+	background: #444;
+}
+
+.block-list {
+	display: none;
+	border: 1px solid var(--grey2);
+	margin: 20px auto;
+	background: var(--beigey-brown);
+	padding: 5px;
+}
+
+.block-list h1 {
+	font-size: 1em;
+}
+
+.block.month {
+	background: var(--color);
+	color: var(--purple-2);
+	border: none;
+}
+
+.block {
+	width: 800px;
+	margin: 20px auto;
+	border: 1px solid var(--grey2);
+	padding: 1em;
+	background-color: var(--beigey-brown);
+	/* box-shadow: 0 0 10px 0px var(--light-grey); */
+	/* max-width: 600px; */
+
+	transition: all 100ms ease-in-out;
+}
+
+.fixed {
+	position: fixed;
+	top: 1em;
+	left: 1em;
+}
+
+img,
+video {
+	width: 100%;
+}
+
+
+input.t1:checked~.block {
+	width: 1100px;
+}
+
+input.t2:checked~.block {
+	width: 800px;
+}
+
+input.t3:checked~.block {
+	width: 500px;
+}
+
+input.t1:checked~.block-list {
+	width: 1100px;
+}
+
+input.t2:checked~.block-list {
+	width: 800px;
+}
+
+input.t3:checked~.block-list {
+	width: 500px;
+}
+
+input.t4:checked~.block {
+	transform: skewX(0deg) !important;
+}
+
+
+input.t5:checked~.block {
+	display: none
+}
+
+input.t5:checked~.block-list {
+	display: block
+}
+
+
+label {
+	padding-left: 1.5em;
+	background-color: var(--purple);
+	padding-right: .5em;
+}
+
+.nav {
+	position: fixed;
+	background-color: var(--purple);
+	bottom: 1em;
+	padding: .5em;
+	left: 1em;
+}
+
+.nav h4 {
+	margin-bottom: 1em;
+	padding: 0;
+	line-height: 0;
+}
+
+.nav a,
+.nav p {
+	margin: 0;
+	padding: .2em 0;
+}
+
+input[type="radio"] {
+	appearance: none;
+	width: 1em;
+	height: 1em;
+	background-color: white;
+	border: 1px solid var(--grey);
+}
+
+.t1 {
+	top: 1rem;
+}
+
+.t2 {
+	top: 2.5rem;
+}
+
+.t3 {
+	top: 4rem;
+}
+
+.t4 {
+	top: 6rem;
+}
+
+.t5 {
+	top: 7.5rem;
+}
+
+.t6 {
+	top: 9rem;
+}
+
+/* .mt5 {transform: skewX(-3deg);} */
+/* .mt10 {transform: skewX(-2deg);} */
+/* .mt15 {transform: skewX(3deg);} */
+/* .mt20 {transform: skewX(5deg);} */
+/* .mt25 {transform: skewX(-4deg);} */
+/* .mt30 {transform: skewX(-5deg);} */
+
+input[type="radio"]:checked {
+	border: 1px solid white;
+	background-color: var(--grey);
+}
+
+
+.link,
+.pdf,
+.image,
+.media {
+	padding: 5px;
+	border: 1px solid var(--grey);
+	/* border-radius: 5px; */
+	background: var(--color);
+	color: var(--background);
+	width: 100%;
+	overflow: hidden;
+	/* box-shadow: 0 0 10px 0px var(--light-grey); */
+}
+
+.image-thumbnails .image {
+  margin-right: .5em;
+	width: 80px;
+}
+
+.image-thumbnails {
+  height: 100px;
+  width: 100%;
+  display: flex;
+}
+
+.link a {
+	color: var(--purple-2);
+}
+
+.media {
+	width: 95%;
+	font-size: 1.2em;
+	margin: 10px 0;
+}
+
+.pdf {
+	width: 95%;
+	height: 300px;
+}
+
+.pdf img {
+	padding-top: 10px;
+}
+
+button {
+	cursor: pointer;
+}
+
+.hover {
+	transition: all 100ms ease-in-out;
+}
+
+.hover:hover {
+	transform: scale(1.1);
+}
+
+
+.media p {
+	margin: 1em 0;
+	padding: 0;
+}
+
+.metadata {
+	padding: 3px;
+	font-size: 0.9em;
+	display: none;
+	border-top: .8px dotted var(--light-grey);
+	color: var(--grey2);
+	margin: 10px 0;
+
+	/* border: 1px dotted var(--light-grey); */
+	/* border-radius: 5px; */
+	/* background: #eee; */
+}
+
+.date {
+	color: var(--grey);
+	width: 15em;
+	margin-bottom: .5em;
+}
