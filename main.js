@@ -1,497 +1,179 @@
-import {parseHTML} from 'linkedom'
-import fs from "fs";
-import markdownIt from "./markdown-it/markdown-it.js";
-import { auth } from "./auth.js";
+import fs from "node:fs";
+import path from "node:path";
+import readline from "node:readline/promises";
+import { stdin as input, stdout as output } from "node:process";
+import { getChannelContents, getChannelInfo } from "./arena.js";
+import { renderChannel, wrapPage } from "./page.js";
+import { createRssItems, renderRss } from "./rss.js";
+import { readJson, sortByPosition, writeFile, writeJson } from "./utils.js";
 
-// ********************************
-// SECTION : Are.na Utilities
-// ********************************
-//
-// let host = "https://api.are.na/v3"
-let host = "http://localhost:3001/api";
-let options = {
-	headers: {
-		Authorization: `Bearer ${auth}`,
-		cache: "no-store",
-		"Cache-Control": "max-age=0, no-cache",
-		referrerPolicy: "no-referrer",
-	},
-};
+const root = process.cwd();
+const dist = path.join(root, "dist");
+const stateFile = path.join(root, "last_state.json");
+const MAIN_CHANNEL = process.env.MAIN_CHANNEL ?? "feed-2026";
+const loadedState = readJson(stateFile, {});
+const state = loadedState && typeof loadedState === "object" && !Array.isArray(loadedState) ? loadedState : {};
+state.channels = Array.isArray(state.channels) ? state.channels : [];
+state.blocks = Array.isArray(state.blocks) ? state.blocks : [];
+state.mainChannelSlug ??= MAIN_CHANNEL;
 
-const { document } = parseHTML(` <!doctype html> <html lang="en"></html> `);
-
-const fetch_json = (link, options) =>
-	fetch(link, options).then((r) => r.json());
-
-const get_channel_contents = async (slug) => {
-	let page = 1;
-	let contents = [];
-	let meta;
-	do {
-		const res = await fetch_json(
-			host + "/channels/" + slug + "/contents?page=" + page + "&per=100&force=true",
-			options,
-		);
-		contents = contents.concat(res.data ?? []);
-		meta = res.meta;
-		page = meta?.next_page;
-	} while (meta?.has_more_pages && page);
-	return contents.sort((b, a) => new Date(a.created_at) - new Date(b.created_at));
-};
-
-// v3 splits channel metadata and channel contents into two endpoints; merge them
-// back into the single object the rest of the code consumes.
-const get_channel = async (slug) => {
-	console.log("getting", slug);
-	const info = await fetch_json(host + "/channels/" + slug, options);
-	info.contents = await get_channel_contents(slug);
-	return info;
-};
-
-const get_block = async (id) => fetch_json(host + "/blocks/" + id, options);
-
-let link_svg =
-	`<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.51194 3.00541C9.18829 2.54594 10.0435 2.53694 10.6788 2.95419C10.8231 3.04893 10.9771 3.1993 11.389 3.61119C11.8009 4.02307 11.9513 4.17714 12.046 4.32141C12.4633 4.95675 12.4543 5.81192 11.9948 6.48827C11.8899 6.64264 11.7276 6.80811 11.3006 7.23511L10.6819 7.85383C10.4867 8.04909 10.4867 8.36567 10.6819 8.56093C10.8772 8.7562 11.1938 8.7562 11.389 8.56093L12.0077 7.94221L12.0507 7.89929C12.4203 7.52976 12.6568 7.2933 12.822 7.0502C13.4972 6.05623 13.5321 4.76252 12.8819 3.77248C12.7233 3.53102 12.4922 3.30001 12.1408 2.94871L12.0961 2.90408L12.0515 2.85942C11.7002 2.508 11.4692 2.27689 11.2277 2.11832C10.2377 1.46813 8.94398 1.50299 7.95001 2.17822C7.70691 2.34336 7.47044 2.57991 7.1009 2.94955L7.058 2.99247L6.43928 3.61119C6.24401 3.80645 6.24401 4.12303 6.43928 4.31829C6.63454 4.51355 6.95112 4.51355 7.14638 4.31829L7.7651 3.69957C8.1921 3.27257 8.35757 3.11027 8.51194 3.00541ZM4.31796 7.14672C4.51322 6.95146 4.51322 6.63487 4.31796 6.43961C4.12269 6.24435 3.80611 6.24435 3.61085 6.43961L2.99213 7.05833L2.94922 7.10124C2.57957 7.47077 2.34303 7.70724 2.17788 7.95035C1.50265 8.94432 1.4678 10.238 2.11799 11.2281C2.27656 11.4695 2.50766 11.7005 2.8591 12.0518L2.90374 12.0965L2.94837 12.1411C3.29967 12.4925 3.53068 12.7237 3.77214 12.8822C4.76219 13.5324 6.05589 13.4976 7.04986 12.8223C7.29296 12.6572 7.52943 12.4206 7.89896 12.051L7.89897 12.051L7.94188 12.0081L8.5606 11.3894C8.75586 11.1941 8.75586 10.8775 8.5606 10.6823C8.36533 10.487 8.04875 10.487 7.85349 10.6823L7.23477 11.301C6.80777 11.728 6.6423 11.8903 6.48794 11.9951C5.81158 12.4546 4.95642 12.4636 4.32107 12.0464C4.17681 11.9516 4.02274 11.8012 3.61085 11.3894C3.19896 10.9775 3.0486 10.8234 2.95385 10.6791C2.53661 10.0438 2.54561 9.18863 3.00507 8.51227C3.10993 8.35791 3.27224 8.19244 3.69924 7.76544L4.31796 7.14672ZM9.62172 6.08558C9.81698 5.89032 9.81698 5.57373 9.62172 5.37847C9.42646 5.18321 9.10988 5.18321 8.91461 5.37847L5.37908 8.91401C5.18382 9.10927 5.18382 9.42585 5.37908 9.62111C5.57434 9.81637 5.89092 9.81637 6.08619 9.62111L9.62172 6.08558Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>`;
-
-// ********************************
-// SECTION : Rendering for Special Components
-// ********************************
-//
-const media_embed = (block) =>
-	`<span class="media">${block.embed?.html}</span>`;
-
-const media = (block) => `
-	<a href=${block?.source?.url}>
-		<div class="media">
-			<p class="title">${block.title}</p>
-			<img src="${block.image?.large?.src ?? block.image?.src}" />
-			<p class="metadata">${block.source?.url}</p> 
-		</div>
-	</a>
-`;
-
-const video = (block) =>
-	`<div class="media"><video src=${block.attachment.url} loading='lazy' controls loop></video></div>`;
-const image = (block) =>
-	`<div class="image"><img loading='lazy' src="${block.image?.large?.src ?? block.image?.src}" /></div>`;
-
-const thumb = (block) =>{
-	return `<div class="image"><img loading='lazy' src="${block.image?.small?.src ?? block.image?.src}" /></div>`;
+function cachedChannel(slug) {
+	return state.channels.find((channel) => channel.slug === slug);
 }
-const link = (block) =>
-	`<span class="link"> <a target="_blank" href=${block.source.url}>${block.title} ${link_svg}</a> </span>`;
 
-const pdf = (block) => `
-	<a target="_blank" href=${block.attachment.url}>
-		<p class="pdf">
-			<span>
-			${block.title} ${link_svg}
-			</span>
-			<img src="${block.image?.large?.src ?? block.image?.src}" />
-		</p>
-	</a>
-`;
+function saveChannel(channel) {
+	const index = state.channels.findIndex((item) => item.slug === channel.slug);
+	if (index < 0) state.channels.push(channel);
+	else state.channels[index] = channel;
+}
 
-const channel = (c) => `
-	<a target="_blank" href=./${c.slug}>
-		<p class="channel">
-			<span> ${c.title} </span>
-		</p>
-	</a>
-`;
+function isUpdated(current, previous) {
+	if (!previous?.updated_at || !current?.updated_at) return true;
+	const currentTime = Date.parse(current.updated_at);
+	const previousTime = Date.parse(previous.updated_at);
+	return Number.isNaN(currentTime) || Number.isNaN(previousTime) || currentTime > previousTime;
+}
 
-async function run() {
-	let channel = await get_channel("feed-2026");
-	let channels = [];
-	let channel_slugs = channel.contents.filter((e) => e.type == "Channel");
-	// channel.contents = channel.contents.sort(
-	// 	(a, b) => (b.connection?.position ?? b.position) - (a.connection?.position ?? a.position),
-	// );
-
-	let rss = []
-	let html = await create_html(channel, 5, rss);
-	write_rss(rss.join('\n'), 'feed.xml')
-	// let rss = 
-	for (const slug of channel_slugs) {
-		const c = await get_channel(slug.slug);
-		c.contents = c.contents.sort(
-			(a, b) => (a.connection?.position ?? a.position) - (b.connection?.position ?? b.position),
-		);
-		console.log("Got: ", c.slug);
-		channels.push(c);
+async function loadChannel(slug, { forceContents = false } = {}) {
+	const info = await getChannelInfo(slug);
+	const previous = cachedChannel(info.slug ?? slug);
+	let contents;
+	if (!forceContents && previous && !isUpdated(info, previous) && Array.isArray(previous.contents)) {
+		console.log(`Using cached contents for ${info.slug ?? slug}`);
+		contents = previous.contents;
+	} else {
+		console.log(`Fetching contents for ${info.slug ?? slug}`);
+		contents = await getChannelContents(slug);
 	}
+	const channel = { ...previous, ...info, slug: info.slug ?? slug, contents };
+	saveChannel(channel);
+	return channel;
+}
 
-	let projects = channels.map((e) =>
-		`<p><a href='${"./" + e.slug + ".html"}'>${e.title.replace("[FEED] ", "")
-		}</a></p>`
+function updateBlockState(channels) {
+	state.blocks = channels.flatMap((channel) => (channel.contents ?? []).map((block) => ({
+		id: block.id,
+		type: block.type,
+		updated_at: block.updated_at,
+		channelSlug: channel.slug,
+	})));
+}
+
+function pageLinks(channels) {
+	const projects = channels.map((channel) =>
+		`<p><a href="./${channel.slug}.html">${(channel.title ?? channel.slug).replace("[FEED] ", "")}</a></p>`,
 	).join("");
+	return `<a href="./feed.xml"><h4>RSS</h4></a><br></br><h4>Pages</h4>${projects}`;
+}
 
-	let links = `
-<h4> Projects </h4>
-${projects}
+function copyStylesheet() {
+	fs.copyFileSync(path.join(root, "style.css"), path.join(dist, "style.css"));
+}
 
-<a href='./feed.xml'><h4> RSS </h4></a>
-`;
-
-	write_html(html, "index.html", links);
-
-	for (const c of channels) {
-		console.log("Creating HTML file for:", c.slug);
-		const h = await create_html(c);
-		write_html(h, c.slug + ".html", links);
+function writeBlockPages(blockPages) {
+	for (const blockPage of blockPages) {
+		writeFile(path.join(dist, "blocks", `${blockPage.id}.html`), blockPage.html);
 	}
 }
 
-let padd_zero = (num) => num < 10 ? "0" + num : num;
+function writeChannelPage(channel, links = "", isIndex = false) {
+	return renderChannel(channel).then(({ html, blockPages }) => {
+		writeBlockPages(blockPages);
+		const filename = isIndex ? "index.html" : `${channel.slug}.html`;
+		writeFile(path.join(dist, filename), wrapPage(html, { links, isIndex }));
+		return { html, blockPages };
+	});
+}
 
-let time_string = (time) => {
-	let week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-	let date = time.getDate();
-	let month = time.getMonth();
-	let day = time.getDay();
-	let hours = time.getHours();
-	let minutes = time.getMinutes();
-	return `${date} ${months[month]}, ${week[day]}, ${padd_zero(hours)}:${padd_zero(minutes)
-		}`;
-};
+async function chooseChannel(query) {
+	const channels = state.channels;
+	if (!channels.length) throw new Error("No saved channels found in last_state.json. Run the full build first.");
 
-let months = [
-	"January",
-	"February",
-	"March",
-	"April",
-	"May",
-	"June",
-	"July",
-	"August",
-	"September",
-	"October",
-	"November",
-	"December",
-];
-
-let date_string = (time) => {
-	let date = time.getDate();
-	let month = time.getMonth();
-	let year = time.getFullYear();
-
-	return `${date} ${months[month]} ${year}`;
-};
-
-let month = (time) => {
-	let month = time.getMonth();
-	return months[month];
-};
-
-async function create_html(channel, slice = 5, rss) {
-	console.log("Length: ", channel.contents.length);
-	let fillRSS = false
-	if (rss) fillRSS = true
-
-	let html = `
-			<label for="html" class="fixed t1">1100px</label>
-		  <input type="radio" name="any" value="HTML" class="fixed t1">
-
-			<label for="b" class="fixed t2">800px</label>
-		  <input type="radio" checked name="any" value="b" class="fixed t2">
-
-			<label for="c" class="fixed t3">500px</label>
-		  <input type="radio" name="any" value="c" class="fixed t3">
-
-			<label for="c" class="fixed t4">normal</label>
-		  <input type="radio" checked name="dawg" value="c" class="fixed t4">
-
-			<label for="c" class="fixed t5">list</label>
-		  <input type="radio" name="dawg" value="c" class="fixed t5">
-`;
-	let options = ["mt5", "mt10", "mt15", "mt20", "mt25", "mt30"];
-
-	let lastmonth = "";
-
-	let channels = [];
-	let count = 0
-
-	for await (const block of channel.contents) {
-		if (block.type == "Text") {
-			count++
-			if (
-				block.title?.toUpperCase() == "DRAFT" ||
-				block.title?.toLowerCase() == ".canvas"
-			) continue;
-
-			let date = block.title ?? "";
-			let updated_at = new Date(block.updated_at);
-			let updated_at_string = time_string(updated_at);
-
-			let created_at = new Date(block.created_at);
-			let created_at_string = time_string(created_at);
-			if (date == "") date = date_string(created_at);
-
-			let images = []
-			let content = await MD(block.content?.markdown ?? "", images);
-			let m = month(new Date(date));
-
-			if (months.includes(m) && m != lastmonth) {
-				html += `
-				<div class="block month mt30">
-					<h1>${m}</h1>
-				</div>
-			`;
-			}
-
-			if (months.includes(m)) lastmonth = m;
-
-			let contentstring = content.flat().join("\n");
-			let contentsliced = content.flat().slice(0, slice).join("\n");
-
-			let desc = contentsliced.split("\n")[1]
-			if (!desc || desc.includes('"')) desc = '(...)'
-
-			let descDummyEl = document.createElement('div')
-			descDummyEl.innerHTML = desc
-			let descStripped = descDummyEl.innerText
-
-			let descHtml = `<![CDATA[${content.flat().slice(1).join('\n').replaceAll('<video', '<video style="max-width: 500px; width:100%;"')}]]>`
-
-			let titleDummyEl = document.createElement('div')
-			titleDummyEl.innerHTML = contentsliced.split("\n")[0]
-			let titleStripped = titleDummyEl.innerText
-
-			if (count > 42) fillRSS = false
-			if (fillRSS) rss.push(`
-				<item>
-					<title>${titleStripped}</title>
-					<link>${"https://feed.a-p.space/blocks/" + block.id + ".html"}</link>
-					<description>${ descHtml }</description>
-					<pubDate>${created_at.toUTCString()}</pubDate>
-					<author>Aaryan Pashine</author>
-				</item>
-			`)
-
-			html += `
-				<div class="block-list">
-					<a href='./blocks/${block.id}.html'>
-						<h1>${contentsliced.split("\n")[0]}</h1>
-					</a>
-						${images.length > 0 ? `
-							<div class='image-thumbnails'>
-								${images.join('\n')}
-							</div>`
-							: ''}
-				</div>
-
-					<div class="block">
-						<p class="date">${date}</p>
-						<span class="metadata">updated_at: ${updated_at_string}</span>
-						<span class="metadata">posted_on: ${created_at_string}</span>
-						${contentsliced}
-
-					<a href='./blocks/${block.id}.html'> See more </a>
-					</div>
-			`;
-
-			write_html(
-				`<div class='block'>${contentstring}</div>`,
-				"./blocks/" + block.id + ".html",
-			);
-		} else if (block.type == "Channel") channels.push(block);
+	if (query) {
+		const match = channels.find((channel) => channel.slug === query)
+			?? channels.find((channel) => channel.title?.toLowerCase().includes(query.toLowerCase()) || channel.slug.toLowerCase().includes(query.toLowerCase()));
+		if (!match) throw new Error(`No saved channel matches "${query}".`);
+		return match;
 	}
 
-	return html;
-}
-
-function write_html(html, file, links = "") {
-	let html_full = `
-		<!DOCTYPE html>
-		<html>
-			<head>
-
-				<link rel="icon" type="image/x-icon" href="https://a-p.space/favicon.ico">
-				<link rel="stylesheet" href="/style.css">
-				${ file == 'index.html' ? '<link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Aaryan\'s Feed">' : ""}
-			</head> 
-		<body>
-
-			<div class='nav'>
-				<h4>Pages</h4>
-				<p><a href="/">home</a></p>
-				<p><a href="https://github.com/caizoryan/feed.a-p">about</a></p>
-
-				${links}
-			</div>
-			${html}
-		</body>
-		</html>`;
-
-	fs.writeFileSync(file, html_full);
-}
-
-function write_rss(content, file, ) {
-	let html_full = `
-<rss version="2.0">
-	<channel>
-
-		<title>Aaryan's Feed</title>
-		<link>https://feed.a-p.space/</link>
-		<description>
-			Stuff coming out the workshop
-		</description>
-
-		<language>en-us</language>
-		<pubDate>Fri, 22 May 2026 09:00:00 EST</pubDate>
-
-		${content}
-	</channel>
-</rss>
-`;
-
-	fs.writeFileSync(file, html_full);
-}
-
-// ********************************
-// SECTION : MARKDOWN RENDERING
-// ********************************
-let md = new markdownIt("commonmark"); //.use(makrdownItMark);
-
-let attrs = (item) => {
-	let attrs = item.attrs;
-	if (!attrs) return "";
-	return Object.fromEntries(attrs);
-};
-
-const link_is_block = (link) => {
-	return link.includes("are.na/block");
-};
-
-const extract_block_id = (link) => {
-	return link.split("/").pop();
-};
-
-async function eat(tree, med) {
-
-	let fillMedia = false
-	if (med && Array.isArray(med)){
-		fillMedia = true
-		// fill this with media
-	}
-	let ret = [];
-
-	if (!tree) return "";
-
-	while (tree.length > 0) {
-		let item = tree.shift();
-		if (item.nesting === 1) {
-			let at = attrs(item);
-			let ignore = false;
-
-			if (at.href && link_is_block(at.href)) {
-				let id = extract_block_id(at.href);
-				let block = await get_block(id);
-
-				// --------------------------------
-				// Attachment
-				// --------------------------------
-				if (block.type == "Attachment") {
-					if (block.attachment.file_extension == "mp4") {
-						ret.push(video(block));
-						if (fillMedia && block.image) med.push(image(block))
-					} else if (block.attachment.file_extension == "pdf") {
-						ret.push(pdf(block));
-					}
-					let word = await eat(tree, med);
-					ignore = true;
-				} // --------------------------------
-				// Embed (v2 called this "Media")
-				// --------------------------------
-				else if (block.type == "Embed") {
-					if (block.type == "Embed" && block.embed) {
-						ret.push(media_embed(block));
-					} else ret.push(media(block));
-					let word = await eat(tree, med);
-					ignore = true;
-				} // --------------------------------
-				// Image
-				// --------------------------------
-				else if (block.type == "Image") {
-					let img = image(block)
-					ret.push(img);
-					if (fillMedia){
-						med.push(img)
-					}
-					let word = await eat(tree, med);
-					ignore = true;
-				} // --------------------------------
-				// TEXT
-				// --------------------------------
-
-				// --------------------------------
-				// Link
-				// --------------------------------
-				else if (block.type == "Link") {
-					ret.push(link(block));
-					let word = await eat(tree, med);
-					ignore = true;
-				}
-			}
-
-			let entries = Object.entries;
-			let at_string =
-				// convert attribute (in object form)
-				// to an html stringified attribute form
-				entries(at)
-					.map(([key, value]) => `${key} = "${value}"`)
-					.join(" ");
-
-			if (!ignore) {
-				let children = await eat(tree, med);
-				children = Array.isArray(children) ? children.join("") : children;
-
-				ret.push(`<${item.tag} ${at_string}> ${children} </${item.tag}>`);
-			}
-		}
-
-		if (item.nesting === 0) {
-			if (!item.children || item.children.length === 0) {
-				let p = "";
-				if (item.type == "softbreak") {
-					p = "<br></br>";
-				} else if (item.type == "fence") {
-					p = `<xmp>${item.content}</xmp>`;
-				} else {
-					if (item.content.charAt(0) == ">") {
-						p = `<blockquote>${item.content.slice(1)}</blockquote>`;
-					} else p = item.content;
-				}
-				ret.push(p);
-			} else {
-				let children = await eat(item.children, med);
-				children = Array.isArray(children) ? children.join("") : children;
-				ret.push(children);
-			}
-		}
-
-		if (item.nesting === -1) break;
-	}
-
-	return ret;
-}
-
-let safe_parse = (content) => {
+	const rl = readline.createInterface({ input, output });
 	try {
-		return md.parse(content, { html: true });
-	} catch (e) {
-		return undefined;
+		console.log("Pick a channel to generate:");
+		channels.forEach((channel, index) => console.log(`${index + 1}. ${channel.title ?? channel.slug} (${channel.slug})`));
+		const answer = await rl.question("Channel number: ");
+		const selection = Number.parseInt(answer, 10) - 1;
+		if (!Number.isInteger(selection) || selection < 0 || selection >= channels.length) {
+			throw new Error("Invalid channel selection.");
+		}
+		return channels[selection];
+	} finally {
+		rl.close();
 	}
-};
-const MD = async (content, media) => {
-	let tree, body;
-	tree = safe_parse(content);
+}
 
-	if (tree) body = await eat(tree, media);
-	else body = content;
+function parseChannelArg(args) {
+	const index = args.findIndex((arg) => arg === "-c" || arg === "--channel");
+	if (index < 0) return { requested: false };
+	const next = args[index + 1];
+	return { requested: true, query: next && !next.startsWith("-") ? next : undefined };
+}
 
+async function runSingleChannel(query) {
+	const selected = await chooseChannel(query);
+	console.log(`Generating only ${selected.slug}`);
+	const channel = await loadChannel(selected.slug, { forceContents: true });
+	updateBlockState([channel]);
+	await writeChannelPage(channel, pageLinks(state.channels));
+	copyStylesheet();
+}
 
-	return body;
-};
+async function runFullBuild() {
+	console.log(`Getting main channel: ${MAIN_CHANNEL}`);
+	const mainChannel = await loadChannel(MAIN_CHANNEL, { forceContents: true });
+	const linkedChannels = sortByPosition((mainChannel.contents ?? []).filter((block) => block.type === "Channel"));
+	const channels = [];
 
-run();
+	for (const linked of linkedChannels) {
+		const channel = await loadChannel(linked.slug);
+		console.log(`Ready: ${channel.slug}`);
+		channels.push(channel);
+	}
+
+	state.mainChannelSlug = MAIN_CHANNEL;
+	updateBlockState([mainChannel, ...channels]);
+	const links = pageLinks(channels);
+	await writeChannelPage(mainChannel, links, true);
+
+	for (const channel of channels) {
+		console.log(`Creating HTML file for: ${channel.slug}`);
+		await writeChannelPage(channel, links);
+	}
+
+	const rssItems = await createRssItems(mainChannel.contents);
+	writeFile(path.join(dist, "feed.xml"), renderRss(rssItems));
+	copyStylesheet();
+}
+
+async function main() {
+	try {
+		const channelArg = parseChannelArg(process.argv.slice(2));
+		if (channelArg.requested) await runSingleChannel(channelArg.query);
+		else await runFullBuild();
+		state.lastRunAt = new Date().toISOString();
+		state.lastError = null;
+	} catch (error) {
+		state.lastError = { message: error.message, at: new Date().toISOString() };
+		console.error(error);
+		process.exitCode = 1;
+	} finally {
+		state.lastAttemptAt = new Date().toISOString();
+		try {
+			writeJson(stateFile, state);
+		} catch (error) {
+			console.error(`Could not save state to ${stateFile}:`, error);
+			process.exitCode = 1;
+		}
+	}
+}
+
+await main();

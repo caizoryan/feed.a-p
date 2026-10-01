@@ -1,4 +1,6 @@
 auth.js
 node_modules/
 package-lock.json
+dist/
+last_state.json
 

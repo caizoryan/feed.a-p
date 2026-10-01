@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Welcome to anyone browsing this. This is a space for me to play around with static site generation while also making something to host a log of me making things. I wanted a space where I can document things I'm making, sketches, prototypes, ideas, seed of future projects.",
   "main": "main.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node main.js",
+    "test": "node --test"
   },
   "keywords": [],
   "author": "",
