@@ -1,10 +1,47 @@
-
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/x-icon" href="https://a-p.space/favicon.ico">
 		<link rel="stylesheet" href="/style.css">
-		<div class="block"><h1>Editing Editor using Editor</h1>
+		
+	</head>
+	<body>
+		<header class="site-header">
+		<button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">
+			<span>feed.a-p.space</span>
+			<svg class="menu-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+		</button>
+		<div class="menu-content">
+		<aside class="panel" id="sidebar" inert>
+			<h4>Pages</h4>
+			<p><a href="/">home</a></p>
+			<p><a href="https://github.com/caizoryan/feed.a-p">about</a></p>
+			<p><a href="/feed.xml">RSS</a></p><p><a href="/feed-2025.html">2025</a></p>
+			
+		<div class="view-options">
+			<h4>View</h4>
+			<div class="option-group">
+				<button type="button" data-width="1100">1100px</button>
+				<button type="button" data-width="800">800px</button>
+				<button type="button" data-width="500">500px</button>
+			</div>
+			<div class="option-group">
+				<button type="button" data-view="grid">normal</button>
+				<button type="button" data-view="list">list</button>
+			</div>
+		</div>
+		</aside>
+		</div>
+		</header>
+		<main class="container" data-width="800" data-view="grid"><div class="block"><h1>Editing Editor using Editor</h1>
 <p><div class="media"><video src="https://attachments.are.na/34402469/c69702490b769454ff5150d3107c6bd4.mp4?1739146366" loading="lazy" controls loop></video></div></p>
 <p>I implemented saving and outputing html files and a mechanism to traverse levels. Just have to make it a little smoother to work. Right now its very jaggedy, mostly because I don't know how it should work.</p>
 <p>The current implementation outputs the html file with a SOURCE_PATH variable which can be used to navigate back to the source files. I think this is the way to do it.</p>
 <p>Also re-watched Nada Amin's 
 <a href="https://www.youtube.com/watch?v=SrKj4hYic5A">Programming should eat itself</a>
- talk which I think got the cogs turning for me about metaprogramming. Though the talk mostly goes over my head.</p></div>
-		
+ talk which I think got the cogs turning for me about metaprogramming. Though the talk mostly goes over my head.</p></div></main>
+		<script src="/script.js" defer></script>
+	</body>
+</html>

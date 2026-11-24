@@ -1,6 +1,41 @@
-
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/x-icon" href="https://a-p.space/favicon.ico">
 		<link rel="stylesheet" href="/style.css">
-		<div class="block"><h1>Learning, recently...</h1>
+		
+	</head>
+	<body>
+		<header class="site-header">
+		<button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">
+			<span>feed.a-p.space</span>
+			<svg class="menu-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+		</button>
+		<div class="menu-content">
+		<aside class="panel" id="sidebar" inert>
+			<h4>Pages</h4>
+			<p><a href="/">home</a></p>
+			<p><a href="https://github.com/caizoryan/feed.a-p">about</a></p>
+			<p><a href="/feed.xml">RSS</a></p><p><a href="/feed-2025.html">2025</a></p>
+			
+		<div class="view-options">
+			<h4>View</h4>
+			<div class="option-group">
+				<button type="button" data-width="1100">1100px</button>
+				<button type="button" data-width="800">800px</button>
+				<button type="button" data-width="500">500px</button>
+			</div>
+			<div class="option-group">
+				<button type="button" data-view="grid">normal</button>
+				<button type="button" data-view="list">list</button>
+			</div>
+		</div>
+		</aside>
+		</div>
+		</header>
+		<main class="container" data-width="800" data-view="grid"><div class="block"><h1>Learning, recently...</h1>
 <p>I started the 
 <a href="http://craftinginterpreters.com/">crafting interpreters</a>
  book yesterday. It takes you through writing a compiler+interpreter in first Java and then C. I'm going to be following the book with Typescript and Zig.</p>
@@ -18,5 +53,7 @@
 <p>Though we can have this sort of spatial programming if we have a graphical editor... and then diagnostics would be based on where objects are in space rather than textual syntax.</p>
 <p>[ps the vocabulary is lacking above, will come back to edit and refine this post]
 <br></br>
-[TODO: add a WIP/Draft renderer for the feed]</p></div>
-		
+[TODO: add a WIP/Draft renderer for the feed]</p></div></main>
+		<script src="/script.js" defer></script>
+	</body>
+</html>

@@ -5,8 +5,27 @@
 		<link>https://feed.a-p.space/</link>
 		<description>Stuff coming out the workshop</description>
 		<language>en-us</language>
-		<pubDate>Thu, 01 Oct 2026 18:09:16 GMT</pubDate>
+		<pubDate>Tue, 24 Nov 2026 05:01:43 GMT</pubDate>
 		
+		<item>
+			<title>Big refresh on the Node Tool</title>
+			<link>https://feed.a-p.space/blocks/53214043.html</link>
+			<description><![CDATA[<p>So I've decided that I'm going to be working on this tool long term :) During my thesis work I really thought this tool was onto something and it genuinely feels like a cumulation of all these years that I've been making 
+<a href="https://writing.a-p.space/pages/building_programming_environments">programming environments</a>
+.</p>
+<p>I also recently started working as a graphic designer at 
+<a href="https://frontier.is">Frontier</a>
+ and have been using the node tool in some capacity, and it has been a lot of fun! The more I use it the more I figure out what kind of user experience I want and what purpose this tool is serving. More on that later... But till then I just wanted to share some interface updates :V</p>
+<p><div class="image"><img loading="lazy" src="https://d2w9rnfcy7mm78.cloudfront.net/53213784/original_28b560aa02a9e83c4c8654b7bc108090.gif?1795493896" /></div></p>
+<blockquote><p>This is from like October I would say. Just set the node tool back up, did some migrations, fixed up some bugs and made it more robust and extensible</p></blockquote>
+<p><div class="media"><video style="max-width: 500px; width:100%;" src="https://attachments.are.na/53213953/c8d6cdaf043b38109fc5587e1ef456a9.mp4?1795494747" loading="lazy" controls loop></video></div></p>
+<blockquote><p>And then I gave it a big design refresh, and have to give my thanks to Omama, she lowkey art-directed this design refresh.</p></blockquote>
+<p><div class="media"><video style="max-width: 500px; width:100%;" src="https://attachments.are.na/53214028/791b23ff8f66b5820dabe5149746a854.mp4?1795495006" loading="lazy" controls loop></video></div></p>
+<blockquote><p>this is the skin I'm using currently... I just like the barebones basic aesthetic :)</p></blockquote>]]></description>
+			<pubDate>Tue, 24 Nov 2026 04:37:04 GMT</pubDate>
+			<author>Aaryan Pashine</author>
+		</item>
+
 		<item>
 			<title>[Plugins] for Are.na Canvas :D</title>
 			<link>https://feed.a-p.space/blocks/50004527.html</link>

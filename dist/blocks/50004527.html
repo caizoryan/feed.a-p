@@ -1,6 +1,41 @@
-
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/x-icon" href="https://a-p.space/favicon.ico">
 		<link rel="stylesheet" href="/style.css">
-		<div class="block"><h1>[Plugins] for Are.na Canvas :D</h1>
+		
+	</head>
+	<body>
+		<header class="site-header">
+		<button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">
+			<span>feed.a-p.space</span>
+			<svg class="menu-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+		</button>
+		<div class="menu-content">
+		<aside class="panel" id="sidebar" inert>
+			<h4>Pages</h4>
+			<p><a href="/">home</a></p>
+			<p><a href="https://github.com/caizoryan/feed.a-p">about</a></p>
+			<p><a href="/feed.xml">RSS</a></p><p><a href="/feed-2025.html">2025</a></p>
+			
+		<div class="view-options">
+			<h4>View</h4>
+			<div class="option-group">
+				<button type="button" data-width="1100">1100px</button>
+				<button type="button" data-width="800">800px</button>
+				<button type="button" data-width="500">500px</button>
+			</div>
+			<div class="option-group">
+				<button type="button" data-view="grid">normal</button>
+				<button type="button" data-view="list">list</button>
+			</div>
+		</div>
+		</aside>
+		</div>
+		</header>
+		<main class="container" data-width="800" data-view="grid"><div class="block"><h1>[Plugins] for Are.na Canvas :D</h1>
 <p>For the past month or two I've been heavily using Are.na Canvas. Partly because I've started working on it again. I've been meaning turn the structure for Are.na canvas into a plugin system. The idea being that the core (dragging, panning, loading, mounting, state, transactions) become stable ground to build on top. And then you just write components that build on the context of the channel and individual blocks.</p>
 <p>So here's some updates on progress I've made with the plugin system. The way I'm going about it is seeing what are my needs and then figuring out how a plugin could do this. Once I think through that, I can add that to the plugin surface. So right now the plugin surface, or as I call it -> the 
 controller
@@ -45,5 +80,7 @@ controller
 <h4>Pin Blocks</h4>
 <p><div class="media"><video src="https://attachments.are.na/50959258/a0c4533346f8cccb634bb3a8382b387e.mp4?1790877273" loading="lazy" controls loop></video></div></p>
 <h4>Cut/paste Blocks from region to region</h4>
-<p><div class="media"><video src="https://attachments.are.na/50959499/a0efd6f8af717dd18553b242d274670f.mp4?1790877977" loading="lazy" controls loop></video></div></p></div>
-		
+<p><div class="media"><video src="https://attachments.are.na/50959499/a0efd6f8af717dd18553b242d274670f.mp4?1790877977" loading="lazy" controls loop></video></div></p></div></main>
+		<script src="/script.js" defer></script>
+	</body>
+</html>

@@ -1,6 +1,41 @@
-
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/x-icon" href="https://a-p.space/favicon.ico">
 		<link rel="stylesheet" href="/style.css">
-		<div class="block"><h1>Spreadsheet interface</h1>
+		
+	</head>
+	<body>
+		<header class="site-header">
+		<button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">
+			<span>feed.a-p.space</span>
+			<svg class="menu-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+		</button>
+		<div class="menu-content">
+		<aside class="panel" id="sidebar" inert>
+			<h4>Pages</h4>
+			<p><a href="/">home</a></p>
+			<p><a href="https://github.com/caizoryan/feed.a-p">about</a></p>
+			<p><a href="/feed.xml">RSS</a></p><p><a href="/feed-2025.html">2025</a></p>
+			
+		<div class="view-options">
+			<h4>View</h4>
+			<div class="option-group">
+				<button type="button" data-width="1100">1100px</button>
+				<button type="button" data-width="800">800px</button>
+				<button type="button" data-width="500">500px</button>
+			</div>
+			<div class="option-group">
+				<button type="button" data-view="grid">normal</button>
+				<button type="button" data-view="list">list</button>
+			</div>
+		</div>
+		</aside>
+		</div>
+		</header>
+		<main class="container" data-width="800" data-view="grid"><div class="block"><h1>Spreadsheet interface</h1>
 <p>Saw 
 <a href="https://prabros.com/bean/blog/spreadsheet-interface">this blog post</a>
  earlier today, and now I'm thinking the next step for the node based + publication tool is to be transplanted into a spreadsheet like interface. After all, spreadsheets have proven to be the most successful interface for spatial end-user programming (and i think that is what I'm after).</p>
@@ -8,5 +43,7 @@
 <p>When a node is dragged from a position to another, it will also update all its references to its new location.</p>
 <p>The components width will be set in -> cols and rows. This component is 3 cols and 4 rows, etc. The values in pixels will be a dependant value on the sum of the rows and cols. The rows + cols can be resized and that would change the pixel size of the components that exist on that axis.</p>
 <p>Node connections (lines) can be optional. If references are known, connections can be automatically drawn on demand if connections need to be visualized.</p>
-<p>The address of a component will be the top-left cell. A cursor will be implemented that traverses the spreadsheet, when it lands on a components top-left cell, the component is current active component. When a component is active, it receives key presses and can incorporate that to edits its data/ui.</p></div>
-		
+<p>The address of a component will be the top-left cell. A cursor will be implemented that traverses the spreadsheet, when it lands on a components top-left cell, the component is current active component. When a component is active, it receives key presses and can incorporate that to edits its data/ui.</p></div></main>
+		<script src="/script.js" defer></script>
+	</body>
+</html>

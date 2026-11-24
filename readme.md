@@ -15,6 +15,8 @@ Run a full build with `npm run build`. The first build fetches all linked channe
 
 To regenerate just one saved channel, run `npm run build -- --channel` and choose from the interactive list, or pass a saved slug/title query with `npm run build -- --channel <channel>`. This writes that channel's HTML and block pages without rebuilding the index or RSS feed.
 
+To copy `public/` into `dist/` without touching the Are.na API or regenerating pages (useful for iterating on styles or client JS offline), run `npm run build -- --dry`. This also skips updating `last_state.json`.
+
 The API defaults to `http://localhost:3001/api`, matching the local proxy setup. Set `ARENA_API_URL` to use another API endpoint; set `MAIN_CHANNEL` to override the default `feed-2026` channel.
 
 ## Outline

@@ -1,6 +1,41 @@
-
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/x-icon" href="https://a-p.space/favicon.ico">
 		<link rel="stylesheet" href="/style.css">
-		<div class="block"><blockquote><p>##########################</p>
+		
+	</head>
+	<body>
+		<header class="site-header">
+		<button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">
+			<span>feed.a-p.space</span>
+			<svg class="menu-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+		</button>
+		<div class="menu-content">
+		<aside class="panel" id="sidebar" inert>
+			<h4>Pages</h4>
+			<p><a href="/">home</a></p>
+			<p><a href="https://github.com/caizoryan/feed.a-p">about</a></p>
+			<p><a href="/feed.xml">RSS</a></p><p><a href="/feed-2025.html">2025</a></p>
+			
+		<div class="view-options">
+			<h4>View</h4>
+			<div class="option-group">
+				<button type="button" data-width="1100">1100px</button>
+				<button type="button" data-width="800">800px</button>
+				<button type="button" data-width="500">500px</button>
+			</div>
+			<div class="option-group">
+				<button type="button" data-view="grid">normal</button>
+				<button type="button" data-view="list">list</button>
+			</div>
+		</div>
+		</aside>
+		</div>
+		</header>
+		<main class="container" data-width="800" data-view="grid"><div class="block"><blockquote><p>##########################</p>
 <h2>drafting/inprogress</h2>
 <p>##########################</p></blockquote>
 <h1>(editor-editor) Updates</h1>
@@ -33,5 +68,7 @@
 <p><div class="media"><video src="https://attachments.are.na/34903037/a80310392a9bad84782e64434c2532a2.mp4?1740818785" loading="lazy" controls loop></video></div></p>
 <p>Will be working on this further. Will make it embedded in the editor so it can be searchable and one can easily navigate to symbols in the editor.</p>
 <p>Also need to implement a scroll to active block position for the canvas. Will also look into the canvas library I'm using I think it has a zoom to rectangle function, so could think of saving and navigating to rectangles and saving these. And then I can have a save and navigate to certain views.</p>
-<p>Also Thinking about how the navigation tree can be used for metaprogramming for javascript/typescript. For instance you can query the editor for current tree. Have a matcher, say match the global scope Editor. Then for each of Editor's methods do something. And that can be outputed and added to script. Or it could also be used to templativize making a display component for a class. Like if you make a display component for Editor, you could have a live feed of its internals as the editor runs. And if you have templativizer, it could generate render methods and match statements and generate a function which you can manually fill in. Hopefully this is verbose enough to let me remember this idea.</p></div>
-		
+<p>Also Thinking about how the navigation tree can be used for metaprogramming for javascript/typescript. For instance you can query the editor for current tree. Have a matcher, say match the global scope Editor. Then for each of Editor's methods do something. And that can be outputed and added to script. Or it could also be used to templativize making a display component for a class. Like if you make a display component for Editor, you could have a live feed of its internals as the editor runs. And if you have templativizer, it could generate render methods and match statements and generate a function which you can manually fill in. Hopefully this is verbose enough to let me remember this idea.</p></div></main>
+		<script src="/script.js" defer></script>
+	</body>
+</html>

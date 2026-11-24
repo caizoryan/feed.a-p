@@ -1,6 +1,41 @@
-
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/x-icon" href="https://a-p.space/favicon.ico">
 		<link rel="stylesheet" href="/style.css">
-		<div class="block"><p>(B)it
+		
+	</head>
+	<body>
+		<header class="site-header">
+		<button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">
+			<span>feed.a-p.space</span>
+			<svg class="menu-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+		</button>
+		<div class="menu-content">
+		<aside class="panel" id="sidebar" inert>
+			<h4>Pages</h4>
+			<p><a href="/">home</a></p>
+			<p><a href="https://github.com/caizoryan/feed.a-p">about</a></p>
+			<p><a href="/feed.xml">RSS</a></p><p><a href="/feed-2025.html">2025</a></p>
+			
+		<div class="view-options">
+			<h4>View</h4>
+			<div class="option-group">
+				<button type="button" data-width="1100">1100px</button>
+				<button type="button" data-width="800">800px</button>
+				<button type="button" data-width="500">500px</button>
+			</div>
+			<div class="option-group">
+				<button type="button" data-view="grid">normal</button>
+				<button type="button" data-view="list">list</button>
+			</div>
+		</div>
+		</aside>
+		</div>
+		</header>
+		<main class="container" data-width="800" data-view="grid"><div class="block"><p>(B)it
 <br></br>
 ^
 <br></br>
@@ -12,5 +47,7 @@
  for my workflow.</p>
 <p><div class="image"><img loading="lazy" src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIzNDQ5NTk3Ny9vcmlnaW5hbF84N2FmMzIwZDFlNTg3YjdjZTUxZDMxZmJkNWMwZGQyZi5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjE4MDAsImhlaWdodCI6MTgwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==" /></div></p>
 <p>The way I'm thinking is it would be a ui where I can see the screenshots (or can custom generate covers based on params) and those would be the branches of the code. Git branches sound very interesting in concept, but anytime I think of using them and consider merging and all of that stuff, I feel like its going to be not worth using because it will just escalate complexity and things are prone to go wrong. So if I could implement something based on git branches, I'll figure out how it works and then maybe I can use it... and maybe think of how I can engage in process differently using this branching sort of structure to iterate in different directions....</p>
-<p>Like there can be multiple ways of implementing something... and whatever seems promising you work on it in parallel.</p></div>
-		
+<p>Like there can be multiple ways of implementing something... and whatever seems promising you work on it in parallel.</p></div></main>
+		<script src="/script.js" defer></script>
+	</body>
+</html>

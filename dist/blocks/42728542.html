@@ -1,10 +1,47 @@
-
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/x-icon" href="https://a-p.space/favicon.ico">
 		<link rel="stylesheet" href="/style.css">
-		<div class="block"><h1>Moving back to Neovim :)</h1>
+		
+	</head>
+	<body>
+		<header class="site-header">
+		<button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">
+			<span>feed.a-p.space</span>
+			<svg class="menu-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+		</button>
+		<div class="menu-content">
+		<aside class="panel" id="sidebar" inert>
+			<h4>Pages</h4>
+			<p><a href="/">home</a></p>
+			<p><a href="https://github.com/caizoryan/feed.a-p">about</a></p>
+			<p><a href="/feed.xml">RSS</a></p><p><a href="/feed-2025.html">2025</a></p>
+			
+		<div class="view-options">
+			<h4>View</h4>
+			<div class="option-group">
+				<button type="button" data-width="1100">1100px</button>
+				<button type="button" data-width="800">800px</button>
+				<button type="button" data-width="500">500px</button>
+			</div>
+			<div class="option-group">
+				<button type="button" data-view="grid">normal</button>
+				<button type="button" data-view="list">list</button>
+			</div>
+		</div>
+		</aside>
+		</div>
+		</header>
+		<main class="container" data-width="800" data-view="grid"><div class="block"><h1>Moving back to Neovim :)</h1>
 <p>I've been using Emacs for the past 6-8 months and I've grown to like it quite a lot. I shifted to it when I was doing C programming and eventually wanted to do some Lisp.</p>
 <p>I moved with ideas of extreme configurability and the awesomeness of Org mode. But I never got into Org mode (because of inferior portability compared to markdown) and I didn't get that into configuring emacs. I did some playing around, wrote some Elisp functions and had a nice workflow going, but I think its been pretty clunky. Things work but they're not as lighweight as nvim I'd say. And I don't think thats what emacs is, 'Emacs is an OS'.</p>
 <p>So yeah, I think for now, I want something lighter. But I've learned a lot of things from emacs in terms of interaction possibilities. How you navigate through your system, how to spawn and keep servers running etc.</p>
 <p>I think I wanna bring those things back and use TMUX + Nvim combo to sort of rebuild that. Keeping focus on simplicity so things are easy to change.</p>
 <p>And maybe at some point I can also look at fennel, and possibly write my config in that?</p>
-<p>We'll see...</p></div>
-		
+<p>We'll see...</p></div></main>
+		<script src="/script.js" defer></script>
+	</body>
+</html>

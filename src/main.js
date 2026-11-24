@@ -71,24 +71,24 @@ function updateBlockState(channels) {
 
 function pageLinks(channels) {
 	const projects = channels.map((channel) =>
-		`<p><a href="./${channel.slug}.html">${(channel.title ?? channel.slug).replace("[FEED] ", "")}</a></p>`,
+		`<p><a href="/${channel.slug}.html">${(channel.title ?? channel.slug).replace("[FEED] ", "")}</a></p>`,
 	).join("");
-	return `<a href="./feed.xml"><h4>RSS</h4></a><br></br><h4>Pages</h4>${projects}`;
+	return `<p><a href="/feed.xml">RSS</a></p>${projects}`;
 }
 
 function copyPublic() {
 	copyDir(publicDir, dist);
 }
 
-function writeBlockPages(blockPages) {
+function writeBlockPages(blockPages, links = "") {
 	for (const blockPage of blockPages) {
-		writeFile(path.join(dist, "blocks", `${blockPage.id}.html`), blockPage.html);
+		writeFile(path.join(dist, "blocks", `${blockPage.id}.html`), wrapPage(blockPage.html, { links }));
 	}
 }
 
 function writeChannelPage(channel, links = "", isIndex = false) {
 	return renderChannel(channel).then(({ html, blockPages }) => {
-		writeBlockPages(blockPages);
+		writeBlockPages(blockPages, links);
 		const filename = isIndex ? "index.html" : `${channel.slug}.html`;
 		writeFile(path.join(dist, filename), wrapPage(html, { links, isIndex }));
 		return { html, blockPages };
@@ -126,6 +126,10 @@ function parseChannelArg(args) {
 	if (index < 0) return { requested: false };
 	const next = args[index + 1];
 	return { requested: true, query: next && !next.startsWith("-") ? next : undefined };
+}
+
+function parseDryArg(args) {
+	return args.includes("--dry");
 }
 
 async function runSingleChannel(query) {
@@ -166,8 +170,15 @@ async function runFullBuild() {
 }
 
 async function main() {
+	const args = process.argv.slice(2);
+	if (parseDryArg(args)) {
+		copyPublic();
+		console.log("Dry run: copied public/ into dist/");
+		return;
+	}
+
 	try {
-		const channelArg = parseChannelArg(process.argv.slice(2));
+		const channelArg = parseChannelArg(args);
 		if (channelArg.requested) await runSingleChannel(channelArg.query);
 		else await runFullBuild();
 		state.lastRunAt = new Date().toISOString();

@@ -1,11 +1,48 @@
-
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/x-icon" href="https://a-p.space/favicon.ico">
 		<link rel="stylesheet" href="/style.css">
-		<div class="block"><h1>Adding categories (more like projects) here!</h1>
+		
+	</head>
+	<body>
+		<header class="site-header">
+		<button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">
+			<span>feed.a-p.space</span>
+			<svg class="menu-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+		</button>
+		<div class="menu-content">
+		<aside class="panel" id="sidebar" inert>
+			<h4>Pages</h4>
+			<p><a href="/">home</a></p>
+			<p><a href="https://github.com/caizoryan/feed.a-p">about</a></p>
+			<p><a href="/feed.xml">RSS</a></p><p><a href="/feed-2025.html">2025</a></p>
+			
+		<div class="view-options">
+			<h4>View</h4>
+			<div class="option-group">
+				<button type="button" data-width="1100">1100px</button>
+				<button type="button" data-width="800">800px</button>
+				<button type="button" data-width="500">500px</button>
+			</div>
+			<div class="option-group">
+				<button type="button" data-view="grid">normal</button>
+				<button type="button" data-view="list">list</button>
+			</div>
+		</div>
+		</aside>
+		</div>
+		</header>
+		<main class="container" data-width="800" data-view="grid"><div class="block"><h1>Adding categories (more like projects) here!</h1>
 <p>As you may or may not know, this feed runs on 
 <a href="https://are.na">are.na</a>
 ... another thing you may or may not know is that I have a self imposed constraint to have no javascript on this feed. So how do I add categories?
 <br></br>
 So they're going to be implemented as channels. I will connect blocks from the main channel into these category channels. So blocks can appear in multiple categories. And for the rendering of this there's two options.</p>
 <p>The easiest way would be to just create pages for categories/tags/projects. So each channel would just turn into a file, and then on the main feed I can visit these pages.</p>
-<p>The other... actually I'm just going to stick to the easiest way. I have too much other stuff to do :)</p></div>
-		
+<p>The other... actually I'm just going to stick to the easiest way. I have too much other stuff to do :)</p></div></main>
+		<script src="/script.js" defer></script>
+	</body>
+</html>
